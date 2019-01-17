@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+
+\usepackage{times}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{shapes, arrows,backgrounds,shadows,chains,snakes, automata, decorations.markings,arrows.meta}
+
+
+%\usepackage{verbatim}
+% \usepackage[active,tightpage]{preview}
+% \PreviewEnvironment{figure}
+% \setlength\PreviewBorder{5pt}%
+
+\usepackage[pdftex,active,tightpage]{preview}
+\setlength\PreviewBorder{4mm} % use to add a border around the image
+
+
+\begin{document}
+\begin{preview}
+ \begin{tikzpicture}[xscale=0.22,yscale=0.1]
+  \tikzstyle{vecArrow} = [
+   cyan,
+   -triangle 60,
+   line width=0.2,
+   postaction={draw, line width=3, shorten >=3, -}
+   ]
+   
+   \tikzstyle{contig} = [
+   blue,
+   arrows={Triangle[angle=90:2.08]-Triangle[angle=90:2.08]},
+   line width=3,
+   ]
+   
+   
+\draw [vecArrow] (1.618,0) -- (0,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {SapF};
+\draw [vecArrow] (3.606,0) -- (1.622,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {SapD};
+\draw [vecArrow] (5.386,0) -- (3.606,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {SapC};
+\draw [vecArrow, orange] (5.68,0) -- (8.114,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {intA};
+			
+\draw [vecArrow] (9.854,0) -- (8.53,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {munIM};
+%\draw [vecArrow] (10.716,0) -- (9.848,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hyp};
+\draw [vecArrow] (12.058,0) -- (10.698,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {YqaJ};
+\draw [vecArrow] (14.32,0) -- (12.63,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {recT};
+%\draw [vecArrow] (14.92,0) -- (14.352,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hyp};
+%\draw [vecArrow] (15.414,0) -- (15.098,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hyp};
+%\draw [vecArrow] (15.722,0) -- (15.472,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hyp};
+%\draw [vecArrow] (16.344,0) -- (16.75,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hyp};
+\draw [vecArrow] (19.066,0) -- (16.914,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {ParA};
+\draw [vecArrow] (20.624,0) -- (19.642,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {LexA};
+%\draw [vecArrow] (21.262,0) -- (21.716,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hyp};
+\draw [vecArrow] (21.798,0) -- (22.24,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {CII};
+\draw [vecArrow] (22.664,0) -- (24.132,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {ydaU};
+\draw [vecArrow, orange] (24.126,0) -- (25.822,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {dnaC};
+\draw [vecArrow, orange] (27.416,0) -- (26.008,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {IS26};
+\draw [vecArrow, red] (29.946,0) -- (27.896,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {aadA};			
+\draw [vecArrow,red] (32.142,0) -- (30.464,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {sul1};
+\draw [vecArrow, red] (32.824,0) -- (32.13,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {ebr};
+\draw [vecArrow] (34.494,0) -- (33.674,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {GCN5-like};
+\draw [vecArrow, orange] (34.528,0) -- (36.286,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {IS6100};
+\draw [vecArrow, orange] (37.836,0) -- (36.428,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {IS26};
+\draw [vecArrow, orange] (41.136,0) -- (40.202,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {hin};
+\draw [vecArrow, orange] (44.53,0) -- (41.556,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {ltrA};
+\draw [vecArrow] (45.122,0) -- (46.134,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {umuD};
+\draw [vecArrow] (46.138,0) -- (48.668,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {umuC};
+\draw [vecArrow] (50.618,0) -- (48.82,0) node [draw=none,midway,above=0.2,rotate=90,anchor=west,font=\scriptsize, black] {FRG};
+  
+
+\node [draw=none,font=\scriptsize, black, anchor=west] at (-5,-4) {Contigs};
+\draw [contig,blue] (0,-4) -- (26.204,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C15};
+\draw [contig,blue] (26.206,-4) -- (27.536,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C82};
+\draw [contig,blue] (27.538,-4) -- (29.808,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C72};
+\draw [contig,blue] (29.81,-4) -- (32.79,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C65};
+\draw [contig,blue] (32.792,-4) -- (34.526,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C79};
+\draw [contig,blue] (34.528,-4) -- (36.388,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {-};
+\draw [contig,blue] (36.390,-4) -- (37.962,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C82};
+\draw [contig,blue] (37.964,-4) -- (41.438,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C63};
+\draw [contig,blue] (41.44,-4) -- (45.08,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C61};
+%\draw [vecArrow,blue] (45.082,-4) -- (49,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C21};
+\draw [contig,blue] (45.082,-4) -- (51.68,-4);% node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {C21};
+
+
+\node [draw=none,font=\scriptsize, black, anchor=west] at (-5,-13) {Sequence data required to join};
+\draw [<-,thick] (26.205, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {15Mb};
+\draw [<-,thick] (27.537, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {15Mb};
+\draw [<-,thick] (29.809, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {54Mb};
+\draw [<-,thick] (32.791, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {54Mb};
+\draw [<-,thick] (34.527, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {54Mb};
+\draw [<-,thick] (36.389, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {54Mb};
+\draw [<-,thick] (37.965, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {54Mb};
+\draw [<-,thick] (41.439, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {65Mb};
+\draw [<-,thick] (45.081, -5) --+ (0,-4) node [draw=none,midway,below=0.2,rotate=90,anchor=east,font=\scriptsize, black] {65Mb};
+
+ 
+ \end{tikzpicture}
+\end{preview}   
+\end{document}
+

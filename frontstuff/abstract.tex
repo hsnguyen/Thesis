@@ -1,0 +1,20 @@
+\chapter*{Abstract}
+
+Oxford Nanopore Technologies has introduced a novel sequencing system that challenged the traditional methods in which bioinformaticians applied to genomics data. The MinION thumb-drive sequencing device has attracted great attention from researchers worldwide. Despite the relatively high error rates compared to Second Generation Sequencing technologies, the nanopore mechanism is widely considered to be a turning point due to its ability to decode much longer reads (tens or even hundreds of kilo basepairs) in a real-time fashion.
+
+Until now, there is no available method that could scaffold and finish assemblies in real-time while the nanopore sequencing run is still in progress. This mechanism is aimed for because it would offer the opportunity to obtain analysis results as soon as sufficient data are generated.
+As the consequences, answers to the questions of interest could be obtained \emph{in situ}, in an automated manner that saves considerable amount of time and resources compared to the conventional approaches.
+On top of that, streaming analysis can benefit from avoiding under- and over-sequencing which could result in either the generation of more sequence data than is required at greater cost, or a low quality assembly if insufficient data are generated.
+
+For the aforementioned reasons, the motivation of this thesis project is to exert streaming data of long reads for real-time finishing genome sequences.
+As the initial result, in Chapter~\ref{ch:npscarf}, I introduce \npscarf{} which can scaffold and complete short read assemblies alongside with the long read sequencing run. This tool operates on an input of contigs, attempting to bridge them together by using long-read data and reports assembly metrics in real-time so the sequencing run can be terminated once an assembly of sufficient quality is obtained.
+
+On the other hand, it is desired to extend the pipeline application for multiple samples at the same time, through a parallel mechanism known as barcoded sequencing.
+In Chapter~\ref{ch:npbarcode}, \npbarcode{}, a tool supporting real-time demultiplex of nanopore sequencing data, is employed to serve that purpose. 
+Depending on requirements, users can choose to run the dedicated demultiplexer from command line or using it as part of $\mathtt{npReader}$'s GUI. The tool provides practitioners a flexible option to monitor a barcoded sequencing run as well as to integrate pooled sequencing into a streaming analysis pipeline. For example, in combination with \npscarf{}, we can complete multiple genomes in parallel.
+
+Users can also provide underlying assembly graph structure from short-read assemblers for better quality. This approach is described in Chapter~\ref{ch:npgraph}. In which, a streaming algorithm is implemented together with a graphical user interface (GUI) in \npgraph{}. The benefits of using assembly graph stems from the fact that by traversing the graph of the contigs' building blocks, we can reduce the number of mis-assemblies and errors in the final sequences. 
+
+Chapter~\ref{ch:concatemers} discusses another application of nanopore sequencing for decoding small genomes. By employing rolling circle amplification, long reads containing multiple copies of a given viral genome can be obtained. The duplicated patterns are possibly identified by a detection module that can even work with raw signal data. The developed modules can be integrated in a streaming pipeline for real-time analyses as well.
+
+In summary, my thesis project aims to develop and apply in-house tools that aid genome assembly and analysis in real-time in an attempt to facilitate the applications of nanopore sequencing for various use cases, including but not limited to microbial genomics.

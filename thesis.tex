@@ -1,0 +1,49 @@
+\RequirePackage{ifpdf}
+\documentclass[titlesmallcaps,%
+               examinerscopy,%
+               copyrightpage]{uqthesis}
+
+%%%%% Some helpful general definitions
+\input{defs_thesis}
+
+\begin{document}
+
+\frontmatter
+
+%%%%% Acknowledgements, titlepage, abstract, list of publications
+\input{frontstuff/frontstuff}
+
+\mainmatter
+
+%%%%% Introduction
+\input{intro/intro}
+
+%%%%% First chapter for npScarf
+\input{npscarf/npscarf}
+
+%%%%% Multiplex sequencing with barcode + others
+\input{npbarcode/npbarcode}
+
+%%%%% Chapter for npGraph
+\input{npgraph/npgraph}
+
+%%%%% Chapter for concatemers and other analysis
+\input{others/concatemer}
+
+%%%%% Conclusion
+\input{conclusion/conclusion}
+
+%%%%% Bibliography, in BibTeX format (the .bib file)
+\bibliography{bib/all}
+
+\begin{appendices}
+\input{appendices/appendices}
+\end{appendices}
+
+\backmatter
+
+%%%%% List of symbols
+% your thesis may not need this, so comment out or delete the following line
+\input{appendices/listofsymbols}
+
+\end{document}

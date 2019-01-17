@@ -1,0 +1,3 @@
+Authors of the uqthesis class file
+
+Paul Cochrane (paultcochrane@gmail.com)

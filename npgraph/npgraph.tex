@@ -1,17 +1,17 @@
 \chapter{Integration of assembly graph into scaffolding pipeline}\label{ch:npgraph}
 \thispagestyle{empty}
 \vspace*{\fill}
-\epigraph{\emph{Another quote}}
-{Son Nguyen}
+\epigraph{\emph{Timing and accuracy is really what matters at the end of the day.}}
+{--Carson Wentz}
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The idea of using assembly graph for scaffolding in \npscarf{} has been considered from the very beginning of the software design. However, the computational challenges hinder its real-time process ability thus neglected from the first versions of \npscarf{}. In the first section of this chapter, I will introduce the concept and model of the (SPAdes) assembly graph  which would be used as the input. The next section will describe the first attempt to apply this information into \npscarf{} for a better gap-filling. Finally, a real-time assembly graph bridging algorithm will be shown in a new tool, namely \npgraph{} together with its perfomances and properties in numerous use cases.
+In fact, the idea of using assembly graph for scaffolding in \npscarf{} has been considered from the very beginning of the software design. However, the computational challenges hinder its real-time process ability thus neglected from the first versions of \npscarf{}. In the first section of this chapter, I will introduce the concept and model of the (SPAdes) assembly graph  which would be used as the input. The next section will describe the first attempt to apply this information into \npscarf{} for a better gap-filling. Finally, a real-time assembly graph bridging algorithm will be shown in a new tool, namely \npgraph{} together with its perfomances and properties in numerous use cases.
 
 \section{Assembly graph}
 %assembly graph
-\npscarf{} is a hybrid assembler that essentially conducts scaffolding on the NGS contigs and then filling the gaps, without using information from the short-read assembly process about the formation of the contigs themselves. This is illustrated in Figure \ref{Fig:assembly} where the algorithm enhances step 2 and 3 by using nanopore long reads in an attempt to give more complete genome assemblies. 
-However, NGS assemblers usually provide a richer source of information than just the contig sequences themselves, namely \emph{assembly graph}. 
+\npscarf{} is a hybrid assembler that essentially conducts scaffolding on the SGS contigs and then filling the gaps, without using information from the short-read assembly process about the formation of the contigs themselves. This is illustrated in Figure \ref{Fig:assembly} where the algorithm enhances step 2 and 3 by using nanopore long reads in an attempt to give more complete genome assemblies. 
+However, SGS assemblers usually provide a richer source of information than just the contig sequences themselves, namely \emph{assembly graph}. 
 For the graph-based approaches, either OLC or DBG, assembly graph stores the ultimate string content of DNA sequences and their links in its components: edges and vertices. 
 This is usually resulted from running a simplification algorithm on the original graph built from input data, \EG{} tips clipping, bubble removing, error removal, and/or scaffolding using paired-end or mate-pair links \cite{Zerbino2008,BankevichNA2012}.
 
@@ -277,9 +277,263 @@ From the second window (\textbf{6}), the colored vertices imply unique contigs w
 A proper combination of command line and GUI can provide an useful streaming pipeline that copes well with MinION output data. The practice is similar to the previous developed pipelines~\cite{CaoGC2016,Cao2017scaffolding,Nguyen2017barcode} that allow the analysis to take place abreast to a nanopore sequencing run.
 \subsection{Results}
 \subsubsection{Hybrid assembly for synthetic data sets}
-For a preliminary testing, \npgraph{} is benchmarked against \npscarf{} and Unicycler \cite{Wick2017unicycler} version 0.4.6 on the latter's testing data. This data set is synthetic Illumina and nanopore raw data, generated \emph{in silico} based on random and available microbial references. There are three quality settings for each of the simulated raw data: good, medium, bad. In this comparison, we only considered the best quality ones.
+To evaluate the performance of the method, \npgraph{} was benchmarked against \spades{} with its hybrid assembly module~\cite{AntipovKM2015}, \npscarf{} with/without assembly graph integrated, and Unicycler \cite{Wick2017unicycler} version 0.4.6 on the latter's testing data. This data set were simulations of Illumina and MinION raw data, generated \emph{in silico} based on random and available microbial references. 
+There were three settings for each of the synthetic raw data (good, medium, bad) corresponding to the quality, yield (Illumina) and read length (Nanopore) being generated. 
+We only considered the good configurations of both platforms for the sequence data being tested.
+Also, since the other comparative tools do not support streaming assembly, there were only batch-mode runs being carried out and the reciprocal results were examined by QUAST 5.0.2~\cite{Mikheenko2018quast5}. 
 
+\LTcapwidth=\linewidth
+\footnotesize
+\begin{longtable}{llcrrrrr@{\hspace{2pt}}c@{\hspace{2pt}}r}
+\caption{Comparison of assemblies produced in batch-mode by \npgraph{} and the comparative methods} \label{table:npgraph_compare} \\
+
+ \toprule
+    &       & \cthead{1}{Assembly} &     & 
+    \cthead{1}{N50}  & \cthead{1}{Mis-} &  \cthead{1}{Error}  &
+    \cthead{3}{Run times} \\
+    & \cthead{1}{Method} & \cthead{1}{size (Mb)} & \cthead{1}{\#Contigs} &
+    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per 100 Kb)} &  
+    \cthead{3}{(CPU hrs)} \\
+\toprule    
+\endfirsthead
+
+\multicolumn{10}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+ \toprule
+    &       & \cthead{1}{Assembly} &     & 
+    \cthead{1}{N50}  & \cthead{1}{Mis-} &  \cthead{1}{Error}  &
+    \cthead{3}{Run times} \\
+    & \cthead{1}{Method} & \cthead{1}{size (Mb)} & \cthead{1}{\#Contigs} &
+    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per 100 Kb)} &  
+    \cthead{3}{(CPU hrs)} \\
+\toprule    
+\endhead
+
+\hline \multicolumn{10}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+\rowcolor{Gray} \multicolumn{10}{l}
+{ random sequence with repeats} \\*  
+ & SPAdes  & 3.928 & 226  & 40.5  &  0 &  0.00 &  0.95 &  &  \\*
+ & SPAdes-Hybrid  & 4.109 & 3  & 4,000.0  & 0  & 0.85  & 1.196  &  &  \\*
+ & Unicycler  & 4.110 & 3  & 4,000.0  &  0 &  0.47 & 6.783  &  &  \\*
+ & npScarf  & 4.251 &  9 & 3,952.2  &  27 &  8.74 &  0.95 & + & 0.39 \\*
+ & npScarf\_wag & 4.554 & 9  &  3,999.6 &  37 &  6.16 &  0.95 & + &  0.45\\*
+ & npGraph (bwa)  & 4.110 & 3  & 4,000.0  & 0  &  0.47 &  0.95 & + &  0.33\\*
+ & ngGraph (minimap2)  & 4.110 & 3  & 4,000.0  & 0  & 0.47  &  0.95 & + &  0.02\\
+\rowcolor{Gray} \multicolumn{10}{l}
+{\emph{Mycobacterium tuberculosis} H37Rv} \\*  
+ & SPAdes  & 4.371 & 114  &  125.5 &  1 & 1.51  &  1.55 &  &  \\*
+ & SPAdes-Hybrid  & 4.411 & 1  & 4,411.2  & 0  & 1.73  & 1.68  &  &  \\*
+ & Unicycler  & 4.412 &  1 &  4,411.5 & 0  &  2.56 &  6.36 &  &  \\*
+ & npScarf  & 4.446 & 4  & 4,389.9  & 12  &  11.41 & 1.55  & + & 0.78 \\*
+ & npScarf\_wag  & 4.408 & 1  & 4,407.6  &  2 &  7.01 & 1.55  & + & 0.79 \\*
+ & npGraph (bwa)  & 4.411 &  1 & 4,411.6  &  0 & 7.28  &  1.55 & + & 0.63 \\*
+ & ngGraph (minimap2)  & 4.411 & 1 & 4,411.4  &  0 &  7.01 & 1.55  & + &  0.02\\
+\rowcolor{Gray} \multicolumn{10}{l}
+{\ec{} O25b H4-ST131} \\*  
+ & SPAdes  & 5.173 &  159 & 191.0  &  1 &  1.69 & 1.26  &  &  \\*
+ & SPAdes-Hybrid  & 5.249 &  7 &  5,109.6 & 0  & 2.65  & 1.40  &  &  \\*
+ & Unicycler  & 5.249 &  3 & 5,109.8  &  0 &  4.29 &  4.70 &  &  \\*
+ & npScarf  & 5.354 & 7  & 5,087.5  &  14 & 29.12  &  1.26 & + &  0.78\\*
+ & npScarf\_wag  & 5.413 &  7 & 5,108.1  & 6  &  30.29 & 1.26  & + & 0.78 \\*
+ & npGraph (bwa)  & 5.252 & 3  &  5,112.3 &  0 & 16.37  & 1.26  & + &  0.66\\*
+ & ngGraph (minimap2)  & 5.250 & 3  & 5,111.1  & 0  & 14.61  &  1.26 & + & 0.03 \\
+\rowcolor{Gray} \multicolumn{10}{l}
+{\emph{Streptococcus suis} BM407} \\*  
+ & SPAdes  & 2.119 &  81 &  131.0 & 0  & 3.84  & 0.59  &  &  \\*
+ & SPAdes-Hybrid  & 2.147 & 48  &  1,438.0 &  0 &  0.98 & 0.65  &  &  \\*
+ & Unicycler  & 2.171 &  2 &  2,146.2 & 0  &  2.99 &  2.58  &  &  \\*
+ & npScarf  & 2.220 &  4 &  2,120.0  & 9  & 97.20  & 0.59 & + & 0.31 \\*
+ & npScarf\_wag  & 2.245 & 4  &  2,128.3  & 3  &  89.64 & 0.59 & + &  0.31\\*
+ & npGraph (bwa)  & 2.167 & 6  & 2,146.7  &  0 &  26.77 & 0.59  & + &  0.21\\*
+ & ngGraph (minimap2)  & 2.167 & 6  &  2,146.2 &  0 & 22.53  &  0.59 & + & 0.01 \\
+\rowcolor{Gray} \multicolumn{10}{l}
+{\emph{Acinetobacter} AB30} \\*  
+ & SPAdes  & 4.134 & 265  & 42.5  &  0 &  3.23 & 0.95  &  &  \\*
+ & SPAdes-Hybrid  & 4.287 & 49  &  3,308.0 &  0 & 5.04  & 1.84  &  &  \\*
+ & Unicycler  & 4.333 & 1  &  4,333.0 &  1 & 6.95  &  5.27 &  &  \\*
+ & npScarf  & 4.595 & 11  & 4,299.7  & 1  & 120.99  & 0.95  & + & 0.45 \\*
+ & npScarf\_wag  & - & -  &  - & -  &  - &  - &  &  \\*
+ & npGraph (bwa)  & 4.317 & 6  &  2,766.9 & 1  &  39.82 &  0.95 & + & 0.41 \\*
+ & ngGraph (minimap2)  & 4.337 & 1  &  4,336.8 & 0  & 24.71  & 0.95  & + & 0.03 \\
+\end{longtable}
+
+\normalsize
+
+Table~\ref{table:npgraph_compare} shows evaluation results for 5 synthetic data sets, the output of the full run can be found in Table~\ref{supp_tab:synthetic_benchmark}.
+In the first column of applied methods, \npscarf{} is the original scaffolder as described in Chapter \ref{ch:npscarf} and the algorithm with assembly graph integrated is named \npscarf{}\_wag.
+On the other hand, \npgraph{} also showed divergences using 2 different aligners, \bwa{} and \minimap{} for its bridging step thus both practices were included for comparison.
+
+In general, the graph integrated version of \npscarf{} improved the assembly results in terms of mis-assemblies and errors reduction while virtually consuming similar resources compared to the original one.
+The only exception where the number of mis-assemblies being increased was the simulation of a random sequence with many repeats. There were 10 more mistakes detected using the later version of \npscarf{}. However, with more comprehensive investigations, we found that the number of mis-assemblies on the true positive circular sequences (3 from the reference) has significant reduced by applying assembly graph for \npscarf{}. The errors mostly came from redundant sequences output from the software due to the failure in contigs' multiplicity estimation.
+Even though using assembly graph for gap fillings, there were no changes in the way to determine if a contig is unique or not from \npscarf{}\_wag. 
+It still relied on the length and coverage statistics, \IE{} \emph{Astats}~\cite{MyersSD2000} to find anchors that were critical for the backbone construction of the assembly.
+Redundant path findings for false positive replicons, as the results, returned additional wrong translocations in the final contigs which were reported by QUAST. 
+Other than that, the method had successfully produced better assemblies than the original. Regarding \emph{Mycobacterium tuberculosis} H37Rv, the number of mis-assembled breakpoints had been trimmed down from 12 to 2, while the number of final contigs had reduced from 4 to only one as in the reference. Results in cases of \ec{} O25b H4ST131 and \emph{Streptococcus suis} BM407 also showed enhancements in terms of those categories as well as N50 statistics. 
+There was improvements considering the nucleotide errors (mismatches and indels) as well from aforementioned data sets, except for the \ec{} when slightly more mismatches had been detected. However, these errors can be corrected by running polishing tools with the raw Illumina data afterward. 
+
+For \emph{Acinetobacter} AB30 synthetic data, it was an deficiency for \npscarf{}\_wag in traversing the graph to find candidate paths for a bridge of long distance due to particular large search space.
+The exhaustive, naive DFS implementation for this version of \npscarf{} required a lot of memory to traverse a complex assembly graph that usually exceed a normal desktop's capacity.
+This issue has been fixed in \npgraph{} when Algorithm~\ref{algo:findpath} was used on the definitive graph. This resulted in completed runs of the assembly process for all data sets with the similar number of mis-assemblies compared to the best figures in this category.
+As shown in Table~\ref{table:npgraph_compare} and \ref{supp_tab:synthetic_benchmark}, the assembly graph based methods offered significant improvements when compared to \npscarf{}. Not only because of the clear drops with respect to mis-assemblies and errors, but it was also reflected by the number of final contigs and their N50 as well.
+
+To align the long reads to the assembly graph components, either \bwa{}~\cite{Li2013} or \minimap{}~\cite{Li2016} was invoked in \npgraph{}. 
+The former option was inherited from \npscarf{} pipeline with the intact parameters
+%$-k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y$
+while the latter was used with the recommended settings (-$\mathtt{k}$15 -$\mathtt{w}$5) for the best sensitivity working on MinION data.
+Even though, \bwa{} normally reported more hits than \minimap{} but at the same time, was responsible for more false positive alignments.
+For instance, regarding the last data set from Table~\ref{table:npgraph_compare}, the assembly of \npgraph{} using \bwa{} was suffered from the ambiguous alignments thus more fragmented than the other counterparts. 
+On the other hand, referring to more complicated graphs from \emph{Acinetobacter} A1 and the yeast \emph{Saccharomyces cerevisiae} S288c from Table~\ref{supp_tab:synthetic_benchmark}, the number of mis-assemblies from using \minimap{} were increased due to the lacks of appropriate alignments to support accurate bridging process.
+However, under almost circumstances, using either aligners would resulted in the final assemblies with similar qualities.
+Furthermore, in terms of running time and resources required, \minimap{} proved to be the best option. 
+The total CPU hours had been trimmed down drastically with the new aligner, making \npgraph{} the fastest hybrid assembler available.
+This feature is certainly more favoured to a real-time assembly as well.
+As the consequence, as long as \minimap{} is expected to replace \bwa{} for TGS data alignment, it would likewise become the main aligner for \npgraph{} pipeline in the future.
+
+It is noteworthy to discuss in more details the errors addressed in the above assembly methods.
+This figure measured the total mismatches and indels per 100kpb from the assembly sequences when mapping to the reference.
+As expected from hybrid assemblies where Illumina sequencing data were used as the main building blocks, the figures were hardly bigger than 100 (equivalent to 0.1\% error rate) for almost every cases.
+In addition, the indels errors, which mainly caused by TGS data, were found relatively low in the final contigs (Table~\ref{supp_tab:synthetic_benchmark}).
+The majority of the differences accounted for the mismatched nucleotides caused by the alternative paths connecting the unique anchors from the backbone of the assembly.
+This phenomenon may root from homologous repeats or sequencing errors of the genome.
+From all the hybrid assemblers, $\mathtt{hybridSPAdes}$ reported results with highest fidelity. This meant that the performance its decision-rule algorithm $\mathtt{exSPAnder}$~\cite{Prjibelski2014} was the most accurate amongst all path finding methods. As the trade-off, there were fewer connections satisfying its quality threshold, resulting in the fragmented assemblies in cases of \emph{Streptococcus suis} or \emph{Acinetobacter} samples (Table~\ref{table:npgraph_compare} and \ref{supp_tab:synthetic_benchmark}).
+\unicycler{}, which employs an algorithm based on glocal alignments with the consensus long reads, returned the second best reliable and at the same time, closest-to-complete results overall.
+\npscarf{}, on the other hand, exploited the long reads for the gap filling thus inherited the high error rates from them.
+By integrating the assembly graph for the task, the errors were reduced in general (random sequences, \emph{M.~tuberculosis}, \emph{S.suis} from Table~\ref{table:npgraph_compare}) but not completely since the mis-placed contigs were still not resolved in other circumstances.
+\npgraph{} significantly reduced the errors compared to \npscarf{}, however the figures were still higher than the those of the best counterparts.
+This implied a more robust decision making system is needed in \npgraph{}'s real-time path finding module for even better output's accuracy.
 
 \subsubsection{Hybrid assembly for real data sets}
+Several sequencing data sets of actual bacterial samples~\cite{George2017M14} were used in this scenario.
+The data included both Illumina paired-end and MinION sequencing based-call data for each sample.
+Unlike previous settings, rather than the default output, the optimal \spades{} assembly graph detected by \unicycler{} were also used for \npgraph{} algorithm as well.
+This step had been proved to be useful in selecting the best graph available, amongst \spades{} runs with ranging $k$-mer values, that have dead-ends and number of contigs minimized~\cite{Wick2017unicycler}. Likewise, as mentioned before, the quality of the initial assembly graph would considerably influence the final results of \npgraph{}. 
 
+Due to the lack of available references, lesser statistics were reported by QUAST for the comparison of the results. 
+Instead, we investigated the number of circular sequences and $\mathtt{PlasmidFinder}$ 1.3~\cite{Carattoli2014} mappings to have an evaluation on the accuracy and completeness of the assemblies.
+Table~\ref{tab:npgraph_real} shows the benchmark results of \npgraph{} (using \minimap{}) against \unicycler{} on three data sets of bacterial species \emph{Citrobacter~freundii}, \emph{Enterobacter~cloacae} and \emph{Klebsiella~oxytoca}.
+
+\begin{table}[!hpt]
+\centering
+\caption[Assembly of real data sets using \unicycler{} and \npgraph{} with the optimized SPAdes output]{Assembly of real data sets using \unicycler{} and \npgraph{} with the optimized \spades{} output. Circular contigs are highlighted in \textbf{bold}, fragmented assemblies are presented as X$\vert$Y where X is the total length and Y is the number of supposed contigs making up X.}
+\label{tab:npgraph_real}
+\begin{tabular}{p{4cm}|r|r|l}
+ & \unicycler{} & \npgraph{} & Replicons (based on $\mathtt{PlasmidFinder}$ 1.3) \\ \toprule
+\emph{Citrobacter freundii} & \textbf{5,029,534} & \textbf{5,029,486} & Chromosome \\
+CAV1374 & \textbf{109688} & \textbf{109688} & IncFIB(pHCM2)\_1\_pHCM2\_AL513384 \\
+ & \textbf{100,873} & \textbf{100,873} & IncFIB(pB171)\_1\_pB171\_AB024946 \\
+ & \textbf{85,575} & \textbf{85,575} & IncL/M(pMU407)\_1\_pMU407\_U27345 \\
+ & \textbf{43,621} & \textbf{43,621} & repA\_1\_pKPC-2\_CP013325 \\
+ & \textbf{3,223} & \textbf{3,223} & - \\
+ & \textbf{1,916} & \textbf{1,916} & ColRNAI\_1\_\_DQ298019 \\
+ & 14,464$\vert$3 & 14,456$\vert$2 & - \\ \hline
+\emph{Enterobacter cloacae} & 4,806,666$\vert$2 & 4,858,438$\vert$2 & Chromosome \\
+CAV1411 & \textbf{90,451} & 90,693$\vert$2 & IncR\_1\_\_DQ449578 \\
+ & \textbf{33,610} & \textbf{33,610} & repA\_1\_pKPC-2\_CP013325 \\
+ & 13,129$\vert$2 & 14,542$\vert$4 & - \\ \hline
+\emph{Klebsiella oxytoca}  & 6,153,947$\vert$5 & \textbf{6,155,762} & Chromosome \\
+CAV1015 & \textbf{113,105} & \textbf{113,105} & \begin{tabular}[c]{@{}l@{}}IncFII(SARC14)\_1\_SARC14\_JQ418540;\\ IncFII(S)\_1\_\_CP000858\end{tabular} \\
+ & \textbf{111,395} & \textbf{111,395} & - \\
+ & \textbf{108,418} & 109,209$\vert$13 & IncFIB(K)\_1\_Kpn3\_JN233704 \\
+ & \textbf{76,183} & \textbf{76,186} & IncL/M(pMU407)\_1\_pMU407\_U27345 \\
+ & \textbf{11,638} & 11,892$\vert$2 & - \\ \hline
+\end{tabular}
+\end{table}
+
+From the first data set, there were high similarity between final contigs generated by two assemblers.
+They shared the same number of circular ultimate sequences, including the chromosomal and other six replicons contigs. 
+In which, the only divergence lied on the biggest sequence ($\simeq 5.029$Mbp) when the \unicycler{}'s chromosome was 48 nucleotides longer than that of \npgraph{}.
+Five out of six identical replicons were confirmed as plasmids based on the occurences of appropriate Origin of replication sequences (PlasmidFinder database).
+In detail, two megaplasmids (longer than $100$Kpb) were classified as IncFIB while the other two mid-size replicons, $85.6$Kbp and $43.6$Kpb, were incL and repA respectively, leaving the shortest one with $2Kbp$ of length as ColRNAI plasmid.
+The remaining circular sequence without any hits to the database was $3.2$Kbp long suggesting that it could be phage or newly replicon's DNA.
+Lastly, there were still $14.5$Kbp unfinished sequences, being fragmented as 3 contigs in \unicycler{} and 2 for \npscarf{}.
+
+The assembly task for \emph{Enterobacter~cloacae} was more challenging as the chromosomal DNA sequence had not been fully resolved using both methods. 
+The chromosome size was estimated to be approximately $4.8$Mbp but had been broken into two smaller pieces. 
+\npgraph{} returned longer stretches of length $3.324$Mbp and $1.534$Mbp while the figures were $2.829$Mbp and $1.978$Mbp from \unicycler{}'s output.
+However, the number of circular sequences detected by \unicycler{} was one more than the other ($2$ versus $1$). They were corresponding to 2 plasmids, namely IncR and repA.
+While the latter were recognized by both methods, the longer plasmid sequence was fragmented running \npgraph{}.
+Similar to the previous data set, there were around $14$Kpb of data were unable to finish by the assemblers.
+
+Finally, assembly for \emph{Klebsiella oxytoca} saw fragmented chromosome using \unicycler{} but it was a fully complete contig for \npgraph{} with $6.156$Mbp of size.
+The two assemblers shared 3 common circular sequences where two of them were confirmed plasmids. 
+The first identical sequences represented a megaplasmid ($\simeq 113$Kbp) with two variations of IncFII's origin of replication DNA being identified. 
+The other agreed plasmid were IncL/M with $76$Kbp of length.
+Particularly, there was one circular contig with length greater than $100$Kbp but returned no hits to the plasmid database, suggesting the importance of \emph{de novo} replicon assembly in combination with further interrogations.
+\unicycler{} detected another megaplasmid of size $108.4$Kbp which was fractured otherwise. 
+The dissolution was also observed in \npgraph{} for the final contig of length $11.6$Kbp where it failed to combine two smaller sequences into one.
+
+Overall, by testing with synthetic and real data, \npgraph{} proved to be able to generate assemblies of comparative quality compared to other powerful batch-mode hybrid assemblers, such as $\mathtt{hybridSPAdes}$ or \unicycler{}.
+Furthermore, similar to \npscarf{}, it has the advantage in term of supporting real-time assembly. The next section will address this utility and the interactive GUI bundled in \npgraph{}. 
+
+\subsubsection{Real-time mode hybrid assembly}
+
+\begin{figure}[!hpt]
+\centering
+\subfloat[\emph{Citrobacter~freundii} CAV1374]{
+	\includegraphics[width=.45\textwidth]{images/rt_cf1374.png}
+}
+\hfill
+\subfloat[\emph{Escherichia~coli} K12 MG1655]{
+	\includegraphics[width=.45\textwidth]{images/rt_eck12.png}
+}
+\\
+\subfloat[\emph{Klebsiella} 30660 NJST258]{
+	\includegraphics[width=.45\textwidth]{images/rt_kp30660.png}
+}
+\hfill
+\subfloat[\emph{Klebsiella} NTUH K2044]{
+	\includegraphics[width=.45\textwidth]{images/rt_kpntuh.png}
+}
+\caption[Real-time scaffolding by \npscarf{} versus \npgraph{}]{N50 statistics of real-time scaffolding by \npscarf{} versus \npgraph{}.}
+\label{F:npgraph_rt}
+\end{figure}
+
+Figure~\ref{F:npgraph_rt} demonstrates the real-time mode performance of \npscarf{} and \npgraph{} via N50 statistics during the assembly of 4 example data sets.
+This experiment would discover the rate of completing genome assemblies of the new method, set aside the accuracy aspect which had already been discussed previously.
+\npscarf{}\_wg basically scaffolds the pre-assembly contigs in the same manner with the original version thus was not discussed here.
+
+As can be observed from all the plots, \npgraph{} and \npscarf{} both converged to the same ultimate completeness but with different paces and patterns.
+Apparently it took more data for \npgraph{} to finish the same genome than the other.
+The reason stems from the fact that the new algorithm implemented a more `conservative' approach of bridge construction with at least 3 supporting long-reads for each to prevent any potential mis-bridging. 
+Unlike \npscarf{} when the connections could be undone and rectified later if needed, a bridge in \npgraph{} will remain unchanged once created.
+The plot for \ec{} data clarifies this behaviour when a fluctuation can be observed in \npscarf{} assembly at $\simeq 3$-folds data coverage.
+On the other hand, the N50 length of \npgraph{} is always a monotonic increasing function. 
+The sharp `jumping' patterns suggested that the linking information from long-read data had been stored and exploited at certain time point decided by the algorithm.
+Once a unique path has been determined, the bridge can be formed to connect the fragments together into longer sequences.
+
+
+\begin{figure}[!hpt]
+\centering
+\subfloat[Initial graph]{
+	\includegraphics[width=.45\textwidth]{images/npgraph_shigella_0.png}
+}
+\hfill
+\subfloat[Resolved graph]{
+	\includegraphics[width=.45\textwidth]{images/npgraph_shigella_2.png}
+}
+\caption[Assembly graph resolving on \npgraph{} Graph View]{Assembly graph of \emph{Shigella~dysenteriae} Sd197 synthetic data being resolved by \npgraph{} and displayed on the GUI Graph View. The \spades{} assembly graph contains 2186 nodes and 3061 edges, after the assembly shows 2 circular paths representing the chromosome and one plasmid.}
+\label{F:npgraph_graphview}
+\end{figure}
+
+Figure~\ref{F:npgraph_graphview} shows an example of the real-time graph resolving process being displayed on GUI.
+The result graph, after cleaning, would only report the significant connected components that represents the final contigs.
+Smaller fragments, even unfinished but with high remaining coverage, are also presented as potential candidates for further downstream analysis.
+Further annotation utility can be implemented in the future better monitoring the features of interests as in \npscarf{}.
 \subsection{Conclusions}
+Assembly graph is the data structure describing the assembly process at a lower level of more details.
+The current chapter brings this informative knowledge to the original \npscarf{}'s mechanism in two ways, either partly for the gap-filling module only (\npscarf{}\_wg) or completely as the building block of the assembly construction method (\npgraph{}).
+
+While the first approach showed improvements in terms of base's accuracy for the final results, it had limited ability in rectifying the mis-assemblies from the original version due to false positive alignments at contig level.
+The issue can be tackled by applying the assembly graph completely as in \npgraph{}.
+With a more conservative bridging method applied, the new method may consume more data to confidently construct the assembly but at the same time, the number of mis-located fragments has reduced significantly.
+Furthermore, users can monitor the assembly in an interactive way providing the assembly GUI.
+
+Compared to the other hybrid assemblers of similar methodology, such as $\mathtt{hybridSPAdes}$ and \unicycler{}, there are still rooms for further development of \npgraph{}. 
+More comprehensive pre-processing step is needed for a better input graph possible since it would affect the completeness of final results. 
+Importantly, a robust real-time voting system should be implemented to be able to detect the most probable path amongst all candidates in an efficient way.
+This would alleviate the data consumption of the \npgraph{} while at the same time, maintain high confident and accurate scaffolding. 

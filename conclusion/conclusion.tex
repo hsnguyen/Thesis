@@ -1,9 +1,68 @@
 \chapter{Conclusion}\label{ch:conclusion}
 \thispagestyle{empty}
 \vspace*{\fill}
-\epigraph{\emph{Pain will leave you, when you let go.}}
-{--Jeremy Aldana}
+\epigraph{\emph{In the end we come up with a conclusion that we need to start from somewhere.}}
+{--Deyth Banger}
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Not a very interesting conclusion, however you'll need one for your thesis.
+
+\section{Thesis summary}
+The advent of Third-generation sequencing methods, particularly ONT platforms, have brought novel opportunities together with challenges to the field of bioinformatics similar to those arisen from the SGS data before~\cite{SchadtTK2010,ThkurRB2012}.
+Chapter~\ref{ch:intro} had provided a brief review as well as comparison between these two generations' data, aiming at their applications in genome assembly.
+Specifically, the long spanning reads generated in real-time from ONT MinION device had been proved to be useful in generating more complete assemblies despite of their error profiles~\cite{GoodwinGE2015,MadouiEC2015,Karlsson2015}. 
+
+Throughout the thesis content, computational methods were designed and applied for the purpose of completing genomes as fast as possible.   
+For that purpose, Chapter~\ref{ch:npscarf} described \npscarf{}, a streaming hybrid assembler that can finish the fragmented short-read assemblies using the consecutive Nanopore reads. In addition, we showed that the pipeline can be used to determine the locations of highlighted genes of interests on the whole genome during its construction in real-time.
+To adapt the parallel mechanism of MinION using barcode sequencing in our streaming pipelines, \npbarcode{} had been developed and its applications were mentioned in Chapter~\ref{ch:npbarcode}. The scalability of \npscarf{}, as well as of other streaming analyses, to multiple samples were verified through this chapter.
+Chapter~\ref{ch:npgraph}, on the other hand, focused on designs to help improve the accuracy of the assembly output. This resulted in \npscarf{}\_wg and especially \npgraph{} which employed the assembly graph for better fidelity.
+Lastly, Chapter~\ref{ch:concatemers} conducted computational analysis on the MinION data of concatemeric long reads in an attempt to produce viral genome assembly in an efficient way.
+
+\section{Key contributions}
+Overall, the thesis focuses on genome assembly methods using the MinION data and how to exploit its real-time feature to reduce the turn-around time of the computational analyses.
+Accordingly, the main contributions fall into two categories as following.
+\paragraph{Contributions to genome assembly methods}
+We offered another set of open-sourced software and utilities for genome assembly using Nanopore data.
+In combination with short-read assemblies, \npscarf{} can finish and return complete genomes in a short amount of time while consuming less resources compared with other methods.
+In addition, \npbarcode{}, a robust multiplexer for barcode sequencing, can be used together with \npscarf{} to scaffolding multiple samples at the same time.
+We also addressed an use case of using a combination of \npscarf{} with other prominent methods consuming the same inputs. Through this example, ones can measure the advantages and disadvantages of each method to come up with the best solution possible.
+Importantly, if short-reads assembly graph is provided, users can employ \npgraph{} instead for more accurate results. It also provides a GUI to monitor the process in an user-friendly manner.
+Finally, we proposed another assembly method for small circular genomes using concatemeric MinION reads after RCA. Either a reference-based or reference-free assembly algorithm can be applied on the long reads to generate the monomers of whole genome sequences with decent quality given sufficient read coverage.
+\paragraph{Contributions to real-time analysis}
+To date, \npscarf{} and its derived version \npgraph{} are the only assembly methods exclusively designed to assemble genomes in real-time in accordance with MinION's output.
+We have successfully addressed, implemented and applied a streaming pipeline to rapidly finish short-read assemblies using real-time sequencing.
+In consequence, it enabled real-time analyses that rely on positional information, including but not limited to identifying genes encoding bacterial genomic islands and plasmids.
+These functional regions in the bacterial genomes can be horizontally  transferred  between  organisms,  which  is  one  of  the  main  mechanisms for acquiring AMR in pathogenic bacteria.  
+Furthermore, the streaming demultiplexer \npbarcode{} allows the pipeline to run in parallel for multiple samples.
+This feature is critical to clinical applications such as diagnosis and treatments, especially in emergency units, which normally require quick response from multiple testing activities.
+On the other hand, the ability to operate and to monitor completion status in real-time (even with GUI) allows users to decide when to stop the sequencing process thus fulfilling the task of saving time and cost for genome analyses.
+The reference-free concatemeric assembler from Chapter~\ref{ch:concatemers} can even work with raw signal from the sequencing device hence open up the possibility to be integrated into the \emph{ReadUntil} pipeline~\cite{LooseMS2016} which had been designed to further reduce the turn-around time of the nanopore data analyses.
+\section{Future directions}
+\paragraph{Improve software performances}
+The project witnesses attempts to develop a hybrid assembler from the original \npscarf{} to a version with assembly graph included and ultimately an exhaustive graph-traversing algorithm \npgraph{}. 
+The efforts indeed leveled up the accuracy of the assembly output to a new level.
+Even though, there are still rooms to enhance the performance of the software given the inputs kept intact.
+Specifically, there is a need for more robust voting system and/or a decision making mechanism to be able to determine bridges with higher confidence during the real-time process.  
+Other than that, a revertible bridge construction on the graph is also considered for a self-rectifying assembly algorithm for \npgraph{}. 
+
+\npscarf{}, on the other hand, performs better with mid- or large-size data sets. However, an optimization is required to optimize the resources required when working with huge and complicated genomes, \EG{} of eukaryotic organisms.
+Besides, \npscarf{} and \npgraph{} are currently working as two separate modules due to different methodology and implementation. For more convenience, they will be integrated in one common interface of a hybrid assembly software supporting different scenarios.
+
+\paragraph{Application in metagenomics}
+Preliminary works on mock data sets of metagenomics using \npscarf{} have demonstrated that our approach is feasible for this case (data not shown).
+As a consequence, one of the development direction is to implement a hybrid assembler that can solve metagenomics assembly graph in real-time with \npgraph{}.
+In order to achieve this, we first plan to run \spades{} with $\mathtt{--meta}$ option~\cite{Nurk2017metaspades} to generate a metagenomics assembly graph. After that the contigs (nodes from the graph) will be subjected to a binning algorithm, \EG{} $\mathtt{metaBAT}$~\cite{Kang2015metabat}, to discover the populations of the community.
+This information is used to determine multiplicity and membership of each contigs so that \npgraph{} algorithm can work with and produce assembly for each of those detected populations.
+
+\paragraph{Non-hybrid methods}
+It is desired to have a non-hybrid real-time \emph{de novo} assembly as the yield and quality of the nanopore reads being generated are increased significantly compared to the early stage. 
+In fact, there are several fast algorithms being developed recently for such task in batch-mode, \IE{} $\mathtt{miniasm}$~\cite{Li2016} or $\mathtt{wtdbg2}$ (Ruan, J. and Li, H. (2019) \emph{Fast and accurate long-read assembly with wtdbg2}. bioRxiv. doi:10.1101/530972).
+However, to adapt those approaches for a streaming pipeline is challenging.
+The modified OLC or DBG algorithm for nanopore data are both consuming much more resource due to the errors.
+Furthermore, the error correction step, \EG{} $\mathtt{racon}$~\cite{Vaser2017racon} using POA graph data structure, is costly thus make it difficult to operate in real-time during the sequencing process.
+\section{Closing remarks}
+Long-reads data from TGS platforms, such as MinION, are considered as the  current game-changer for genomics studies, especially genome assembly which has been partly addressed throughout the thesis.
+In fact, there are arguments about the role of long-reads assembly to the quality of the DNA reference resource, such as NCBI database, that would affect the downstream analyses at protein level due to relatively high error rates especially indels~\cite{Watson2019errors,Koren2019reply}.
+From this thesis author's point of view, however, the innovation of technology in combination with the improvement of computational algorithms can leverage the genome assembly for not only microorganisms, but also human and multiploidy species of greater complexity.
+Furthermore, in the meantime, the hybrid approaches can combine the high fidelity of sequence data from Illumina to overcome the current defects of TGS data.
+In consequence, the role of MinION in particular, or ONT platforms in general, are strongly believed to continue expanding, more widely and deeply in genome sequencing practices with improved accuracy and real-time responding feature.

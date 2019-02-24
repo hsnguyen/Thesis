@@ -252,189 +252,248 @@ jsa.np.npscarf -realtime -read 100 -time 1 -b - \
 \end{tabular}
 \end{table}
 
+\normalsize
+
 \addtocontents{toc}{\protect\setcounter{tocdepth}{ 0}}
 \chapter{Supplementary materials for Chapter 4}\label{app:npgraph}
 %\addtocontents{toc}{\protect\setcounter{tocdepth}{ 0}}
 %\addcontentsline{toc}{chapter}{Appendix \thechapter}
 \newpage
 
+\makeatletter
+
+\newlength\oriarrayrulewidth  
+\newcount\orilowpenalty
+\newcommand\nobreakmidrule{%
+ \noalign{\global\oriarrayrulewidth\arrayrulewidth\relax
+          \global\orilowpenalty\@lowpenalty\relax  
+          \global\@lowpenalty=\numexpr-10000\relax%
+          \global\arrayrulewidth\lightrulewidth\relax}
+ \hline
+ \noalign{\global\@lowpenalty=\orilowpenalty\relax%
+          \global\arrayrulewidth\oriarrayrulewidth\relax}}
+
+\makeatother
+
 \begin{longtable}[!hpt]{llcrrrrr}
+\caption{Benchmarking \npgraph{} against \npscarf{} versions, $\mathtt{hybridSPAdes}$ and \unicycler{} hybrid assembler with the synthetic data set.}
+\label{supp_tab:synthetic_benchmark}\\
 \toprule
-    &       & Assembly & \#Contigs  & N50  & Mis- &  Mismatch & Indel \\
-    & Method & size (bp) &($\geq500$ bp) & (bp) & assemblies & (per 100 Kb) & (per 100 Kb) \\
-\hline  
+    &       & Assembly &  & N50  & Mis- &  Mismatch & Indel \\
+    & Method & size (bp) & \#Contigs  & (bp) & assemblies & (per 100 Kb) & (per 100 Kb) \\
+    \hline  
+\endfirsthead
+\multicolumn{8}{c}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+\hline
+    &       & Assembly &  & N50  & Mis- &  Mismatch & Indel \\
+    & Method & size (bp) & \#Contigs  & (bp) & assemblies & (per 100 Kb) & (per 100 Kb) \\
+\hline
+\endhead
+\hline \multicolumn{8}{r}{\textit{Continued on next page}} \\
+\endfoot
+\hline
+\endlastfoot
+
 \rowcolor{Gray}
- \multicolumn{8}{l}{ random sequences no repeats: good} \\ %
+\multicolumn{8}{l}{random sequences no repeats} \\* %
+\nobreakmidrule
+\rowcolor{Gray}
+& npScarf &  4110000 &  3  &  4000000  &  0  & 0.00  & 0.00\\*
+\rowcolor{Gray}
+& npScarf\_wag & 4109516  &  3  &  4000000  &  0  & 0.00  & 0.00\\*
+\rowcolor{Gray}
+& npGraph-bwa & 4110000  &  3  &  4000000  &  0  & 0.00  & 0.00\\*
+\rowcolor{Gray}
+& npGraph-mm2 & 4110000  &  3  &  4000000  &  0  & 0.00  & 0.00\\*
+\rowcolor{Gray}
+& hybridSPAdes & 4110231  &  3  & 4000077   &  0  & 0.00  &  0.07\\*
+\rowcolor{Gray}
+& Unicycler & 4110000  &  3  &  4000000  &  0  & 0.00  &  0.00\\
+\hline
+\multicolumn{8}{l}{random sequences some repeats} \\* %
+\nobreakmidrule
+& npScarf & 4109612  &  3  &  4001483  &  0  &  0.00 &  1.22\\*
+& npScarf\_wag & 4108128  &  3 &  3999999  &  0  &  0.00 &  0.95\\*
+& npGraph-bwa & 4110000  &  3  &  4000000  &  0 &  0.00 &  0.00\\*
+& npGraph-mm2 &  4110000 &  3  &   4000000 & 0  & 0.00  &  0.00\\*
+& hybridSPAdes & 4108283  &  3  &  4000077  &  0  & 0.02  & 0.05\\*
+& Unicycler &  4110000 &  3 & 4000000  &  0 & 0.00  &  0.00\\
 \hline
 \rowcolor{Gray}
- & npGraph & 4080156  &  2  &  3990078  &  0  & 0  & 0\\
+\multicolumn{8}{l}{random sequences many repeats} \\* %
+\nobreakmidrule
 \rowcolor{Gray}
- & npScarf & 4110000  &  3  &  4000000  &  0  &  0 & 0\\
+& npScarf &  4251391 &  9  &  3952225  &  27  & 0.88  & 7.86\\*
 \rowcolor{Gray}
-& Unicycler & 4110000  &  3  &  4000000  &  0  &  0 &  0\\
-\hline
- \multicolumn{8}{l}{ random sequences no repeats: medium} \\ %
-\hline
- & npGraph & 4080112  &  2  &  3990056  & 0   &  0  & 0\\
- & npScarf & 4110000  &  3  &  4000000  &  0  &  0 & 0\\
- & Unicycler & 4110000  &  3  &  4000000  &  0  &  0 &  0\\
-\hline
-\hline  
+& npScarf\_wag &  4554192 &  9  &  3999620  &  37  & 0.32  & 5.84\\*
 \rowcolor{Gray}
- \multicolumn{8}{l}{ random sequences some repeats: good} \\ %
-\hline
+& npGraph-bwa & 4110000  &  3  &  4000000  &  0  &  0.32 & 0.15\\*
 \rowcolor{Gray}
- & npGraph & 4107894  &  3  &   3997894 &  0  & 0.05  & 0.07\\
+& npGraph-mm2 &  4110000 &  3  &  4000000  &  0  & 0.32  & 0.15\\*
 \rowcolor{Gray}
- & npScarf & 4109612  &  3  &  4001483  &  0  & 0  & 1.27\\
+& hybridSPAdes & 4108646  &  3  &  4000077  &  0  &  0.68 &  0.17\\*
 \rowcolor{Gray}
-& Unicycler & 4110000  &  3  &  4000000  &  0  &  0 &  0\\
+& Unicycler & 4110000  &  3  &  4000000  &  0  &  0.32  & 0.15  \\
 \hline
- \multicolumn{8}{l}{ random sequences some repeats: medium} \\ %
-\hline
- & npGraph & 4107652  &  3  &  3997652  &  0 &  0 & 0\\
- & npScarf & 4105026  &  3  &  3999803  &  0  & 0.02  & 1.22\\
-& Unicycler & 4110000  &  3  &  4000000  &  0  &  0 &  0\\
-\hline
-\hline  
-\rowcolor{Gray}
- \multicolumn{8}{l}{ random sequences many repeats: good} \\ %
+% \pagebreak
+% \toprule
+\multicolumn{8}{l}{\emph{Acinetobacter} A1} \\* %
+\nobreakmidrule
+& npScarf & 3918192  &  3  &  3899455  &  4  & 3.15  & 0.77 \\*
+& npScarf\_wag & 4188998  &  5  &  3286149  &  6  & 6.94  & 1.87 \\*
+& npGraph-bwa & 3917160  &  2  &  3908429  &  1 & 19.80  & 2.25 \\*
+& npGraph-mm2 & 3918048  &  2  &  3909317  &  4 & 21.42  & 1.51 \\*
+& hybridSPAdes &  3886253 &  53  &  1403208  &  0  & 5.62  & 0.26\\*
+& Unicycler & 3917745  &  2 & 3909014  & 0  & 2.50  &  0.13\\
 \hline
 \rowcolor{Gray}
- & npGraph & 4099244  &  8  &  3978164  &  1  &  0.39 & 0.15\\
+\multicolumn{8}{l}{\emph{Acinetobacter} AB30} \\* %
+\nobreakmidrule
 \rowcolor{Gray}
- & npScarf & 4287145  &  9  &  3951858  &  20  & 0.95  & 6.49\\
+& npScarf & 4594626  &  11  &  4299677  &  1  & 69.95  & 51.04\\*
 \rowcolor{Gray}
-& Unicycler & 4110013  &  3  &  4000000  &  0  &  0.1 &  0.07\\
-\hline
- \multicolumn{8}{l}{ random sequences many repeats: medium} \\ %
-\hline
- & npGraph & 4105107  &  9  &  2650240  &  2  &  0.37 & 0.24\\
- & npScarf & 4338709  & 10   &  3977368  &  39  & 31.88  & 64.5\\
-& Unicycler & 4110012  &  3  &  4000000  &  0  &  0.22 &  0.05\\
-\hline
-\hline  
+& npScarf\_wag & -  &  -  &  -  & -   &  - & -\\*
 \rowcolor{Gray}
- \multicolumn{8}{l}{ \emph{Acinetobacter} AB30: good} \\ %
-\hline
+& npGraph-bwa & 4317408  &  6  &  2766938  &  1  & 38.10  & 1.72\\*
 \rowcolor{Gray}
- & npGraph & 4248501  &  28  &  1176621  &  7  &  12.08 & 1.00\\
+& npGraph-mm2 & 4336804  &  1  &  4336804  & 0   &  23.16 & 1.55\\*
 \rowcolor{Gray}
- & npScarf & 4556380  &  10  &  4293616  &  25  & 34.81  & 54.48\\
+& hybridSPAdes & 4286627  &  49  &  3308039  &  0  &  4.60 &  0.44\\*
 \rowcolor{Gray}
-& Unicycler & 4335781  &  1  &  4335781  &  0  & 3.25  & 0.23 \\
+& Unicycler &  4333041 &  1  &  4333041  &  1  &  6.42 &  0.53\\
 \hline
- \multicolumn{8}{l}{ \emph{Acinetobacter} AB30: medium} \\ %
-\hline
- & npGraph & 4300851  &  35  &  1052167  &  8  &  19.49 & 1.71\\
- & npScarf & 722555  &  7  &  593850  &  7  & 72.45  & 78.27\\
-& Unicycler & 4352173  &  5  &  4346003  &  0  & 3.07  & 0.53 \\
-\hline
-\hline  
-\rowcolor{Gray}
- \multicolumn{8}{l}{ \ec{} K12 MG1655: good} \\ %
+\multicolumn{8}{l}{\ec{} K12 MG1655} \\* %
+\nobreakmidrule
+& npScarf & 4647010  &  5  &  4609437  &  9  & 10.65  & 17.61 \\*
+& npScarf\_wag &  4678785 &  5  &  4641364  &  0  & 8.38  &  2.31\\*
+& npGraph-bwa & 4643368  &  1  &  4643368  & 0  &  9.37 & 0.75 \\*
+& npGraph-mm2 & 4643265  &  1  &  4643265  &  0 &  10.43 & 1.25 \\*
+& hybridSPAdes &  4641097 &  1  &  4641097  &  0  & 1.19  & 0.13\\*
+& Unicycler & 4641650  &  1 &  4641650 &  0 & 3.43  & 0.26 \\
 \hline
 \rowcolor{Gray}
- & npGraph &  4637816 &  2  &  4630090  &  3  & 6.07  & 1.30\\
+\multicolumn{8}{l}{\ec{} O25b H4-ST131} \\* %
+\nobreakmidrule
 \rowcolor{Gray}
- & npScarf & 4662306  &  6  &  4612921  &  30  & 12.29  & 13.16\\
+& npScarf &  5353639 &  7  &  5087544  &  14  &  22.43 & 6.69\\*
 \rowcolor{Gray}
-& Unicycler & 4641877  &  1  &  4641538  &  1  & 1.57  & 0.17\\
-\hline
- \multicolumn{8}{l}{ \ec{} K12 MG1655: medium} \\ %
-\hline
- & npGraph & 4636279  &  11  &  2952199  &  2  & 9.00  & 1.49\\
- & npScarf & 4645214  &  2  &  4632777  &  20  & 24.70  & 31.24\\
-& Unicycler & 4641651  &  1  &  4641651  &  0  & 2.07  & 0.15\\
-\hline
-\hline  
+& npScarf\_wag & 5413499  &  7  &  5108146  &  6  &  26.34 & 3.95\\*
 \rowcolor{Gray}
- \multicolumn{8}{l}{ \ec{} O25b H4 ST131: good} \\ %
-\hline
+& npGraph-bwa & 5251882  &  3  &  5112329  &  0  &  15.26 & 1.11\\*
 \rowcolor{Gray}
- & npGraph & 5225953 &  20  &  1332357  &  9  & 9.46  & 1.54\\
+& npGraph-mm2 &  5250391 &  3  &  5110666  &  0  &  13.56 & 1.05\\*
 \rowcolor{Gray}
- & npScarf &  5274462 &  8  &  5079199  &  23  &  17.58 & 5.16\\
+& hybridSPAdes & 5249315  &  7  &  5109649  &  0  &  2.23 &  0.42\\*
 \rowcolor{Gray}
-& Unicycler & 5249446  & 3   &  5109764  &  0  &  1.56 & 0.19\\
+& Unicycler & 5249442  &  3  &  5109760  &  0  & 4.02 & 0.27 \\
 \hline
- \multicolumn{8}{l}{ \ec{} O25b H4 ST131: medium} \\ %
-\hline
- & npGraph &  5234376 &  19  &  2784386  &  4  & 13.38  & 1.50\\
- & npScarf & 5348539  &  9  &  5087364  &  30  & 27.04  & 29.95\\
-& Unicycler &  5249306 & 3  &  5109624  &  1  &  1.92 & 0.29\\
-\hline
-\hline  
-\rowcolor{Gray}
- \multicolumn{8}{l}{ \kp{} 30660 NJST258\_1: good} \\ %
+% \pagebreak
+% \toprule
+\multicolumn{8}{l}{\emph{Klebsiella} 30660 NJST258 1} \\* %
+\nobreakmidrule
+& npScarf & 5739591  &  9  &  5257627  &  8  & 11.55  & 12.93\\*
+& npScarf\_wag & 5527526  &  5  &  5264334  &  0  & 9.86  & 2.43\\*
+& npGraph-bwa & 5535507  &  8  &  5264082  &  2  & 12.77  & 1.50\\*
+& npGraph-mm2 & 5534879  &  8  &  5263608  &  0  & 6.49  & 1.14\\*
+& hybridSPAdes &  5528124 & 8   &  5263320  &  0  & 1.36  & 0.80 \\*
+& Unicycler & 5537860  &  9  &  5263196  &  0  & 1.34  & 0.51 \\
 \hline
 \rowcolor{Gray}
- & npGraph &  5243363 &  27  &  2670458  &  6  &  9.14 & 1.56\\
+\multicolumn{8}{l}{\emph{Klebsiella} MGH 78578} \\* %
+\nobreakmidrule
 \rowcolor{Gray}
- & npScarf & 5713200  &  9  &  5260757  &  30  & 8.91  &  10.78\\
+& npScarf &  5676644 &  6  &  5308928  &  17  & 20.26  & 14.74\\*
 \rowcolor{Gray}
-& Unicycler &  5540922 &  6  &  5263221  &  0  &  0.4 & 0.29\\
-\hline
- \multicolumn{8}{l}{ \kp{} 30660 NJST258\_1: medium} \\ %
-\hline
- & npGraph & 5431315  &  34  &  1390117  &  5  & 5.73  & 1.32\\
- & npScarf & 5544956  &  7  &  5249381  &  23  & 5.79  & 2.99\\
-& Unicycler & 5540904  &  8  &  5263203  &  2  & 4.91  & 0.43\\
-\hline
-\hline  
+& npScarf\_wag & 5672565  &  5  &  5315270  &  6  &  19.15 & 3.73\\*
 \rowcolor{Gray}
- \multicolumn{8}{l}{ \kp{} MGH 78578: good} \\ %
-\hline
+& npGraph-bwa &  5698292 &  6  &  5316232  &  1  & 23.94  & 2.34\\*
 \rowcolor{Gray}
- & npGraph & 5398854  &  40  &  1679207  &  2  &  8.29 & 0.82\\
+& npGraph-mm2 & 5696273  &  6  &  5315757  &  0  &  19.35 & 1.84\\*
 \rowcolor{Gray}
- & npScarf &  5700968 &  6  &  5311550  &  41  & 16.53  & 9.32\\
+& hybridSPAdes &  5665442 &  19  &  5315086  &  0  & 5.28  &  0.92\\*
 \rowcolor{Gray}
-& Unicycler & 5694731  &  6  & 5314956   &  1  & 2.88  & 0.16\\
+& Unicycler &  5694231 &  14  &  5315096  &  0  & 5.38 &  0.21\\
 \hline
- \multicolumn{8}{l}{ \kp{} MGH 78578: medium} \\ %
-\hline
- & npGraph &  5598574 &  28  & 5208660   &  2  &  13.5 & 1.45\\
- & npScarf & 5399020  &  3  &  5298987  &  18  & 17.37  & 8.24\\
-& Unicycler & 5694811  &  6  & 5315026   &  0  &  5.76 & 0.35\\
-\hline
-\hline  
-\rowcolor{Gray}
- \multicolumn{8}{l}{ \kp{} NTUH K2044: good} \\ %
+\multicolumn{8}{l}{\emph{Klebsiella} NTUH-K2044} \\* %
+\nobreakmidrule
+& npScarf & 5468717  &  3  &  5239437  &  5  & 5.53  &  1.92\\*
+& npScarf\_wag & 5471159  &  2  &  5249462  &  0  &  6.98 &  1.72\\*
+& npGraph-bwa & 5472856  &  2  &  5248714  & 0  & 8.06  &  1.41\\*
+& npGraph-mm2 &  5472845 &  2  &  5248703  &  0 &  7.07 &  1.15\\*
+& hybridSPAdes & 5472760  &  2  &  5248601  &  0  &  2.34 & 0.60\\*
+& Unicycler & 5472697  & 2  & 5248545  &  0 & 2.41  &  0.35\\
 \hline
 \rowcolor{Gray}
- & npGraph & 5175218  &  13  &  2611401  &  5  &  7.68 & 0.87\\
+\multicolumn{8}{l}{\emph{Mycobacterium tuberculosis} H37Rv} \\* %
+\nobreakmidrule
 \rowcolor{Gray}
- & npScarf & 5469248  &  3  &  5239960  &  17  &  7.07 & 1.76\\
+& npScarf &  4446095 &  4  & 4389968   &  12  & 7.61  & 3.53\\*
 \rowcolor{Gray}
-& Unicycler & 5472694  &  2  &  5248542  &  0  & 1.32  & 0.2\\
-\hline
- \multicolumn{8}{l}{ \kp{} NTUH K2044: medium} \\ %
-\hline
- & npGraph & 5393198  &  16  &  1811833  &  5  & 9.36  & 1.69\\
- & npScarf &  5479301 &  3  &  5239455  &  19  &  11.31 & 4.28 \\
-& Unicycler &  5472418 &  2  &  5248274  &  2  &  1.63 & 0.11 \\
-\hline
-\hline  
+& npScarf\_wag &  4407553 &  1  &  4407553  &  2  & 4.21  & 2.80\\*
 \rowcolor{Gray}
- \multicolumn{8}{l}{ \emph{Mycobacterium tuberculosis} H37Rv: good} \\ %
+& npGraph-bwa & 4411594  &  1  &  4411594  &  0  & 6.21  & 1.07\\*
+\rowcolor{Gray}
+& npGraph-mm2 & 4411387  & 1   &  4411387  &  0  & 6.28  & 0.73\\*
+\rowcolor{Gray}
+& hybridSPAdes & 4411162  &  1  &  4411162  &  0  &  1.41 &  0.32\\*
+\rowcolor{Gray}
+& Unicycler & 4411538  &  1  &  4411538  &  0  &  2.22 &  0.34\\
+\hline
+% \pagebreak
+% \toprule
+\multicolumn{8}{l}{\emph{Saccharomyces cerevisiae} S288c} \\* %
+\nobreakmidrule
+& npScarf &  11875932 &  20  &  896738  &  48  &  77.76 & 12.63 \\*
+& npScarf\_wag & 12626448  &  37  &  630281  &  189  & 43.11  & 5.16 \\*
+& npGraph-bwa & 11907663  &  37  &  774482  &  24 &  72.70 &  4.14\\*
+& npGraph-mm2 & 11881030  &  39  &  795662  &  30 &  58.48 &  3.58\\*
+& hybridSPAdes &  11968398 &  246  &  731962  &  4  & 12.20  & 0.89\\*
+& Unicycler &  11847655 & 72  & 909114  &  0 & 21.81  &  1.04\\
 \hline
 \rowcolor{Gray}
- & npGraph &  4309462 &  3  &  4217195  &   5 & 3.95  & 1.56\\
+\multicolumn{8}{l}{\emph{Shigella dysenteriae}  Sd197} \\* %
+\nobreakmidrule
 \rowcolor{Gray}
- & npScarf & 4539068  &  7  &  4400303  &  40  & 15.78  & 21.73\\
+& npScarf &  4037570 &  70  & 179761   &  63  & 103.66  & 182.99\\*
 \rowcolor{Gray}
-& Unicycler &  4411534 & 1  &  4411534  &  1  & 0.63  & 0.11\\
+& npScarf\_wag & 6571492  &  23  &  640874  &  1154  &  81.15 & 53.47\\*
+\rowcolor{Gray}
+& npGraph-bwa & 4574433  &  6  &  4382010  &  133  & 93.64  & 12.47\\*
+\rowcolor{Gray}
+& npGraph-mm2 & 4565129  &  10  &  1512588  &  193  & 86.63  & 13.29\\*
+\rowcolor{Gray}
+& hybridSPAdes &  4562642 & 244   &  77009  & 35   & 7.14  &  1.20\\*
+\rowcolor{Gray}
+& Unicycler & 4560901  & 3   &  4369231  &  0  & 11.88  & 1.05 \\
 \hline
- \multicolumn{8}{l}{ \emph{Mycobacterium tuberculosis} H37Rv: medium} \\ %
+\multicolumn{8}{l}{\emph{Shigella sonnei} 53G} \\* %
+\nobreakmidrule
+& npScarf &  5335195 &  77  &  388533  &  68  & 104.26  &  116.07\\*
+& npScarf\_wag & -  &  -  &  -  &  -  & -  &  -\\*
+& npGraph-bwa & 5210154  &   4 &  4987138  & 14  & 59.84  &  1.02\\*
+& npGraph-mm2 & 5212051  &  4  &   4989035 & 19  &  30.70 &  1.01\\*
+& hybridSPAdes & 5223176  &  14  &  4987892  &  0  & 3.14  & 0.27\\*
+& Unicycler &  5220517 &  5 &  4988548 & 0  & 7.39  &  0.52\\
 \hline
- & npGraph & 4389387  &  7  &  4384829  &  9  & 5.75  & 1.46\\
- & npScarf &  4422649 &  3  &  4388188  &  36  &  6.87 & 3.70\\
-& Unicycler & 4411372  &  1  &  4411372  &  2  & 1.41  & 0.25\\
+\rowcolor{Gray}
+\multicolumn{8}{l}{\emph{Streptococcus suis} BM407} \\* %
+\nobreakmidrule
+\rowcolor{Gray}
+& npScarf &  2220434 & 4   &  2120037  &  9  & 48.28  & 48.92\\*
+\rowcolor{Gray}
+& npScarf\_wag & 2245214  &  4  &  2128290  &  3  & 85.79  & 3.85\\*
+\rowcolor{Gray}
+& npGraph-bwa & 2167238  &  6  &  2146682  &  0  & 26.08  & 0.69\\*
+\rowcolor{Gray}
+& npGraph-mm2 & 2166779  &  6  &  2146223  &  0  & 21.88  & 0.65\\*
+\rowcolor{Gray}
+& hybridSPAdes & 2147092  &  48  &  1437972  &  0  & 0.79  &  0.19\\*
+\rowcolor{Gray}
+& Unicycler &  2170829 &   2 &  2146250  &  0  &  2.67 & 0.32 \\
 \hline
-\caption{Benchmarking \npgraph{} against \npscarf{} and Unicycler version 0.4.6}
-\label{tab:benchmarking}
 \end{longtable}
+
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{ 0}}
 \chapter{Supplementary materials for Chapter 5}\label{app:concatemer}
@@ -444,7 +503,7 @@ jsa.np.npscarf -realtime -read 100 -time 1 -b - \
 
 \begin{figure}[!ht]
 \centerline{\includegraphics[width=0.9\textwidth]{images/concat_count.jpg}}
-\caption[Concatemer reads count]{Number of $k$-concatemers for each sample barcode 08 and 09. $k=1\dots 7$}
+\caption[Concatemer reads count]{Number of $k$-concatemers for each positive viral sample with barcode 08 (CaMV) and 09 (BSMYV). $k=1\dots 7$}
 \label{supp_fig:concat_count}
 \end{figure}
 
@@ -476,4 +535,31 @@ jsa.np.npscarf -realtime -read 100 -time 1 -b - \
 
 \caption{ACF values for a random synthetic read and several k-concatemers nanopore read detected in \emph{Cauliflower mosaic} sample (barcode 08).}
 \label{supp_fig:concat_acf_dna}
+\end{figure}
+
+\begin{figure}[!hpt]
+\centering
+\subfloat[NSDF signal averaged by 10k window\label{supp_fig:acf_mpm10k}]{
+	\includegraphics[width=.9\textwidth]{images/concatemer_mpm_10k.png}
+}
+\\
+\subfloat[NSDF signal averaged by 20k window\label{supp_fig:acf_mpm20k}]{
+	\includegraphics[width=.9\textwidth]{images/concatemer_mpm_20k.png}
+}
+\caption[NSDF signal processed after running average filter method with different window size]{NSDF signal processed by a running average filter step with different window size ($ws$): (\ref{supp_fig:acf_mpm10k}) $ws=10,000$ (\ref{supp_fig:acf_mpm20k}) $ws=20,000$. While the larger window sizes mean better de-noised signals, it also reduces the specificity of the local maxima. 
+As can be seen from the Figure~\ref{supp_fig:acf_mpm20k}, the peaking regions are easier to spot but their blunt tips, making it more difficult to determine the exact coordinates. In Figure~\ref{supp_fig:acf_mpm10k} the window size $10,000$ returned clear spikes for easier monomer length evaluation. However, the seesaw pattern were not eliminated completely.}
+\label{supp_fig:concat_acf_raw}
+\end{figure}
+
+\begin{figure}[!hpt]
+\centering
+\subfloat[NDSF for DNA sequence\label{supp_fig:mpm30_dna}]{
+	\includegraphics[width=.9\textwidth]{images/nsdf-dna-cut30.png}
+}
+\\
+\subfloat[NSDF for raw signal\label{supp_fig:mpm30_raw}]{
+	\includegraphics[width=.9\textwidth]{images/nsdf-raw-cut30.png}
+}
+\caption[NSDF signal processed after smoothing with LPF at $cutFreq=30$]{7-concatemers NSDF signal processed after LPF using $cutFreq=30$ of: (\ref{supp_fig:mpm30_dna}) base-called DNA sequence (\ref{supp_fig:mpm30_raw}) raw signal sequence.}
+\label{supp_fig:mpm30}
 \end{figure}

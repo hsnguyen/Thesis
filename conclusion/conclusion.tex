@@ -39,11 +39,12 @@ On the other hand, the ability to operate and to monitor completion status in re
 The reference-free concatemeric assembler from Chapter~\ref{ch:concatemers} can even work with raw signal from the sequencing device hence open up the possibility to be integrated into the \emph{ReadUntil} pipeline~\cite{LooseMS2016} which had been designed to further reduce the turn-around time of the nanopore data analyses.
 \section{Future directions}
 \paragraph{Improve software performances}
-The project witnesses attempts to develop a hybrid assembler from the original \npscarf{} to a version with assembly graph included and ultimately an exhaustive graph-traversing algorithm \npgraph{}. 
-The efforts indeed leveled up the accuracy of the assembly output to a new level.
+%The project witnesses
+Throughout the thesis project, there witnesses an attempt to develop a real-time hybrid assembler from the original \npscarf{} to a version with assembly graph included and ultimately an exhaustive graph-traversing algorithm \npgraph{}. 
+The efforts indeed leveled up the accuracy of the assembly output considerably.
 Even though, there are still rooms to enhance the performance of the software given the inputs kept intact.
 Specifically, there is a need for more robust voting system and/or a decision making mechanism to be able to determine bridges with higher confidence during the real-time process.  
-Other than that, a revertible bridge construction on the graph is also considered for a self-rectifying assembly algorithm for \npgraph{}. 
+Other than that, a revertible bridge construction on the graph is also considered for a self-rectifying assembly mechanism of \npgraph{}. 
 
 \npscarf{}, on the other hand, performs better with mid- or large-size data sets. However, an optimization is required to optimize the resources required when working with huge and complicated genomes, \EG{} of eukaryotic organisms.
 Besides, \npscarf{} and \npgraph{} are currently working as two separate modules due to different methodology and implementation. For more convenience, they will be integrated in one common interface of a hybrid assembly software supporting different scenarios.

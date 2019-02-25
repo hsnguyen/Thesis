@@ -256,6 +256,7 @@ $H[n]=\frac{\displaystyle 2R[n]}{\displaystyle M[n]}$, $\forall n=1 \ldots (L-1)
 More than that, this function is determined by $f(n)$ and $g(n)$ which can be both measured rapidly by using FFT (using $\mathtt{JTransform}$~\cite{Eichelberger2002jtransform}, a Java library for DSP) and incremental calculation as shown in Algorithm~\ref{algo:nsdf}.
 
 \paragraph{LPF with Blackman windowing function.}
+%http://www.labbookpages.co.uk/audio/firWindowing.html#windows
 The plain moving average method is helpful to show the trend of the overall signal but not sensitive enough to completely remove the noises encountered.
 Figure~\ref{supp_fig:concat_acf_raw} in the Appendix plots the NSDF of the 7-concatemer read with large smooth window sizes of $10,000$ and $20,000$. 
 As a peak scanning method is sensitive to abundant of local optima, a `smoother' transition is expected via a signal filtering step. 

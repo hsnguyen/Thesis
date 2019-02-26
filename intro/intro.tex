@@ -3,12 +3,7 @@
 \vspace*{\fill}
 \epigraph{\emph{Genes are like the story, and DNA is the language that the story is written in}}
 {--Sam Kean}
-% This chapter will provide background and comparison between sequencing technologies, from SGS (Illumina as example) to PacBio SMRT and Oxford Nanopore Technology sequencing methodology. The focus on ONT nanopore sequencing will be described later via its pros and cons. I will review its forte by key features such as portability and real-time in general through several representative achievements to date. After that I will depict some of the challenges in the field of bioinformatics on using nanopore data for analysis.
 
-% Next, I will review the works related to my thesis by showing how long reads has been used to complete the fragmented genomes and the meaning of doing so in real-time. 
-% At first, the history of genome assembly will be briefly described, concentrating on different approaches in methodology. Secondly, I will summarize the current tools used for genome assembly that utilize nanopore long reads.  For the next part, it will come across streaming algorithms for general applications and for nanopore data analysis in particular. Finally, the chapter will be finished by the motivation of using such data to finish genomes in real-time. 
-
-% This chapter will end outlining the rest of the thesis content.
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,12 +15,13 @@
 % Like one of the greatest breakthrough in life science in 20th century is the ...
 % history of genetic & central dogma?
 The mission of decoding the genetic information of all organisms has been attracting great attention and effort from the research community over the past three decades. 
-Although genomes are thought to contain nearly all the information necessary to create an organism, sequencing a genome is only the very first step towards understanding the development of an organism. Subsequent to genome sequencing and annotation there remains a huge amount of additional work to interpret the genome and understand how genes interact in pathways in a variety of contexts to sustain life. 
-%Although it does not directly mean ``decoding life" since there would be a huge amount of additional works to interpret the output data and unravel biological %pathways, this task sets the very first background to establish such knowledge.
-% * <hoangnguyen177@gmail.com> 2018-12-03T02:00:37.908Z:
-%
-% ^.
-All genetic material of an organism is embraced in the term \emph{genome}. Basically, the genome includes deoxyribonucleic acid (DNA) molecules -- the double helix polymers \cite{Watson1953} that virtually define a whole individual life form (except some viruses made by ribonucleic acid or RNA). 
+Although genomes are thought to contain nearly all the information necessary to create an organism, sequencing a genome is only the very first step towards understanding the development of an organism. 
+Subsequent to genome sequencing and annotation there remains a huge amount of additional work to interpret the genome and understand how genes interact in pathways in a variety of contexts to sustain life. 
+Nevertheless, the importance of the initial reading is indisputable as it would shape the details and output of any further analysis.
+In fact, the competition of modern sequencing technologies have never been on hiatus, resulting in remarkably achievements in terms of both quality and quantity. 
+However, unfortunately, we are still far away from having a flawless sequencer to date.
+
+All genetic material of an organism is embraced in the term \emph{genome} mentioned earlier. Basically, the genome includes deoxyribonucleic acid (DNA) molecules -- the double helix polymers \cite{Watson1953} that virtually define a whole individual life form (except some viruses made by ribonucleic acid or RNA). 
 A DNA molecule is a sequence of nucleotides, which is represented by 4 bases: adenine (A), cytosine (C), guanine (G), or thymine (T). The process of calling each and every single base of this sequence is known as \emph{DNA sequencing}. Sequencing an entire organism's genome is termed Whole Genome Sequencing (WGS). 
 Innovation in sequencing technology has enabled WGS for a large variety of species with increasing genome sizes and complexity  over time, such as \emph{Haemophilus influenzae} bacterium \cite{Fleischmann1995}, \emph{Saccharomyces cerevisiae} \cite{Goffeau1996}, \emph{Caenorhabditis elegans} \cite{Sequencing1998} and \emph{Mus musculus} (mouse) \cite{Chinwalla2002}. Ultimately, the completion of the Human Genome Project \cite*{International2004} marked the beginning of the genomics era in which rapidly developing technology would make WGS much more efficient and affordable.
 The cost of sequencing has been dropped drastically over time to the point that scientists are now planning for the Earth BioGenome Project, which plans to sequence 1.5 million different species across multiple continents\cite{Lewin2018earth}.
@@ -416,16 +412,16 @@ All of these individual add-on modules were wrapped in a bigger framework that w
 The source code of the whole project is made available and applied in numerous use cases internally as well as from community. 
 
 \paragraph{Restrictions}
-The thesis mostly focuses on applications in microbial genomics as this is a clear use case for the applicability of real-time analysis particularly in diagnosis and identification of antibiotic resistance strains.  However, the methodologies developed in this thesis can be applied more broadly, and have been demonstrated on yeast genomes.   Applications to metagenomics and eukaryotic genomes were attempted but not thoroughly studied and thus not described in details in this thesis.
+The thesis mostly focuses on applications in microbial genomics as this is a clear use case for the applicability of real-time analysis particularly in diagnosis and identification of antibiotic resistance strains.  However, the methodologies developed in this thesis can be applied more broadly, and have been demonstrated on yeast genomes. Applications to metagenomics and eukaryotic genomes were attempted but not thoroughly studied thus not included in the scope of in this thesis.
 
 Another limitation is that the developed assemblers are hybrid approaches, meaning an additional SGS run is required before using the tools. An exclusive long-read assembler is difficult to adapt to a real-time pipeline due to its intensive computation for the error-correction stage which usually requires bulk of data and heavy resources consumption.
 \section{Thesis outline}
 The main research chapters of this thesis are organized as follows.
 \paragraph{Chapter 2}: 
-This chapter describes finishing microbial genomes with \npscarf{} in real-time and related works.
+This chapter presents the implementation of the very first pipeline for finishing genomes in real-time using MinION long reads and side applications through \npscarf{}.
 \paragraph{Chapter 3}:
 This chapter describes demultiplexing barcoded nanopore sequencing data with \npbarcode{} in real-time and its application. In addition, there is another use case of using different assembly strategies to finish four XDR \kp{} strains.
 \paragraph{Chapter 4}: 
 This chapter shows how to integrate assembly graph into the available pipeline from \npscarf{} to improve the assembly quality. This work results in \npgraph{} and relate applications.
 \paragraph{Chapter 5}: 
-This chapter proposes another application of MinION sequencing on small  circular genome assembly. Data for two \emph{Caulimovirids} samples are shown to demonstrate the computational analysis.
+This chapter depicts another application of MinION sequencing on small circular genome assembly (such as virus, bacteria plasmids). Data for two \emph{Caulimovirids} samples are shown to demonstrate the performance of proposed computational techniques.

@@ -8,13 +8,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Thesis summary}
-The advent of Third-generation sequencing methods, particularly ONT platforms, have brought novel opportunities together with challenges to the field of bioinformatics similar to those arisen from the SGS data before~\cite{SchadtTK2010,ThkurRB2012}.
-Chapter~\ref{ch:intro} had provided a brief review as well as comparison between these two generations' data, aiming at their applications in genome assembly.
-Specifically, the long spanning reads generated in real-time from ONT MinION device had been proved to be useful in generating more complete assemblies despite of their error profiles~\cite{GoodwinGE2015,MadouiEC2015,Karlsson2015}. 
+The advent of Third-generation sequencing methods, particularly ONT platforms, have brought novel opportunities together with challenges to the field of bioinformatics similar to those arisen from the arrival of Second-generation sequencing methods before ~\cite{SchadtTK2010,ThkurRB2012}.
+Chapter~\ref{ch:intro} has provided a brief review as well as comparison between these two generations of sequencing methods, aiming at their applications in genome assembly.
+Specifically, the long spanning reads generated in real-time from ONT MinION device had been found to be useful in generating more complete assemblies despite of their error profiles~\cite{GoodwinGE2015,MadouiEC2015,Karlsson2015}. 
 
-Throughout the thesis content, computational methods were designed and applied for the purpose of completing genomes as fast as possible.   
-For that purpose, Chapter~\ref{ch:npscarf} described \npscarf{}, a streaming hybrid assembler that can finish the fragmented short-read assemblies using the consecutive Nanopore reads. In addition, we showed that the pipeline can be used to determine the locations of highlighted genes of interests on the whole genome during its construction in real-time.
-To adapt the parallel mechanism of MinION using barcode sequencing in our streaming pipelines, \npbarcode{} had been developed and its applications were mentioned in Chapter~\ref{ch:npbarcode}. The scalability of \npscarf{}, as well as of other streaming analyses, to multiple samples were verified through this chapter.
+Throughout this thesis, computational methods have been designed and applied to complete genomes as fast as possible.   
+For that purpose, Chapter~\ref{ch:npscarf} described \npscarf{}, a streaming hybrid assembler that could finish the fragmented short-read assemblies using the consecutive nanopore reads. In addition, we showed that the pipeline could be used to determine the locations of highlighted genes of interests on the whole genome during its construction in real-time.
+To adapt the parallel mechanism of MinION using barcode sequencing in our streaming pipelines, \npbarcode{} has been developed and its applications were mentioned in Chapter~\ref{ch:npbarcode}. The scalability of \npscarf{}, as well as of other streaming analyses, to multiple samples were verified through this chapter.
 Chapter~\ref{ch:npgraph}, on the other hand, focused on designs to help improve the accuracy of the assembly output. This resulted in \npscarf{}\_wg and especially \npgraph{} which employed the assembly graph for better fidelity.
 Lastly, Chapter~\ref{ch:concatemers} conducted computational analysis on the MinION data of concatemeric long reads in an attempt to produce viral genome assembly in an efficient way.
 
@@ -40,7 +40,7 @@ The reference-free concatemeric assembler from Chapter~\ref{ch:concatemers} can 
 \section{Future directions}
 \paragraph{Improve software performances}
 %The project witnesses
-Throughout the thesis project, there witnesses an attempt to develop a real-time hybrid assembler from the original \npscarf{} to a version with assembly graph included and ultimately an exhaustive graph-traversing algorithm \npgraph{}. 
+Throughout the thesis, there is a continuous attempt to develop a real-time hybrid assembler from the original \npscarf{} to a version with assembly graph included and ultimately an exhaustive graph-traversing algorithm \npgraph{}. 
 The efforts indeed leveled up the accuracy of the assembly output considerably.
 Even though, there are still rooms to enhance the performance of the software given the inputs kept intact.
 Specifically, there is a need for more robust voting system and/or a decision making mechanism to be able to determine bridges with higher confidence during the real-time process.  

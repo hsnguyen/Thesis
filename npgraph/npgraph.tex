@@ -6,14 +6,14 @@
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In fact, the idea of using assembly graph for scaffolding in \npscarf{} has been considered from the very beginning of the software design. However, the computational challenges hinder its real-time process ability thus neglected from the first versions of \npscarf{}. In the first section of this chapter, I will introduce the concept and model of the (SPAdes) assembly graph  which would be used as the input. The next section will describe the first attempt to apply this information into \npscarf{} for a better gap-filling. Finally, a real-time assembly graph bridging algorithm will be shown in a new tool, namely \npgraph{} together with its perfomances and properties in numerous use cases.
+Actually the idea of using assembly graph for scaffolding in \npscarf{} has been considered from the very beginning of the software design. However, the computational challenges hinder its real-time process ability thus being neglected from the first versions of \npscarf{}. In the first section of this chapter, I will introduce the concept and model of the (SPAdes) assembly graph  which would be used as the input. The next section will describe the first attempt to apply this information into \npscarf{} for a better gap-filling. Finally, a real-time assembly graph bridging algorithm will be shown in a new tool, namely \npgraph{} together with its perfomances and properties in numerous use cases.
 
 \section{Assembly graph}
 %assembly graph
 \npscarf{} is a hybrid assembler that essentially conducts scaffolding on the SGS contigs and then filling the gaps, without using information from the short-read assembly process about the formation of the contigs themselves. This is illustrated in Figure \ref{Fig:assembly} where the algorithm enhances step 2 and 3 by using nanopore long reads in an attempt to give more complete genome assemblies. 
 However, SGS assemblers usually provide a richer source of information than just the contig sequences themselves, namely \emph{assembly graph}. 
 For the graph-based approaches, either OLC or DBG, assembly graph stores the ultimate string content of DNA sequences and their links in its components: edges and vertices. 
-This is usually resulted from running a simplification algorithm on the original graph built from input data, \EG{} tips clipping, bubble removing, error removal, and/or scaffolding using paired-end or mate-pair links \cite{Zerbino2008,BankevichNA2012}.
+This is usually resulting from running a simplification algorithm on the original graph built from input data, \EG{} tips clipping, bubble removing, error removal, and/or scaffolding using paired-end or mate-pair links~\cite{Zerbino2008,BankevichNA2012} (Section~\ref{sec:gass}).
 
 \begin{figure}[ht!]
 \centering
@@ -24,20 +24,22 @@ This is usually resulted from running a simplification algorithm on the original
 \end{figure}
 
 %bidirected graph
-Assembly graph is normally implemented by a directed graph data structure. 
+Assembly graph is normally implemented by using a directed graph data structure. 
 In which, each component (vertex or edge, depends on particular implementation) storing a string has a corresponding counterpart for that string in reversed complement order \cite{Zerbino2008}.
 To have a more compact representation of the graph, we employ the bidirected graph data structure instead.
 
 %Formal definition of bidirected graph (convention on the GUI)
 For a bidirected graph $G=\{V,E\}$, each edge has two directions associated with two nodes forming it. The direction here refers to a boolean value that represent either incoming or outgoing state.
-Unlike an edge in a directed graph, a bidirected edge can be traversed in both ways, similar to the property of an undirected edge except the content of each traversed vertex is not unique, but direction-wised. This means that if there is a path from node A to B, or B is reachable from A, then the existence of the reversed path holds true, which means A is reachable from B as well. Thus another translation for the bidirected graph is an undirected graph of the directed vertices, which can be related directly the purpose of modeling connections of DNA sequences as nodes in a graph structure, regarding they are double-stranded (sense and antisense). The edge-based modeling, on the other hand, is more intuitive to work with; however in term of comprehensive understandings and implementations, the directed-node ideology is additionally helpful also.
+Unlike an edge in a directed graph, a bidirected edge can be traversed in both ways, similar to the property of an undirected edge except the content of each traversed vertex is not unique, but direction-wised. This means that if there exist a path from node A to B (or B is reachable from A) then the reversed path is legal as well (A is reachable from B), with a reverse-complemented spelling manner. 
+Thus another equivalent interpretation for bidirected graph is an undirected graph of \emph{directed vertices}, which can be related directly to the purpose of modeling connections of DNA sequences as nodes in a graph structure, regarding they are double-stranded (sense and anti-sense). 
+The edge-based modeling, in short, is more intuitive to work with; however in terms of comprehensive understandings and implementations, the directed-node ideology is additionally helpful.
 
 \paragraph{Edge-based modeling} From this point of view, any edge $e \in E$ connecting an ordered pair of node $(u,v) \in V^2$ would fall into one out of four categories: $\blacktriangleright\blacktriangleright$, $\blacktriangleright\blacktriangleleft$, $\blacktriangleleft\blacktriangleright$ or $\blacktriangleleft\blacktriangleleft$. By modeling edge directions as such, the graph traversal is able to cover the double-stranded property of the DNA sequences (template/reverse complement) in vertices through edge-walkings. 
 The rule is that if we follow the arrow, its associated vertex is spelled as it is (+) and if we traverse against the arrow direction, the corresponding vertex is spelled as reverse complement sequence (-). As mentioned before, there are 2 ways of traversing through an edge, \EG from u to v and from v to u, as illustrated in Figure~\ref{f:bgraph}.
 \paragraph{Vertex-based modeling} From this angle, it is convenient to firstly introduce the definition of directed node,  $\overrightarrow{v}=(v,d_v) \in \overrightarrow{V}$, as a tuple of vertex $v$ and its associated direction $d_v \in D=\{in,out\}$.
 In this case, a bidirected edge is almost similar to an undirected edge connecting two (directed) vertices, \EG an unique edge that connect $\overrightarrow{u}$ and $\overrightarrow{v}$ can be equally written as $(\overrightarrow{u}, \overrightarrow{v})$ or $(\overrightarrow{v}, \overrightarrow{u})$. These two forward and reverse edges would refers to the same bidirected edge, except the content will be different depending on the order of spelled directed nodes.
 
-The two definitions are equivalent and their applications are interchangeable and combinative in our implementation. In summary, the meaning and spelling for a bidirected graph components is as follow:
+The two definitions are equivalent and their applications are interchangeable and cohesive in our implementation. In summary, the meaning and spelling for a bidirected graph components is as follow:
 \begin{itemize}
 \item $u\blacktriangleright\blacktriangleright v$ equivalent to $(u-out, v-in)$: spelling $u+v+$ or $v-u-$
 \item $u\blacktriangleright\blacktriangleleft v$ equivalent to $(u-out, v-out)$: spelling $u+v+$ or $v-u-$
@@ -45,27 +47,27 @@ The two definitions are equivalent and their applications are interchangeable an
 \item $u\blacktriangleleft\blacktriangleleft v$ equivalent to $(u-in, v-out)$: spelling $u-v-$ or $v+u+$
 \end{itemize}
 
-To create a valid path when traversing, two adjacent edges must obey the direction rule that similar to that of directed graph, that is a path which has an edge entering an intermediate node (not 2 ending nodes) must leaving that node on the next edge and vice versa, due to the allowance of traversing against the arrows in bidirected graph. More details will be discussed in the next section.
+To create a valid path when traversing a bidirected graph, two adjacent edges must obey the direction rule similar to a conventional directed graph, that is a path which has an edge entering an intermediate node (not 2 ending nodes) must leave that node on the next edge. In addition, due to the allowance of traversing against the arrows in bidirected graph, it is possible to follow edges against their direction but the spelling will be reverse-complemented.
 
-\section{Application of the assembly graph in \npscarf{}}
-The first attempt of utilizing assembly graph is to integrating the information to the scaffolding algorithm for the gap-filling step thus increase the accuracy of the final assembly. This is due to the fact that the edges from assembly graph come from Illumina data with much higher accuracy (99.9\%) compared to nanopore data ($\approx$90\%), which usually require high abundance to generate a consensus read with comparative quality. 
+\section{Application of the assembly graph in \npscarfg{}}
+The first attempt of utilizing assembly graph is to integrate this pieces of information into the scaffolding algorithm for the gap-filling step thus increasing the accuracy of the final assembly. This is due to the fact that the edges from assembly graph come from Illumina data with much higher accuracy (99.9\%) compared to nanopore data ($\approx$90\%), which usually require high abundance to generate a consensus read with comparative quality. 
 
 As shown in Figure~\ref{f:gapfilling}, for the first approach of gap filling, which is implemented in the very first version of \npscarf{}, segments from nanopore reads corresponding to a gap are first extracted based on the alignments to the flanking regions. A set of these pileup segments are then undergone a consensus calling step by multiple sequence aligner \EG{} \emph{kalign} \cite{LassmannFS2009} or \emph{poaV2} \cite{Lee2002multiple,Lee2003generating,Grasso2004combining}, and the result sequence can later be used to fill in the gap. 
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.7\linewidth]{images/gapfilling.jpg}
-\caption[Two approached for gap filling in \npscarf{}]
-{Two approached for gap filling in \npscarf{} : 1. using consensus sequences from long reads and 2. using corresponding path in the assembly graph.}
+\caption[Two approaches for gap filling in our methods.]
+{Two approaches for gap filling: 1. using consensus sequences from long reads in \npscarf{}  and 2. using corresponding path in the assembly graph in \npscarfg{} .}
 \label{f:gapfilling}
 \end{figure}
 
-\npscarf{} later versions utilize assembly graph information for the gap filling step. In which, assembly graph from SPAdes is also learned together with contigs used as pre-assemblies in the workflow shown in Figure~\ref{f:workflow}. It is worth mentioning that each of these contigs is made of a path by traversing the assembly graph and normally short-read assemblers allow backtracking this piece of information, \EG{} via "\emph{contigs.paths}" file output from \spades{}. 
+Another \npscarf{} version, namely \npscarfg{}, utilizes assembly graph information for the gap filling step. In which, assembly graph from SPAdes is also learned together with contigs used as pre-assemblies in the workflow shown in Figure~\ref{f:workflow}. It is worth mentioning that each of these contigs is made of a path by traversing the assembly graph and normally short-read assemblers allow backtracking this piece of information, \EG{} via "\emph{contigs.paths}" file output from \spades{}. 
 
-Mathematically, of this thesis' scope, a (bidirected) path $p\in P$ in (bidirected) graph $G\{V,E\}$ is defined as a walk through a series of alternative vertices and edges that are connected together, given that the bidirected transition rule is hold true for every intermediate vertices. For example, from the edge-based modelling point of view, a path $p$ of size $k$ can be written as $p=\{v_0,e_1,v_1,e_2,v_2,\dots,v_{k-1},e_{k},v_k\}$ where $e_i$ is the bidirected edge connects $v_{i-1}$ and $v_{i+1}$ with every $1 \leq i < k$ and will determine the their directions in the walk. A path of size 0 contains only one vertex and no edge.
+Mathematically, of this thesis' scope, a (bidirected) path $p\in P$ in (bidirected) graph $G\{V,E\}$ is defined as a walk through a series of alternative vertices and edges that are connected together, given that the bidirected transition rule holds true for every intermediate vertices. For example, from the edge-based modelling point of view, a path $p$ of size $k$ can be written as $p=\{v_0,e_1,v_1,e_2,v_2,\dots,v_{k-1},e_{k},v_k\}$ where $e_i$ is the bidirected edge connects $v_{i-1}$ and $v_{i+1}$ with every $1 \leq i < k$ and will determine the their directions in the walk. A path of size 0 contains only one vertex and no edge.
 Importantly, the transition rule requires $dir(e_{i}, v_{i}) \neq dir(e_{i+1}, v_{i})$, $\forall 1 \leq i < k$ where $dir:(E,V)\rightarrow D$ is the function that returns direction (from vertex-based modelling) of a vertex on a given edge.
 
-Using this decomposition, the corresponding components of the assembly graph (consecutive nodes) that make up the corresponding flanking tips of the gap are identified. Then by applying a searching algorithm, \EG{} Depth-First Search (DFS), on the graph, a set of candidate paths connecting two tipping nodes are determined. By selecting the path that maximize the likelihood given the long reads, the gap can be filled up by the sequence spelled out from it as shown in Algorithm \ref{algo:fillgap}. 
+Using this decomposition, the corresponding components of the assembly graph (consecutive nodes) that make up the corresponding flanking tips of the gap are identified. Then by applying a searching algorithm, \EG{} Depth-First Search (DFS), on the graph, a set of candidate paths connecting two tipping nodes are determined. By selecting the path that maximize the likelihood of the long reads, the gap can be filled up by the sequence spelled out from it as shown in Algorithm \ref{algo:fillgap}. 
 
 \begin{algorithm}[H]
 \DontPrintSemicolon
@@ -80,21 +82,21 @@ $\overrightarrow{v_2}:=p_2$.getRoot() \tcp*{get the first directed vertex of $p_
 $p:=DFS(G,\overrightarrow{v_1},\overrightarrow{v_2})$ \tcp*{find a path connect these 2 tips}
 \Return{$p$.spell()}
 }
-\caption{Pseudo-code for filling gap with assembly graph in \npscarf{}.}
+\caption{Pseudo-code for filling gap with assembly graph in \npscarf2{}.}
 \label{algo:fillgap}
 \end{algorithm}
 
-Theoretically, this approach can increase the accuracy of gap-filling step, however, offers limited capacity in reducing the mis-assemblies. The reason is that the ending components of a contig can be repetitive, make it impossible to confirm a genuine bridge with the existence of a path connect two tips as above. 
-To deal with this issue, the assembly graph should be applied to \npscarf{} by completely using its components as the building blocks for the scaffolding algorithm instead of the original unlinked contigs. This idea lead to the development of \npgraph{} - a graph-based tool that can finish genomes in real-time.
+Theoretically, this approach can increase the accuracy of gap-filling step, however, it offers limited capacity in reducing the mis-assemblies. The reason is that the ending components of a contig can be repetitive, make it impossible to confirm a genuine bridge with the existence of a path connect two tips as above. 
+To deal with this issue, the assembly graph should be applied completely to the scaffolding algorithm by using the graph components as the building blocks, in replacement of the independent contigs as in \npscarf{} and \npscarfg{}. This idea lead to the development of \npgraph{} - a graph-based tool that can finish genomes in real-time.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%% npGraph %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Resolve assembly graph in real-time by long reads with \npgraph{}}
 \subsection{Introduction}
-Streaming assembly methods have been proved to be useful in saving time and resources compared to the traditional batch algorithms with examples included \EG $\mathtt{Faucet}$~\cite{Rozov2017faucet} and \npscarf{}~\cite{Cao2017scaffolding}. The first method allows the assembly graph to be constructed incrementally as long as reads are retrieved and processed. This practice is helpful dealing with huge short-read data set because it can significantly reduce the local storage for the reads, as well as save time for a DBG construction while waiting for the data being retrieved.
+Streaming assembly methods have been proven to be useful in saving time and resources compared to the traditional batch algorithms with examples included \EG $\mathtt{Faucet}$~\cite{Rozov2017faucet} and \npscarf{}~\cite{Cao2017scaffolding}. The first method allows the assembly graph to be constructed incrementally as long as reads are retrieved and processed. This practice is helpful dealing with huge short-read data set because it can significantly reduce the local storage for the reads, as well as save time for a DBG construction while waiting for the data being retrieved.
 
 \npscarf{}, on the other hand, works on the available short-read assembly to scaffold the contigs using nanopore sequencing which is well-known by the real-time property. The completion of genome assembly along with the sequencing run provides explicit benefits in term of resource control and turn-around time for analysis~\cite{Cao2017scaffolding}.  
-However, due to the greedy approach of a streaming algorithm, as well as being an alignment-based-only scaffolding mechanism, running the tool with default settings is suffered from mis-assemblies~\cite{Wick2017unicycler,Giordano2017}. In many case, the gap filling step has to rely on the low quality nanopore reads thus the accuracy of the final assembly is affected as well. 
-To tackle the quality issue while maintaining its streaming execution, an assembly graph processing system is investigated as it would provide additional high-quality source of linking information for the assembly operations. 
+However, due to the greedy approach of a streaming algorithm, as well as being an alignment-based-only scaffolding mechanism, running the tool with default settings suffers from mis-assemblies~\cite{Wick2017unicycler,Giordano2017}. In many case, the gap filling step has to rely on the low quality nanopore reads thus the accuracy of the final assembly is affected as well. 
+To tackle the quality issue while maintaining its streaming execution, an assembly graph processing system is investigated as it would provide an additional high-quality source of linking information for the assembly operations. 
 
 After the construction of an assembly graph, the next step is to traverse the graph, resolve the repeats and identify the longest possible un-branched paths that would represents contigs for the final assembly.
 Hybrid assembler using nanopore data to resolve the graph has been implemented in $\mathtt{hybridSPAdes}$ \cite{AntipovKM2015} or \unicycler{} \cite{Wick2017unicycler}. 
@@ -128,14 +130,14 @@ The purpose of this step is to investigate the sequencing properties of contigs,
 Each contig is represented as a node in the assembly graph and the edge between two nodes indicate their overlap (link) properties.
 This step is to cluster the significant nodes (longer than 10kbp) into different sets, namely significant abundance groups, based on their coverage values. 
 
-DBSCAN clustering algorithm \cite{Ester96adensity-based} is applied for the task.
-The idea is to consider a coverage value of a significant node (which consists of more than 10,000 \emph{k-mers}) to be a sampled mean of a Poisson distribution (of \emph{k-mers} count). 
+DBSCAN clustering algorithm \cite{Ester96adensity-based} is applied for this task.
+The idea is to consider a coverage value of a significant contig (which consists of more than 10,000 \emph{k-mers}) to be a sampled mean of a Poisson distribution (of \emph{k-mers} count). 
 The metric is a distance function based on Kullback-Leibner divergence \cite{Kullback1951information}, or relative entropy, of two Poisson distributions.
 
 Assume there are 2 Poisson distribution $P_1$ and $P_2$ with density functions $$p_1(x,\lambda_1)=\frac{e^{-\lambda_1}\lambda_1^x}{\Gamma(x+1)}$$ and $$p_2(x,\lambda_2)=\frac{e^{-\lambda_2}\lambda_2^x}{\Gamma(x+1)}$$ 
 The Kullback-Leibner divergence from $P_2$ to $P_1$ is defined as:
 $$D_{KL}(P_1||P_2)=\int_{-\infty}^{\infty} p_1(x)\log{\frac{p_1(x)}{p_2(x)}} dx$$
-or in words,  it is the expectation of the logarithmic difference between the probabilities $P_1$ and $P_2$, where the expectation is taken with regard to $P_1$.
+or in other words,  it is the expectation of the logarithmic difference between the probabilities $P_1$ and $P_2$, where the expectation is taken with regard to $P_1$.
 
 The log ratio of the density functions is
 $$\log{\frac{p_1(x)}{p_2(x)}}=x\log{\frac{\lambda_1}{\lambda_2}}+\lambda_2-\lambda_1$$
@@ -365,18 +367,18 @@ Also, since the other comparative tools do not support streaming assembly, there
 \normalsize
 
 Table~\ref{table:npgraph_compare} shows evaluation results for 5 synthetic data sets, the output of the full run can be found in Table~\ref{supp_tab:synthetic_benchmark}.
-In the first column of applied methods, \npscarf{} is the original scaffolder as described in Chapter \ref{ch:npscarf} and the algorithm with assembly graph integrated is named \npscarf{}\_wag.
+In the first column of applied methods, \npscarf{} is the original scaffolder as described in Chapter \ref{ch:npscarf} and the algorithm with assembly graph integrated is named \npscarfg{}.
 On the other hand, \npgraph{} also showed divergences using 2 different aligners, \bwa{} and \minimap{} for its bridging step thus both practices were included for comparison.
 
 In general, the graph integrated version of \npscarf{} improved the assembly results in terms of mis-assemblies and errors reduction while virtually consuming similar resources compared to the original one.
 The only exception where the number of mis-assemblies being increased was the simulation of a random sequence with many repeats. There were 10 more mistakes detected using the later version of \npscarf{}. However, with more comprehensive investigations, we found that the number of mis-assemblies on the true positive circular sequences (3 from the reference) has significant reduced by applying assembly graph for \npscarf{}. The errors mostly came from redundant sequences output from the software due to the failure in contigs' multiplicity estimation.
-Even though using assembly graph for gap fillings, there were no changes in the way to determine if a contig is unique or not from \npscarf{}\_wag. 
+Even though using assembly graph for gap fillings, there were no changes in the way to determine if a contig is unique or not from \npscarfg{}. 
 It still relied on the length and coverage statistics, \IE{} \emph{Astats}~\cite{MyersSD2000} to find anchors that were critical for the backbone construction of the assembly.
 Redundant path findings for false positive replicons, as the results, returned additional wrong translocations in the final contigs which were reported by QUAST. 
 Other than that, the method had successfully produced better assemblies than the original. Regarding \emph{Mycobacterium tuberculosis} H37Rv, the number of mis-assembled breakpoints had been trimmed down from 12 to 2, while the number of final contigs had reduced from 4 to only one as in the reference. Results in cases of \ec{} O25b H4ST131 and \emph{Streptococcus suis} BM407 also showed enhancements in terms of those categories as well as N50 statistics. 
 There was improvements considering the nucleotide errors (mismatches and indels) as well from aforementioned data sets, except for the \ec{} when slightly more mismatches had been detected. However, these errors can be corrected by running polishing tools with the raw Illumina data afterward. 
 
-For \emph{Acinetobacter} AB30 synthetic data, it was an deficiency for \npscarf{}\_wag in traversing the graph to find candidate paths for a bridge of long distance due to particular large search space.
+For \emph{Acinetobacter} AB30 synthetic data, it was an deficiency for \npscarfg{} in traversing the graph to find candidate paths for a bridge of long distance due to particular large search space.
 The exhaustive, naive DFS implementation for this version of \npscarf{} required a lot of memory to traverse a complex assembly graph that usually exceed a normal desktop's capacity.
 This issue has been fixed in \npgraph{} when Algorithm~\ref{algo:findpath} was used on the definitive graph. This resulted in completed runs of the assembly process for all data sets with the similar number of mis-assemblies compared to the best figures in this category.
 As shown in Table~\ref{table:npgraph_compare} and \ref{supp_tab:synthetic_benchmark}, the assembly graph based methods offered significant improvements when compared to \npscarf{}. Not only because of the clear drops with respect to mis-assemblies and errors, but it was also reflected by the number of final contigs and their N50 as well.
@@ -450,7 +452,7 @@ In which, the only divergence lied on the biggest sequence ($\simeq 5.029$Mbp) w
 Five out of six identical replicons were confirmed as plasmids based on the occurences of appropriate Origin of replication sequences (PlasmidFinder database).
 In detail, two megaplasmids (longer than $100$Kpb) were classified as IncFIB while the other two mid-size replicons, $85.6$Kbp and $43.6$Kpb, were incL and repA respectively, leaving the shortest one with $2Kbp$ of length as ColRNAI plasmid.
 The remaining circular sequence without any hits to the database was $3.2$Kbp long suggesting that it could be phage or newly replicon's DNA.
-Lastly, there were still $14.5$Kbp unfinished sequences, being fragmented as 3 contigs in \unicycler{} and 2 for \npscarf{}.
+Lastly, there were still $14.5$Kbp unfinished sequences, being fragmented as 3 contigs in \unicycler{} and 2 for \npgraph{}.
 
 The assembly task for \emph{Enterobacter~cloacae} was more challenging as the chromosomal DNA sequence had not been fully resolved using both methods. 
 The chromosome size was estimated to be approximately $4.8$Mbp but had been broken into two smaller pieces. 
@@ -526,7 +528,7 @@ Smaller fragments, even unfinished but with high remaining coverage, are also pr
 Further annotation utility can be implemented in the future better monitoring the features of interests as in \npscarf{}.
 \subsection{Conclusions}
 Assembly graph is the data structure describing the assembly process at a lower level of more details.
-The current chapter brings this informative knowledge to the original \npscarf{}'s mechanism in two ways, either partly for the gap-filling module only (\npscarf{}\_wg) or completely as the building block of the assembly construction method (\npgraph{}).
+The current chapter brings this informative knowledge to the original \npscarf{}'s mechanism in two ways, either partly for the gap-filling module only (\npscarfg{}) or completely as the building block of the assembly construction method (\npgraph{}).
 
 While the first approach showed improvements in terms of base's accuracy for the final results, it had limited ability in rectifying the mis-assemblies from the original version due to false positive alignments at contig level.
 The issue can be tackled by applying the assembly graph completely as in \npgraph{}.

@@ -1,4 +1,4 @@
-\chapter{MinION assembly method for viral genomes}\label{ch:concatemers}
+\chapter{MinION sequencing analysis for viral genomes}\label{ch:concatemers}
 \thispagestyle{empty}
 \vspace*{\fill}
 \epigraph{\emph{A virus can change the fate of the world; power has nothing to do with being tiny or giant!}}
@@ -7,15 +7,15 @@
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter describes another application of MinION sequencing, focusing on the relevant computational methods, to sequence short circular genomes, \EG{} bacterial plasmids or viruses, in a productive manner.
-The study will exploit the excessive length of nanopore reads to harbor multiple copies of small-sized viral DNA sequences. These genomes, given sufficient coverage depth, can be reconstructed by a high-resolution consensus calling. 
-Even though this study do not present results from a real-time run of the device, it is straight-forward to adapt such pipeline using the developed modules since they operate rapidly in a read-by-read manner.
+This chapter describes another MinION sequencing application, that sequences short circular genomes, \EG{} bacterial plasmids or viruses, in a productive manner. The text emphasizes on relevant computational methods of the application. 
+This study exploits the excessive length of nanopore reads to harbor multiple copies of small-sized viral DNA sequences. These genomes, given sufficient coverage depth, can be reconstructed by a high-resolution consensus calling. 
+Even though this study does not present real-time results from the device, it is straight-forward to adapt such pipeline using the developed modules since they operate rapidly in a read-by-read manner.
 
 The analyses reported in this chapter are solely of my contribution from a joined project studying plant viral genomics. The data has not yet been published but permission to document part of the preliminary research findings for this thesis has been granted by all collaborators.
 \section{Introduction}
-Attempts to sequence bacterial plasmids using MinION device have been established as part of a whole genome assembly~\cite{Lemon2017M15,Wick2017M12} or in exclusively studies~\cite{Li2018M13,Lu2018plamids}. As mentioned earlier, studying the whole structure of \emph{replicons} is important as they are responsible for the horizontal gene transfer between strains, \EG{} the dissemination of AMR factors in \emph{superbugs}.
+There have been attempts to sequence bacterial plasmids using MinION device as part of a whole genome assembly~\cite{Lemon2017M15,Wick2017M12} or in exclusively studies~\cite{Li2018M13,Lu2018plamids}. As mentioned earlier, studying the whole structure of \emph{replicons} is important as they are responsible for the horizontal gene transfer between strains, \EG{} the dissemination of AMR factors in \emph{superbugs}.
 At the same time, it is critical to understand the mechanism of viruses' transmitting and evolving in real-time to control the epidemics~\cite{GardyLR2015,AndersenSM2015,HolmesDR2016,DudasCB2017}.
-As the consequence, nanopore sequencing for viral samples had already been employed in clinics or even in the field during outbreaks, \EG{} influenza~\cite{Wang2015minion}, Ebola~\cite{QuickLD2016} or Zika~\cite{Quick2017GP} viruses.
+As a result, nanopore sequencing for viral samples have already been employed in clinics or even in the field during outbreaks, \EG{} influenza~\cite{Wang2015minion}, Ebola~\cite{QuickLD2016} or Zika~\cite{Quick2017GP} viruses.
 
 The ONT MinION benefits sequencing short genomes in many ways, especially in term of genome assembly. 
 In fact, we regularly obtained nanopore reads that cover the whole length of the circular IncP-$\alpha$ plasmid RP4 (around $60$kpb long) genomes~\cite{Lu2018plamids}, which significantly assist the assembly phase.   
@@ -190,8 +190,8 @@ Figure~\ref{supp_fig:concat_acf_dna} from the Appendix gives more examples of AC
 
 In general, via above experiment, the DSP approach utilizing ACF-based estimation has been proved to be feasible to detect the concatemeric pattern of nanopore RCA reads.
 However, there are several points needed to be further developed and improved from this protocol to be able to work in an applicable pipeline.
-The most important task is to optimize the algorithm to reduce the running time. The current sliding method is $\mathcal{O}(L^2)$ complex for a read of length $L$.
-Even though it is relatively reasonable for viral concatemers of medium length ($\simeq 50 Kbp$), it would become time-consuming to process reads with high copy numbers which are favoured and aimed for in this study.
+The most important task is to optimize the algorithm to reduce the running time. The current sliding method takes $\mathcal{O}(L^2)$ time for a read of length $L$.
+Even though it is relatively reasonable for viral concatemers of medium length ($\simeq 50$Kbp), it would become time-consuming to process reads with high copy numbers which are favoured and aimed for in this study.
 Furthermore, the turn-around speed per read is critical in real-time analysis, not to mention the desired application at the level of sequencing raw signal from the very pre-basecalling stage.
 Another essential operation is a robust LPF system when the simple moving average method is unable to completely eliminate the unstable pattern from the target signal. Lastly, a peak picking algorithm is needed to spot the periodical maxima and chop the repeat sequence at those points into monomers of interest.
 All of those steps will be addressed in the following section.
@@ -341,25 +341,27 @@ The correct first peak at $n_1$ must satisfy criteria as below:
 The algorithm will stop at the very first coordinate that meets above 2 conditions and return the list of periodic peaks which can be used to break the concatemer into monomers. 
 
 Figure~\ref{fig:mpm100} also reflects the peak-picking results applied for the longest concatemeric read. 
-In both signal level, we detect exactly 7 peaks (highlighted in red dots) corresponding to the breakpoints for the $7$-concatemer chopping.
+In both signal level, we detect exactly 7 peaks (highlighted in red dots) corresponding to the breakpoints that can be used for a $7$-concatemer chopping process.
 Interestingly, when the peaks from DNA signal shows very stable repeat pattern, there is a slight variance from raw signal toward the far end. 
 This phenomenon is shown clearer in Appendix Figure~\ref{supp_fig:mpm30_raw} when the sixth peak is shifted more to the right, considerably making the sixth monomer longer and the seventh monomer shorter than average.
-We conclude that there should be an unsmooth transition of the molecule through the pore in the sequencing process that cause such reading in the squiggle plot.
-This is normally the reason for the high indel error from nanopore sequencing.
+We argue that there should be an unsmooth transition of the squiggle signal reading from the sequencing process~\cite{Rang2018squiggle}.
+This is due to the nonuniform translocation time of the DNA molecule caused by the motor enzyme at the \emph{homopolymeric} regions~\cite{Manrao2012reading,Cherf2012automated,Sarkozy2017calling} and normally responsible for the high indel error from nanopore sequencing~\cite{Jain2018nanopore3,Stancu2017nanopore5,Ip2015minion}.
 However, the base-calling in this case has successfully manipulated the situation, resulting in more evenly-distributed peaks being detected.
 
-\section{Discussion}
+Overall, via above example, we demonstrated that a 7-concatemer can be detected using the reference-free method based on NSDF signal investigation.
+Similarly, any $k$-concatemer ($k \geq 1$) can be identified by the same manner and its monomers can be extracted by chopping at respective break-points. However, in order to obtain results of high confident, only reads corresponding to $k \geq 2$ should be selected as they would show more than 2 peaks for an affirmative picking task.
+\section{Conclusion}
 This chapter demonstrated a method of using MinION sequencing together with RCA for small-sized circular genomes, in particular two samples from \emph{Caulimovirids}.
 Results from this preliminary finding showed that concatemer molecules generated from RCA can be sequenced directly by the thumbnail sequencer without using restriction enzymes to physically divide them into monomers. 
 
-In fact, this step was virtually accomplished by using computational approaches, with or without the reference sequences.
-In the reference-based method, monomers or monomer break-points for concatemers could be detected straightforward, resulting in abundance of single-copied reads that were subjected to a consensus calling.
-For the \emph{de novo} detection algorithm, only reads consisting of at least two identical copies were identified. For that reason, only data from CaMV sample were applicable when 35 copies were detected. RCA for BSMYV, on the other hand, returned solely monomers which were exclusively detectable from the former approach.
-Further improvement for RCA should be made in order to achieved longer stretches of clones.
+In fact, this step can be accomplished by using computational approaches, given or not a reference sequence.
+In the reference-based method, corresponding monomers' break-points for RCA reads could be detected straightforward, resulting in abundance of single-copied sequences that could be subjected to a consensus calling.
+For the \emph{de novo} detection algorithm, concatemeric reads were more confidently identified if they contains higher number of monomer duplication. For that reason, we can apply the reference-free method on data from CaMV barcoded sample to extract monomers and run the consensus calling with 35-folds coverage. RCA for BSMYV, on the other hand, returned solely monomers which were exclusively detectable given the reference DNA.
+Further improvement from sequencing phase should be made in order to achieve longer stretches of clones so that the pipeline can operate completely without prior knowledge about the target genome.
 
 The implemented module could operate rapidly read-by-read thus it is able to adapt for a streaming pipeline. For instance, a viral or plasmid sequencing would run until sufficient copies of monomers are produced for each sample.
 Furthermore, the whole process can be established at raw signal level, before the base-calling step. 
-For reference-based algorithm, the alignment step can be carried out between sequences of squiggle signal, as in \emph{Read-Until} protocol~\cite{LooseMS2016}.
-In case a reference free algorithm is preferred, an implementation based on NSDF is available for the task determining concatemers.
+For reference-based algorithm, the alignment step can be carried out between sequences of squiggle signal, as described in \emph{Read-Until} protocol~\cite{LooseMS2016}.
+In case a reference is not provided, an DSP implementation based on NSDF is available for the task of determining concatemers.
 
-In summary, this approach provide another promising method to study relative small but highly varied genomes of microorganisms. For instance, the longer concatemeric sequences will offer superior resolution to the nucleotides of individual virus thus enhancing the knowledge about inter- and intra-sample variations of this rapid evolving species.
+In summary, this approach provide another promising method to study relative small but highly varied genomes of microorganisms. For instance, the longer concatemeric sequences will offer superior resolution to the nucleotides of individual virus thus enhancing the knowledge about inter- and intra-sample variations of this rapid evolving species. Continuing efforts are made to improve the monomer copy numbers from RCA reads so that we can utilize the methods in more comprehensive ways for real-life applications.

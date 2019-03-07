@@ -359,14 +359,16 @@ More details about this method will be provided later in Chapter~\ref{ch:npgraph
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Real-time analysis}
 \subsection{Definition}
-In circumstances of this thesis, the adjective ``real-time'' indicates  a high level of responsiveness of an analysis system in updating its status corresponding to inputs fed into the system.
-The time gap from getting new input to the point of status being updated is not necessary to be as close to zero as possible(immediate), but in reality a positive value limited by a reasonable upper-bound (nearly immediate).
+In circumstances of this thesis, the adjective ``real-time'' indicates  a high level of responsiveness of an analysis system in updating its environment status corresponding to inputs fed into the system~\cite{Phillips1966programming}.
+The time gap from getting new input to the point of status being updated, or \emph{deadlines}~\cite{Ben2006principles}, is not necessary to be as close to zero as possible (immediate), but in reality a positive value limited by a reasonable upper-bound (nearly immediate).
 The upper-bound is normally defined based on human temporal sensation \EG{} within minutes.
 
 Briefly, real-time data analysis is the operation applied on the data in a prompt time interval to provide near-instantaneous output.
-In contrast, a data processing system is known to work in ``batch mode'' if it collects all the input data before any any operation is applied. The result obtained from a batch analysis on the bulk of data is final and static, meaning it cannot be updated using another batch of data without rerunning the whole process.
+In contrast, a data processing system is known to work in ``batch mode'' if it collects all the input data before any any operation is applied. 
+The result obtained from a batch analysis on the bulk of data is final and static, meaning it cannot be updated using another batch of data without rerunning the whole process.
 Real-time applications usually involve a specific communications method namely \emph{data stream}. Streaming data is characterized by its continuously migration from a \emph{source} to a \emph{sink}, which are normally the consecutive modules in a real-time pipeline.
-To implement instant response programs is a challenging task but in return, grants certain amount of advantages over traditional batch counterparts. This will be discussed later throughout the content of this thesis.
+To implement instant response programs is a challenging task but in return, grants certain amount of advantages over traditional batch counterparts~\cite{Croushore2011frontiers}. 
+This will be discussed later throughout the content of this thesis.
 \subsection{Real-time analysis for nanopore sequencing}
 One of the novel aspects of ONT's sequencing platforms is that the sequence data of each molecule is written to disk as soon as it is generated (with up to 2000 molecules being sequenced in parallel, each molecule progressing through the pore at 450kbp per second).    This is unlike SGS sequencing-by-synthesis platforms, which sequence billions of short reads in parallel, with each cycle (contributing an extra base) taking several minutes, with the data being provided in batch at the end of a run.
 

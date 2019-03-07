@@ -7,22 +7,22 @@
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter describes another MinION sequencing application, that sequences short circular genomes, \EG{} bacterial plasmids or viruses, in a productive manner. The text emphasizes on relevant computational methods of the application. 
-This study exploits the excessive length of nanopore reads to harbor multiple copies of small-sized viral DNA sequences. These genomes, given sufficient coverage depth, can be reconstructed by a high-resolution consensus calling. 
+This chapter describes another MinION sequencing application for short circular genomes, \EG{} bacterial plasmids or viruses. The text emphasizes the relevant computational methods of the application. 
+This study exploits the excessive length of nanopore reads and their potential to harbor multiple copies of small-sized viral DNA sequences. These genomes, given sufficient coverage depth, can be reconstructed by a high-resolution consensus calling of the single molecule 
 Even though this study does not present real-time results from the device, it is straight-forward to adapt such pipeline using the developed modules since they operate rapidly in a read-by-read manner.
 
-The analyses reported in this chapter are solely of my contribution from a joined project studying plant viral genomics. The data has not yet been published but permission to document part of the preliminary research findings for this thesis has been granted by all collaborators.
+The analyses reported in this chapter come solely from my contribution to a joint project studying plant viral genomics. The data has not yet been published but permission to document part of the preliminary research findings for this thesis has been granted by all collaborators.
 \section{Introduction}
 There have been attempts to sequence bacterial plasmids using MinION device as part of a whole genome assembly~\cite{Lemon2017M15,Wick2017M12} or in exclusively studies~\cite{Li2018M13,Lu2018plamids}. As mentioned earlier, studying the whole structure of \emph{replicons} is important as they are responsible for the horizontal gene transfer between strains, \EG{} the dissemination of AMR factors in \emph{superbugs}.
-At the same time, it is critical to understand the mechanism of viruses' transmitting and evolving in real-time to control the epidemics~\cite{GardyLR2015,AndersenSM2015,HolmesDR2016,DudasCB2017}.
-As a result, nanopore sequencing for viral samples have already been employed in clinics or even in the field during outbreaks, \EG{} influenza~\cite{Wang2015minion}, Ebola~\cite{QuickLD2016} or Zika~\cite{Quick2017GP} viruses.
+At the same time, it is critical to understand the mechanism of virual transmission and evolution in real-time to monitor and control  epidemics~\cite{GardyLR2015,AndersenSM2015,HolmesDR2016,DudasCB2017}.
+As a result, nanopore sequencing for viral samples has already been employed in clinics or even in the field during outbreaks, \EG{} influenza~\cite{Wang2015minion}, Ebola~\cite{QuickLD2016} or Zika~\cite{Quick2017GP} viruses.
 
-The ONT MinION benefits sequencing short genomes in many ways, especially in term of genome assembly. 
-In fact, we regularly obtained nanopore reads that cover the whole length of the circular IncP-$\alpha$ plasmid RP4 (around $60$kpb long) genomes~\cite{Lu2018plamids}, which significantly assist the assembly phase.   
-With or without associated Illumina data, nanopore data can nevertheless generate results with decent quality after consensus calling thanks to sufficient high coverage~\cite{Vaser2017racon}.
+The ONT MinION benefits sequencing short genomes, such as viruses, in many ways especially in terms of genome assembly. 
+In fact, we regularly obtain nanopore reads that cover the whole length of the circular IncP-$\alpha$ plasmid RP4 (around $60$kpb long) genomes~\cite{Lu2018plamids}, which significantly assist in the assembly phase.   
+Even without associated Illumina data, nanopore data can generate results with decent quality after consensus calling thanks to sufficient high coverage~\cite{Vaser2017racon}.
 The multiplexing method is usually applied to reduce the costs and increase the scale of microorganisms study of interests~\cite{Quick2017GP}.
 
-Here another approach is presented for viral sequencing using ONT platform. A special amplification technique is employed to increase the copy numbers of the whole circular DNA molecules before being subjected to the sequencing step by MinION and relevant computational task for assembly afterward.
+Here another approach is presented for viral sequencing using ONT platform. A special amplification technique is employed to increase the copy numbers of the whole circular DNA molecules before being subjected to the sequencing step by MinION and relevant computational task for subsequent assembly.
 
 \paragraph{Rolling-circle DNA amplification}
 PCR is the most widely used amplification method for many organisms in general but for this study, we employed different whole genome amplification technique in order to obtain longest sequences possible for MinION sequencing.
@@ -30,14 +30,14 @@ The cloning method is known as rolling-circle amplification (RCA), a one-step wh
 
 \begin{figure}[!hpt]
 \centerline{\includegraphics[width=0.9\textwidth]{images/rca.png}}
-\caption[Rolling Circle Amplification]{General mechanism of Rolling-Circle Amplification. Figure is adapted from~\cite{Johne2009rca} where primer sequences are highlighted in red, the circular genome subjected for amplification in black and the synthesized clones in blue.}
+\caption[Rolling Circle Amplification]{General mechanism of Rolling-Circle Amplification. Figure is adapted from~\cite{Johne2009rca} (under Elsevier license number 4543471436155). Primer sequences are highlighted in red, the circular genome subjected for amplification is in black and the synthesized clones are in blue.}
 \label{fig:concat_rca}
 \end{figure}
 
 The basic principle for RCA is shown in Figure~\ref{fig:concat_rca}~\cite{Johne2009rca}.
 On top is an example of the process with only one imaginary primer binding to a template circular. The synthesis starts from this point and move across the whole length of the molecule in the complementary direction as being guided by the DNA polymerase  \emph{phi29} of bacteriophage \emph{Baccilus subtilis}.
 Due to this particular enzyme's features, the incorporation can continue passing the binding site whilst the newly synthesized strand being displaced from the track.
-Depend on the size of the template circle, the copying process can go several rounds, resulting in elongated molecules consisting of multiple copies of the original.
+Depending on the size of the template circle, the copying process can go several rounds, resulting in elongated molecules consisting of multiple copies of the original.
 From the diagram in the bottom of Figure~\ref{fig:concat_rca}, multiple random primers are used for the amplification as it should usually be in practice. In this case, the abundance of primers from the reaction mixture can bind to the displaced strand and trigger additional syntheses, creating the branching patterns of the cloning process.
 
 The RCA products are called concatemers as they are long concatemeric molecules consisting of consecutive copies of the target DNA sequence. Normally, restriction enzymes are used to chop them into separated monomers before taking further steps. For our method, concatemers are directly sequenced by MinION and computational methods are used afterward to detect such patterns.
@@ -74,10 +74,10 @@ Raw signal data from MinION were base-called and demultiplexed by \albacore{} ve
 \label{fig:concat_ref_workflow}
 \end{figure}
 
-In more details, the pipeline is implemented by following the following steps: 
+In more details, the pipeline is implemented in following the following steps: 
 \begin{itemize}
-\item[1.] align nanopore reads to the corresponding reference by \minimap{}~\cite{Li2016} version 2.11-r797 and keep only the ones covered $>80\%$ of the target; then induce locations of monomer on each reads based on the alignments.
-\item[2.] for each monomer inferred, scanning for the nearest hit to the tRNA$^{Met}$ 12 nucleotides motif \textbf{TGGTATCAGAGC} of \emph{Caulimovirids}, then chop the read at those loci.
+\item[1.] align nanopore reads to the corresponding reference by \minimap{}~\cite{Li2016} version 2.11-r797 and keep only the ones covering $>80\%$ of the target; then induce locations of monomer on each reads based on the alignments.
+\item[2.] for each monomer inferred, scanning for the nearest hit to the tRNA$^{Met}$ 12 nucleotides motif \textbf{TGGTATCAGAGC} of \emph{Caulimovirids}, then chop the read at those loci. %%COMMENT-LC sould explain why this motif 
 \item[3.] build consensus sequence on those monomers by \racon{}~\cite{Vaser2017racon} version 1.2.1.
 \end{itemize}
 
@@ -192,8 +192,8 @@ In general, via above experiment, the DSP approach utilizing ACF-based estimatio
 However, there are several points needed to be further developed and improved from this protocol to be able to work in an applicable pipeline.
 The most important task is to optimize the algorithm to reduce the running time. The current sliding method takes $\mathcal{O}(L^2)$ time for a read of length $L$.
 Even though it is relatively reasonable for viral concatemers of medium length ($\simeq 50$Kbp), it would become time-consuming to process reads with high copy numbers which are favoured and aimed for in this study.
-Furthermore, the turn-around speed per read is critical in real-time analysis, not to mention the desired application at the level of sequencing raw signal from the very pre-basecalling stage.
-Another essential operation is a robust LPF system when the simple moving average method is unable to completely eliminate the unstable pattern from the target signal. Lastly, a peak picking algorithm is needed to spot the periodical maxima and chop the repeat sequence at those points into monomers of interest.
+Also, the turn-around speed per read is critical in real-time analysis, not to mention the desired application at the level of sequencing raw signal from the very pre-basecalling stage.
+Another essential operation is a robust LPF mechanism since the simple moving average method is unable to comprehensively remove the high-frequency noises from the target signal. Lastly, a peak picking algorithm is needed to spot the periodical maxima and chop the repeat sequence at those breakpoints into monomers of interest.
 All of those steps will be addressed in the following section.
 
 \subsubsection{Rapid method to detect concatemeric signal}

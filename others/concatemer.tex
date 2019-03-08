@@ -11,7 +11,9 @@ This chapter describes another MinION sequencing application for short circular 
 This study exploits the excessive length of nanopore reads and their potential to harbor multiple copies of small-sized viral DNA sequences. These genomes, given sufficient coverage depth, can be reconstructed by a high-resolution consensus calling of the single molecule 
 Even though this study does not present real-time results from the device, it is straight-forward to adapt such pipeline using the developed modules since they operate rapidly in a read-by-read manner.
 
-The analyses reported in this chapter come solely from my contribution to a joint project studying plant viral genomics. The data has not yet been published but permission to document part of the preliminary research findings for this thesis has been granted by all collaborators.
+The analyses reported in this chapter come solely from my contribution to a joint project studying plant viral genomics. 
+The lab works, including but not limited to DNA extraction, amplification as well as library preparation and sequencing steps were established independently thus will not be described in details.
+The data has not yet been published but permission to document part of the preliminary research findings for this thesis has been granted by all collaborators.
 \section{Introduction}
 There have been attempts to sequence bacterial plasmids using MinION device as part of a whole genome assembly~\cite{Lemon2017M15,Wick2017M12} or in exclusively studies~\cite{Li2018M13,Lu2018plamids}. As mentioned earlier, studying the whole structure of \emph{replicons} is important as they are responsible for the horizontal gene transfer between strains, \EG{} the dissemination of AMR factors in \emph{superbugs}.
 At the same time, it is critical to understand the mechanism of virual transmission and evolution in real-time to monitor and control  epidemics~\cite{GardyLR2015,AndersenSM2015,HolmesDR2016,DudasCB2017}.
@@ -77,8 +79,8 @@ Raw signal data from MinION were base-called and demultiplexed by \albacore{} ve
 In more details, the pipeline is implemented in following the following steps: 
 \begin{itemize}
 \item[1.] align nanopore reads to the corresponding reference by \minimap{}~\cite{Li2016} version 2.11-r797 and keep only the ones covering $>80\%$ of the target; then induce locations of monomer on each reads based on the alignments.
-\item[2.] for each monomer inferred, scanning for the nearest hit to the tRNA$^{Met}$ 12 nucleotides motif \textbf{TGGTATCAGAGC} of \emph{Caulimovirids}, then chop the read at those loci. %%COMMENT-LC sould explain why this motif 
-\item[3.] build consensus sequence on those monomers by \racon{}~\cite{Vaser2017racon} version 1.2.1.
+\item[2.] for each monomer inferred, scanning for the nearest hit to the tRNA$^{Met}$ 12 nucleotides motif \textbf{TGGTATCAGAGC} where the DNA synthesis is primed in \emph{Caulimovirids} replication cycle~\cite{Bhat2016badnaviruses,Sukal2018characterization}. Those loci are then used as final breakpoints for a later chopping step to extract monomers.
+\item[3.] build consensus sequence on those extracted monomers by \racon{}~\cite{Vaser2017racon} version 1.2.1.
 \end{itemize}
 
 \paragraph{Align to the reference}
@@ -232,7 +234,7 @@ The values of $h(n)$ would fall in $(0,1]$ with $\forall n$, representing a norm
 \SetKwProg{Fn}{Function}{:}{}
 \Fn{\ACF{$S$, $R$}}{ 
     $R:=\mathtt{fftForward}(S)$ \tcp*{Convert signal to frequency domain by FFT}
-    $R[i]:=R[i] \star R[i]$, $\forall i=0 \ldots (L-1)$  \tcp*{complex conjugate every complex element}
+    $R[i]:=R[i] \star R[i]$, $\forall i=0 \ldots (L-1)$  \tcp*{complex conjugate element-by-element}
     $R:=\mathtt{fftReverse}(R)$ \tcp*{Convert back to time domain by reverse FFT}
     \KwRet\;
 }

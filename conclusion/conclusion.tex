@@ -55,7 +55,7 @@ Besides, \npscarf{} and \npgraph{} are currently working as two separate modules
 Preliminary works on mock data sets of metagenomics using \npscarf{} have demonstrated that our approach is feasible for this case (data not shown).
 As a consequence, one of the development direction is to implement a hybrid assembler that can solve metagenomics assembly graph in real-time with \npgraph{}.
 
-In order to achieve this, we first plan to run \spades{} with $\mathtt{--meta}$ option~\cite{Nurk2017metaspades} to generate a metagenomics assembly graph. After that the contigs (nodes from the graph) will be subjected to a binning algorithm, \EG{} $\mathtt{metaBAT}$~\cite{Kang2015metabat}, to discover the populations of the community.
+In order to achieve this goal, we first plan to run \spades{} with -{}-$\mathtt{meta}$ option~\cite{Nurk2017metaspades} to generate a metagenomics assembly graph. After that the contigs (nodes from the graph) will be subjected to a binning algorithm, \EG{} $\mathtt{metaBAT}$~\cite{Kang2015metabat}, to discover the populations of the community.
 This information is then used to determine multiplicity and membership of each contigs so that \npgraph{} algorithm can work with and produce assembly for each of those detected populations.
 
 \paragraph{Non-hybrid methods}

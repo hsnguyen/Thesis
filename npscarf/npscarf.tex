@@ -252,15 +252,15 @@ and ATCC 13883 (type strain).
 We first sequenced the genomes of these strains with the Illumina MiSeq platform to 250-fold
 coverage and assembled them with SPAdes~\cite{BankevichNA2012}
 (See Methods). This resulted in assemblies of 90 and 69 contigs
-that were 500 bps or longer, respectively. The N50 statistics of the two
-assemblies were 288 Kb and 302 Kb, respectively.
+that were 500bp or longer, respectively. The N50 statistics of the two
+assemblies were $288$Kbp and $302$Kbp, respectively.
 We then sequenced the two strains with Oxford Nanopore MinION using chemistry R7. 
-For ATCC BAA-2146, we obtained 185 Mb of sequencing data ($\sim$33-fold
-coverage of the genome), of which 27 Mb were two-directional (2D) reads. The run for strain ATCC
-13883 yielded only 13.5 Mb of sequencing data ($\sim$2.4-fold coverage). 
+For ATCC BAA-2146, we obtained $185$Mbp of sequencing data ($\sim$33-fold
+coverage of the genome), of which $27$Mbp were two-directional (2D) reads. The run for strain ATCC
+13883 yielded only $13.5$Mbp of sequencing data ($\sim$2.4-fold coverage). 
 We re-sequenced this strain with the improved chemistry R7.3.
 By combining sequencing data from both experiments for this strain, we obtained
-a total of 100 Mb ($\sim$18-fold coverage) data, including 22.5 Mb of 2D reads.
+a total of $100$Mbp ($\sim$18-fold coverage) data, including $22.5$Mbp of 2D reads.
 The quality of the data, described in~\cite{CaoGE2016}, was broadly
 similar to that reported by other MinION users~\cite{LomanQ2014, AshtonND2015,
 JainFM2015}.
@@ -288,7 +288,7 @@ Figure~\ref{f:scaffold}a) and ~\ref{f:scaffold}b) present the progress of
 assembly completion against the coverage of MinION data during scaffolding.
 As expected, N50 statistics increased and the number of contigs 
 decreased with more MinION data. For \kp{} ATCC BAA-2146, we found that
-our algorithm required only 20-fold coverage of sequence data ($<$120Mb) to
+our algorithm required only 20-fold coverage of sequence data ($<120$Mbp) to
 complete the genome, reducing the assembly to the limit of five contigs (one
 chromosome and four plasmids). Those five contigs were circularised, indicating
 completeness. We found these five contigs to be in total agreement
@@ -307,18 +307,18 @@ Table~\ref{T:alignment} and Supplementary Fig. 2). The
 alignments contained forward and reverse matches. The breakpoints of
 these matches corresponded to the contig joints in the reference scaffolds,
 indicating the incorrect orientation of contigs in the reference scaffolds. 
-The reference scaffold KN046818.1 was 5.2 Mb in size, suggesting 
+The reference scaffold KN046818.1 was $5.2$Mbp in size, suggesting 
 this scaffold was the
 chromosome and was fragmented into two contigs in the \npscarf{}'s assembly. In
 examining this chromosomal sequence, we found the two contigs to be separated by an 
-rRNA operon of 7 Kb in length. BLAST search revealed the structure of this operon
+rRNA operon of $7$Kbp in length. BLAST search revealed the structure of this operon
 with rRNA 5S, 23S and 16S as the main components. This rRNA operon sequence was
 also found to be present at five other loci in the genome, which were all
 resolved. However, no long MinION read was found to align to this
 particular position, possibly because of the low yield of this dataset, which
 caused the chromosome sequence to be fragmented. 
 We anticipate this could be resolved with more nanopore sequencing data.
-Contig 3 (139kb) and Contig 4 (119kb) contained several
+Contig 3 ($139$Kbp) and Contig 4 ($119$Kbp) contained several
 origin of replication sequences (See Table~\ref{T:alignment}), suggesting they 
 were plasmid sequences; Contig 4 was also reported to be a circular sequence.
 In Contig 4, we noticed an extra plasmid origin of replication sequence (ColRNAI) that
@@ -334,7 +334,7 @@ reference assembly.
 \includegraphics[width=\linewidth]{npscarf/figures/figure3.pdf}
 \caption[Structure of a pathogenic island from \kp{}
 ATCC BAA-2146]
-{Structure of a pathogenic island from \kp{} ATCC BAA-2146. The island harbours three antibiotic resistance genes \emph{strep}, \emph{sul1} and \emph{ebr}, flanked by mobility genes integrase (\emph{int}), inverstase (\emph{hin}), DNA replication (\emph{dnaC}), and insertion sequences (IS26 and IS6100). The island was fragmented into 10 contigs in the Illumina assembly, and was completely resolved with 65 Mb out of the total of 185 Mb of nanopore sequence data.}
+{Structure of a pathogenic island from \kp{} ATCC BAA-2146. The island harbours three antibiotic resistance genes \emph{strep}, \emph{sul1} and \emph{ebr}, flanked by mobility genes integrase (\emph{int}), inverstase (\emph{hin}), DNA replication (\emph{dnaC}), and insertion sequences (IS26 and IS6100). The island was fragmented into 10 contigs in the Illumina assembly, and was completely resolved with $65$Mbp out of the total of $185$Mbp of nanopore sequence data.}
 \label{F:gi}
 \end{figure*}
 
@@ -350,22 +350,22 @@ ATCC BAA-2146]
  Data \\
  required & Gene ID & NCBI ref & Antibiotic resistance & Plasmid evidence\\
 \hline
-10 Mb & blaTEM-1B & JF910132 & penicillins, some cephalosporins & IncR;IncFIA(HI1) \\
+$10$Mbp & blaTEM-1B & JF910132 & penicillins, some cephalosporins & IncR;IncFIA(HI1) \\
       & strB & M96392 & streptomycin & IncR;IncFIA(HI1) \\
       & strA & AF321551 & streptomycin & IncR;IncFIA(HI1) \\     
       & sul2 & GQ421466 & sulfonamides & IncR;IncFIA(HI1) \\
-14 Mb & aac6Ib & M21682 & tobramycin, amikacin, netilmicin, sisomicin & IncR;IncFIA(HI1) \\
-21 Mb & mphA & D16251 & erythromycin & IncFIB(K);IncFII(K) \\ 
+$14$Mbp & aac6Ib & M21682 & tobramycin, amikacin, netilmicin, sisomicin & IncR;IncFIA(HI1) \\
+$21$Mbp & mphA & D16251 & erythromycin & IncFIB(K);IncFII(K) \\ 
       & tetA & AJ517790 & tetracyclines & IncFIB(K);IncFII(K) \\
       & QnrB7 & EU043311 & quinolones & IncR;IncFIA(HI1) \\
-29 Mb & dfrA14 & DQ388123 & trimethoprim & IncR;IncFIA(HI1) \\ 
-46 Mb &  blaNDM-1 & FN396876 & penicillins, cephalosporins, carbapenems & IncA/C2 \\
-51 Mb & rmtC & AB194779 & aminoglycosides (include gentamicin, kanamycin) & IncA/C2 \\
-78 Mb & sul1 & AY224185 & sulphonamide & IncA/C2 \\
+$29$Mbp & dfrA14 & DQ388123 & trimethoprim & IncR;IncFIA(HI1) \\ 
+$46$Mbp &  blaNDM-1 & FN396876 & penicillins, cephalosporins, carbapenems & IncA/C2 \\
+$51$Mbp & rmtC & AB194779 & aminoglycosides (include gentamicin, kanamycin) & IncA/C2 \\
+$78$Mbp & sul1 & AY224185 & sulphonamide & IncA/C2 \\
       & aac6Ib\_1 & M21682 & tobramycin, amikacin, netilmicin, sisomicin &
       IncA/C2 \\
       & blaCMY-6 & AJ011293 & penicillins, some cephalosporins & IncA/C2\\
-83 Mb & blaSHV-11 & GQ407109 & penicillins, some cephalosporins &  IncR;IncFIA(HI1) \\ 
+$83$Mbp & blaSHV-11 & GQ407109 & penicillins, some cephalosporins &  IncR;IncFIA(HI1) \\ 
       & aac6Ib & M21682 & tobramycin, amikacin, netilmicin, sisomicin &
  IncR;IncFIA(HI1) \\
       & blaOXA-1 & J02967 & penicillins & IncR;IncFIA(HI1) \\
@@ -388,14 +388,14 @@ resistant \kp{} ATCC BAA-2146 strain.
 Prior to scaffolding the Illumina assembly of the sample, we annotated the
 assembly using Prokka~\cite{Seemann2014} to identify the positions of genes and
 insertion sequences in the assembly. Bacterial genomic islands are genomic
-regions longer than 8 Kb, containing certain classes of genes such as AMR genes.
+regions longer than $8$Kbp, containing certain classes of genes such as AMR genes.
 In addition, they often carry mobility genes such as transposase, integrase and
 insertion sequences (IS)~\cite{LangilleHB2010}. These sequences generally
 appear multiple times in the genomes (repetitive sequences), causing genomic
 islands fragmented in the short read assembly. We ran Islander~\cite{MantriW2004}
 and PHAST~\cite{ZhouLL2011} on the Illumina assembly, which together detected
 six genomic islands. In the annotation, we also found 28 insertion sequences; 14
-of these were within 3 Kb of the contig ends, suggesting that any genomic
+of these were within $3$Kbp of the contig ends, suggesting that any genomic
 islands flanked by these insertion sequences were fragmented. During scaffolding
 of the assembly with nanopore sequencing data, \npscarf{} constructed four
 additional genomic islands, which were not previously reported by Islander and
@@ -409,7 +409,7 @@ ammonium). The genomic island also carried two copies of the insertion sequence
 IS26, which flanked the AMR genes, and a copy of the insertion sequence IS6100.
 The presence of these repetitive sequences caused the island to be fragmented 
 into 10 contigs in the Illumina assembly; the three resistance genes were in two
-different contigs. \npscarf{} required 64.59 Mb of data (14-fold coverage of the 
+different contigs. \npscarf{} required $64.59$Mbp of data (14-fold coverage of the 
 genome) to report the full structure of the island (Figure~\ref{F:gi}).
 
 
@@ -428,9 +428,9 @@ With the Illumina assembly, we identified 27 AMR genes,  but none was in a
 contig containing a plasmid origin replication sequence. As such, whether any 
 of these genes were carried by a plasmid could only be ascertained with long
 reads. Table~\ref{T:plasmidGenes} presents the time-line of such determination.
-In particular, we confirmed 18 AMR genes as plasmid-encoded with 83 Mb
+In particular, we confirmed 18 AMR genes as plasmid-encoded with $83$Mbp
 ($\sim$14-fold coverage) of nanopore sequencing data. In addition, as all four
-plasmids were circularised and complete with 103 Mb ($\sim$18-fold coverage) of
+plasmids were circularised and complete with $103$Mbp ($\sim$18-fold coverage) of
 data, we could confidently conclude that only these 18 AMR genes were
 plasmid-encoded, even before the completion of the full genome assembly and the
 sequencing run.
@@ -447,8 +447,8 @@ sequencing run.
     &       & \cthead{1}{Assembly} & \cthead{1}{\#Contigs}      & 
     \cthead{1}{N50}  & \cthead{1}{Mis-} &  \cthead{1}{Error}  &
     \cthead{3}{Run times} \\
-    & \cthead{1}{Method} & \cthead{1}{size (Mb)} &\cthead{1}{($\geq500$ bp)} &
-    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per 100 Kb)} &  
+    & \cthead{1}{Method} & \cthead{1}{size (Mbp)} &\cthead{1}{($\geq500$bp)} &
+    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per $100$Kbp)} &  
     \cthead{3}{(CPU hrs)} \\
 \toprule    
 \endfirsthead
@@ -459,8 +459,8 @@ sequencing run.
     &       & \cthead{1}{Assembly} & \cthead{1}{\#Contigs}      & 
     \cthead{1}{N50}  & \cthead{1}{Mis-} &  \cthead{1}{Error}  &
     \cthead{3}{Run times} \\
-    & \cthead{1}{Method} & \cthead{1}{size (Mb)} &\cthead{1}{($\geq500$ bp)} &
-    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per 100 Kb)} &  
+    & \cthead{1}{Method} & \cthead{1}{size (Mbp)} &\cthead{1}{($\geq500$bp)} &
+    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per $100$Kbp)} &  
     \cthead{3}{(CPU hrs)} \\
 \toprule    
 \endhead
@@ -596,24 +596,24 @@ near-complete assemblies for the two \kp{} samples (Figures~\ref{f:scaffold}a
 and \ref{f:scaffold}b) with under 20-fold coverage of nanopore data.
 For the \ec{} K12 MG1655 sample, \npscarf{} required less than 30-fold coverage of 
 nanopore data to complete the genome assembly with one circular contig.
-\npscarf{} also reduced the S. Typhi assembly to only nine contigs (N50=864kb),
+\npscarf{} also reduced the S. Typhi assembly to only nine contigs (N50=$864$Kbp),
 which was significantly better than the assembly reported by~\cite{AshtonND2015} 
-from the same data (34 contigs, N50=319kbs).
+from the same data (34 contigs, N50=$319$Kbp).
 
 As for the \sce{} W303 genome, which contains 16 nuclear chromosomes and one 
-mitochondrial chromosome, \npscarf{} generated an assembly of 19 contigs (N50=913Kb); 
+mitochondrial chromosome, \npscarf{} generated an assembly of 19 contigs (N50=$913$Kbp); 
 substantially fewer than 
-the 108 contigs (N50=600Kb) generated by the next best method (Nanocorr, 
+the 108 contigs (N50=$600$Kbp) generated by the next best method (Nanocorr, 
 see Table~\ref{T:compare}).
 We noticed a drop in N50 statistics at the point where about 50-fold coverage 
 of nanopore data were received (Figure~\ref{f:scaffold}e). This was because
 \npscarf{} encountered contradicting bridges and hence broke the assembly at 
 the lowest scoring bridge in lieu of a higher scoring one. The N50 was then 
-improved to reach the N50 of 913 Kb with 90-fold coverage of nanopore sequencing; 
+improved to reach the N50 of $913$Kbp with 90-fold coverage of nanopore sequencing; 
 the assembly did not change with more data (90-fold to 196-fold). 
 We examined the assembly by comparing that with the reference genome of \sce{}
 strain S288C. One of the contigs (Contig 17,
-length = 81 Kb) was reported to be circular, which was completely aligned to the 
+length = $81$Kbp) was reported to be circular, which was completely aligned to the 
 mitochondrial chromosome of the reference genome. Ten chromosomes (II,
 IV, V, VII, IX, X, XI, XIII, XV and XVI) were completely assembled into individual
 contigs, and three chromosomes (I, III and VIII) were assembled into two contigs per 
@@ -642,10 +642,10 @@ contigs due to misassemblies
 In all datasets, \npscarf{} consistently
 produced the most complete assemblies, while its accuracy was among the best.
 It was the only method that was able to completely resolve the \kp{} ATCC BAA-2146
-genome (five contigs, N50 of 5.4 Mb) with no misassembly, requiring only
+genome (five contigs, N50 of $5.4$Mbp) with no misassembly, requiring only
 20-fold coverage of nanopore data; the second most completed assembly 
 (produced by SPAdes Hybrid) contained 17 contigs and had the N50 of 
-only 3.1 Mb despite using 33-fold coverage of nanopore sequence data.
+only $3.1$Mbp despite using 33-fold coverage of nanopore sequence data.
 On the well studied \ec{} K12 MG1655 strain
 sample where LINK, NaS and Nanocorr were reported to resolve the whole genome
 with a larger dataset (147-fold coverage)~\cite{WarrenYV2015}, 
@@ -653,7 +653,7 @@ none of these methods could produce the same result on the 67-fold coverage data
 set we tested. On the other hand, \npscarf{} was able to reconstruct the genome
 into one circular contig with as little as 30-fold coverage of the 
 data. On the S. Typhi dataset, \npscarf{} produced assemblies with nine contigs
-in real-time mode, and with eight contigs in batch mode (N50 = 864 Kb),
+in real-time mode, and with eight contigs in batch mode (N50=$864$Kbp),
 significantly better than assemblies from other methods (over 20 contigs).
 We observed that the \emph{de novo} methods, Canu and Miniasm failed to
 construct a skeleton for the these bacterial genomes (either no output or only 
@@ -662,13 +662,13 @@ datasets.
 
 
 The \sce{} W303 assembly produced by \npscarf{} was near complete and N50
-statistics reached the theoretical limit of 924 Kb. Note that \npscarf{} obtained
+statistics reached the theoretical limit of $924$Kbp. Note that \npscarf{} obtained
 these results from only less than half of the dataset (95-fold coverage). On
 the whole dataset (196-fold coverage), Canu and Miniasm produced assemblies of
-43 contigs (N50=496 Kb) and 51 contigs (N50=391 Kb), respectively. These
+43 contigs (N50=$496$Kbp) and 51 contigs (N50=$391$Kbp), respectively. These
 assemblies contained more than twice as many contigs as the results from
 \npscarf{}. The second most complete assembly in terms of N50 statistic was
-produced by Nanocorr (N50=600Kb) which was significantly lower than that from
+produced by Nanocorr (N50=$600$Kbp) which was significantly lower than that from
 \npscarf{}.
 
 
@@ -804,7 +804,7 @@ than a threshold
 \dfrac{depth_i}{depth_g^{i-1}} > \theta
 \end{equation}
 \npscarf{} set the threshold $\theta$ to 1.5. In our experience, the statistic is
-stable with up to 20 of the largest contigs longer than 20 Kb, which are most
+stable with up to 20 of the largest contigs longer than $20$Kbp, which are most
 likely unique contigs in bacterial genomes ~\cite{KorenP2015}. We hence also
 add these into the condition for termination.
 The multiplicity of contig $i$ ($mul_i$) is determined by

@@ -13,8 +13,7 @@ As the first author of this paper, I am the primary designer and software develo
 
 Later in this chapter, an use case will be addressed as a highlighted example of genome assembly practices to resolve an actual problem in research. \npscarf{} with other state-of-the-art assembly methods are employed for such task.
 The data being presented in this section is part of another study, namely \emph{"Evaluating the Genome and Resistome of Extensively Drug-Resistant Klebsiella pneumoniae using Native DNA and RNA Nanopore Sequencing"} which has myself as a co-author. 
-In general, my contributions fell mostly in the bioinformatics aspects of the research.
-I played a critical role in data processing and genome assembly, as well as partly in plotting and interpreting the final results.
+In general, my contributions fell mostly in the bioinformatics aspects of the research, especially in data processing and genome assembly. I also helped in plotting and interpreting the final results. 
 
 The full manuscript with supplementary materials can be accessed via the preprint version from the link \url{https://doi.org/10.1101/482661}. The study has been submitted to \emph{Nature Microbiology} journal and is currently under review.
 
@@ -70,16 +69,16 @@ genome analysis, and is freely available at
 \section{Demultiplex barcode sequencing with MinION}
 \subsection{Introduction}
 
-Introduced only in 2014, Oxford Nanopore Technologies (ONT) sequencing has already become an established technology for its portability and its potential for high yield data generation. 
-In particular, it offers the ability of real-time sequencing where practitioners can analyze data streaming directly from the sequencing device, and can terminate a sequencing run once the satisfactory results are obtained. Recently, ONT introduced barcode protocols to allow pooling and sequencing multiple libraries on the sample flow cell, which further enhances the versatility of the technology. The underlying mechanism is to ligate a unique oligonucleotide sequence, or \emph{barcode}, to the fragments of each DNA sample. Multiple samples can then be pooled together and sequenced in one flow cell. The sequenced reads can then be demultiplexed into bins by examining the barcode portions on the reads.
+Oxford Nanopore Technologies (ONT) sequencing has already become an established technology for its portability and its potential for high yield data generation. 
+In particular, it offers the ability to sequence genomes in real-time where practitioners can analyze data streaming directly from the device, and can terminate a sequencing run once the satisfactory results are obtained. Recently, ONT has introduced barcode protocols to allow pooling and sequencing multiple libraries on the sample flow cell, which further enhances the versatility of the technology. The underlying mechanism is to ligate a unique oligonucleotide sequence, or \emph{barcode}, to the fragments of each DNA sample. Multiple samples can then be pooled together and sequenced in one flow cell. The sequenced reads can then be demultiplexed into bins by examining the barcode portions on the reads.
 
 Several outstanding tools for demultiplexing Nanopore barcoded sequences such as poreFUME~\cite{Van2017rapid}, Porechop~\url{https://github.com/rrwick/Porechop} and Metrichor built-in demultiplexer have been developed. Of these tools, only the latter supports real-time analysis of a sequencing run, but it is only available as a cloud service. This limits the use of this technology in time-critical applications or when the users wish to perform sequencing only until sufficient data are obtained.
 
 Being able to exploit the streaming property of nanopore sequencing is important for time-critical applications, especially when its data generating yield and rate is escalating drastically with new technologies and platforms already or soon become available such as GridION, PromethION.
-Hence, algorithms that can work with streaming data and be able to integrated into a pipeline should be taken into consideration in earnest for this sequencing technology. Furthermore, a more friendlier user interface to inexperienced users is highly on demand as many more researchers worldwide are enrolled in MinION  multi-samples sequencing. In addition, the visualization can provide more efficient statistical report in real-time allowing users to have better control over the whole sequencing process.
-For that reason, we developed another tool for ONT barcode sequencing demultiplex analysis. 
+Hence, algorithms that can work with streaming data and be able to integrated into a pipeline should be taken into consideration in earnest for this sequencing technology. Furthermore, a more friendlier user interface to inexperienced users is highly on demand as many more researchers worldwide are enrolled in MinION  multi-sample sequencing. In addition, the visualization can provide more efficient statistical reports in real-time thus allowing users to have better control over the whole sequencing process.
+For that reason, we have developed another tool for ONT barcode sequencing demultiplex analysis. 
 
-Here, we present \npbarcode{}, a sensitive tool for demultiplexing barcoded MinION sequencing data in real-time. \npbarcode{} provides the traditional command line interface and a graphical user interface.
+Here, we present \npbarcode{}, a tool for demultiplexing barcoded MinION sequencing data in real-time. \npbarcode{} provides the traditional command line interface and a graphical user interface.
 The command line interface offers a flexible environment to be integrated in with other real-time downstream analyses, \emph{e.g.} real-time finishing genome sequence (\npscarf{}~\cite{Cao2017scaffolding}) and real-time 
 species identification (npAnalysis\cite{CaoGE2016}). The demultiplexer is also integrated into \npreader{}'s~\cite{CaoGC2016}, our previously developed platform for real-time analysis and visualization of nanopore sequencing.
 From this mode, beside the utilities provided by \npreader{}, one can visually monitor on the sequencing progress of each barcoded sample.
@@ -105,8 +104,8 @@ with existing tools.}
 
 We barcoded and sequenced 8 different bacterial strains on a single MinION R9.4 flow cell using the Oxford Nanopore Technology's 2D native barcoding kit (SQK-LSK208 + EXP-NDB002). Another run with PCR barcoding kit for 3 libraries is not discussed here as part of a different study, but its result is included in Appendix Figure~\ref{supp_fig:npbarcode_pcr}.
 
-The pool consisted of one gram-positive isolate (\emph{Staphylococcus aureus}) and seven gram-negative isolates (four \emph{Klebsiella pneumoniae}, one \emph{Klebsiella quasipneumoniae}, one \emph{Pseudomonas aeruginosa} and one \emph{Acinetobacter baumannii}).
-In order to establish a ground truth benchmark for  comparison of different de-multiplexing tools,  we aligned the sequence reads of the eight samples to their respective assemblies to identify the original source of the reads. 
+The pool consisted of one gram positive isolate (\emph{Staphylococcus aureus}) and seven gram negative isolates (four \emph{Klebsiella pneumoniae}, one \emph{Klebsiella quasipneumoniae}, one \emph{Pseudomonas aeruginosa} and one \emph{Acinetobacter baumannii}).
+In order to establish a ground truth benchmark for  comparison of different de-multiplexing tools, we aligned the sequence reads of the eight samples to their respective assemblies to identify the original source of the reads. 
 Due to the high level of similarity among the gram negative isolates, we could only obtain the confident assignment of reads to the \emph{S. aureus}, a gram positive strain, versus the other gram negative strains. 
 Hence, we set up the comparison framework as the accuracy of the tool detecting the barcode associated with the \emph{S. aureus} sample. For an exhaustive benchmark for each of every strains included, ones can assess Appendix Figure~\ref{supp_fig:comparison}.
 
@@ -115,7 +114,7 @@ Statistics of all tools with their automatic settings is depicted in details in 
 We found that \npbarcode{} performed comparably with Metrichor and was marginally more accurate than the competitive porechop and poreFUME.
 
 
-\subsubsection{Multiple samples real-time scaffolding pipeline}
+\subsubsection{Real-time scaffolding pipeline for multiple samples}
 
 \begin{figure}[!hpb]
 \centering
@@ -137,11 +136,9 @@ We found that \npbarcode{} performed comparably with Metrichor and was marginall
 \end{figure}
 
 As part of the experiment, we also integrated \npbarcode{} into a streaming analysis
-pipeline where we scaffolded genome assemblies in real-time. Prior 
-to the MinION sequencing run, we sequenced the seven gram negative samples with
-Illumina technology and used \spades{}~\cite{BankevichNA2012} to assemble them into
-assemblies, which each had exceeding 
-100 contigs. The \emph{S. aureus} sample was used as a control sample during 
+pipeline where we scaffolded genome assemblies in real-time. Prior to the MinION run, we sequenced the seven gram negative samples with Illumina technology and used \spades{}~\cite{BankevichNA2012} to assemble them into
+more than 100 contigs each. 
+The \emph{S. aureus} sample was used as a control sample during 
 demultiplexing, and was not used for scaffolding.
 As soon as a sequence read was generated, it was base-called, demultiplexed and
 streamed into the appropriate instance of \npscarf{}~\cite{Cao2017scaffolding} 
@@ -149,7 +146,7 @@ for scaffolding. This
 pipeline allowed us to simultaneously scaffold all seven bacterial samples while
 the sequencing was still in progress (Figure~\ref{fig:scaffold}). We were able 
 to complete the genome of one \kp{} isolate after 16 hours of
-sequencing and with about 80Mb of nanopore sequencing data. While the genomes of 
+sequencing and with about $80$Mbp of nanopore sequencing data. While the genomes of 
 the other six isolates were not completed due to their low proportions in the 
 pooled sample, and the less than ideal yield of the run, they were significantly
 improved over time with nanopore long reads.
@@ -162,12 +159,10 @@ improved over time with nanopore long reads.
 result shown is for the a MinION run using Native barcoding kit on 8 libraries.}
 \label{fig:gui_npbarcode}
 \end{figure}
-\npbarcode{} is also integrated into \npreader{}'s graphical user interface. With 
-this, users can monitor the amount of sequencing data for each pooled sample
+\npbarcode{} is also integrated into \npreader{}'s graphical user interface. This allows users to monitor the amount of sequencing data for each pooled sample
 in real-time. When required, \npreader{} provides a view showing read-count per bin 
 in a real-time fashion. This view provides two plots that can depict the progress 
-in an over-time and in-time manner, respectively. The first scenario would offer 
-more general progress viewing by showing the read count of the whole process 
+in an over-time and in-time manner, respectively. The top graph shows a more general progress viewing by showing the read count of the whole process 
 while the lower graph figures the exact number of binned reads at a particular 
 time point. An example of the visualization is shown in Figure~\ref{fig:gui_npbarcode}. 
 Overall it reflects the 
@@ -177,7 +172,7 @@ negligible  amount of reads are mis-classified into unrelated bins.
 
 \subsection{Methods}
 \subsubsection{Bacterial cultures and DNA extraction}
-Bacterial strains include \emph{Streptococcus pneumoniae} sourced from the American Type Culture Collection (ATCC 700677) and various clinical isolates from Hygeia General Hospital, Athens, Greece or Instituto Dante Pazzanese de Cardiologia, Brazil~\cite{Miranda2018}. Clinical isolates comprise of four \emph{Klebsiella pneumoniae} (3\_GR\_13, 5\_GR\_13, 11\_BR\_13, 22\_GR\_12), \emph{Klebsiella quasipneumoniae} (21\_GR\_13), \emph{Acinetobacter baumannii} (source: Hygeia General Hospital, 2013) and \emph{Pseudomonas aeruginosa} (source: Hygeia General Hospital, 2013). It is worth noting that the sample identifiers are re-assigned for convenient as shown in Table~\ref{supp_tab:sample} which emphasize on the gram stain of the bacteria: GP for gram positive and GN for gram negative.
+Bacterial strains include \emph{Streptococcus pneumoniae} from the American Type Culture Collection (ATCC 700677) and clinical isolates from Hygeia General Hospital, Athens, Greece or Instituto Dante Pazzanese de Cardiologia, Brazil~\cite{Miranda2018}. Clinical isolates comprise of four \emph{Klebsiella pneumoniae} (3\_GR\_13, 5\_GR\_13, 11\_BR\_13, 22\_GR\_12), \emph{Klebsiella quasipneumoniae} (21\_GR\_13), \emph{Acinetobacter baumannii} (source: Hygeia General Hospital, 2013) and \emph{Pseudomonas aeruginosa} (source: Hygeia General Hospital, 2013). It is worth noting that the sample identifiers are re-assigned for convenient as shown in Table~\ref{supp_tab:sample} which emphasize on the gram stain of the bacteria: GP for gram positive and GN for gram negative.
 Bacterial cultures were supplied as stabs/slants or on agar, grown in nutrient broth or brain heart infusion broth, glycerol stocks were made to $20 \%$ (v/v) glycerol and stored at $−80^o$C.
 
 For DNA extractions, glycerol stocks were struck out on either nutrient agar or tryptic soy agar with $5\%$ defibrinated sheep blood to isolate single colonies. Strains were grown overnight at $37^o$ shaking at 220 rpm and DNA subsequently extracted from this inoculum. DNA was isolated using the DNeasy Blood and Tissue Kit (Qiagen) with the additional enzymatic lysis buffer pre-treatment as per the manufacturer’s instructions. DNA was quantified with Qubit3.0 (ThermoFisher Scientific).
@@ -199,12 +194,12 @@ $
 where $\mtt{TP}$, $\mtt{FN}$, $\mtt{TN}$ and $\mtt{FP}$ stand for true positive, false negative, true negative and false positive respectively.
 
 \subsubsection{Software UI design}
-We provide both command line and graphical user interface for nanopore barcode sequencing. While the former is flexible and convenient to those who want to integrate downstream analysis directly from demutiplexed results, the later option offers a simpler maneuver and better visualization.
+We provide both command line and graphical user interface for nanopore barcode sequencing. While the former is flexible and convenient to those who want to integrate downstream analysis directly from demutiplexed results, the latter offers a simpler maneuver and better visualization.
 
-From terminal, ones can invoke either $\mathtt{jsa.np.npreader}$ with barcode input sequences specified, or dedicated $\mathtt{jsa.np.barcode}$ module which requires an executable script for downstream analysis. 
+From terminal, one can invoke either $\mathtt{jsa.np.npreader}$ with barcode input sequences specified, or dedicated $\mathtt{jsa.np.barcode}$ module which requires an executable script for downstream analysis. 
 
-On the other hand, users can type $\mathtt{jsa.np.npreader -gui}$ to have a look-and-feel demultiplex running, especially for streaming-mode as the sequencing is still ongoing.
-Beside the traditional \npreader{}'s window, whenever having a demultiplex phase involved, there is an additional tab view showing binned read-count in a real-time fashion. This view provides 2 plots that can depict the progress in an over-time and in-time manner respectively. The first scenario would offer more general progress viewing by showing the read count of the whole process while the lower graph figures the number of binned reads in more detail at a particular time point.
+On the other hand, users can type $\mathtt{jsa.np.npreader -gui}$ to have a user-friendly demultiplex running, especially for streaming-mode as the sequencing is still ongoing.
+Beside the traditional \npreader{}'s window, whenever having a demultiplex phase involved, there is an additional tab view showing binned read-count in a real-time fashion. This view provides 2 plots that can depict the progress in an over-time and in-time manner respectively. The top graph would offer more general progress viewing by showing the read count of the whole process while the lower graph figures the number of binned reads in more detail at a particular time point.
 
 \subsubsection{Real-time analysis setup}
 % how to setup a streaming pipeline...
@@ -212,7 +207,7 @@ Users can implement a streaming pipeline that consumes demultiplexed output from
 The first method is simply watching the content of the appending output files and explicitly pipe them to appropriate downstream processes, \EG{} by using $\mathtt{tail -f}$.
 In order to do this, ones initially need to tell \npbarcode{} to output the demultiplexed sequences into different files to read from.
 
-Another way, which has been used in this study, is to provide a script for downstream scenario to \npbarcode{} and let it handle implicitly. This approach will reduce the I/O operations and disk space required for the analysis. For example, in order to invoke \npscarf{} to scaffolding multiple samples at the same time using barcoded sequences, we stream the base-called sequence to \npbarcode{} command line via the inter-process communication (Linux pipe) or network channels (Java sockets) protocol \cite{CaoGE2015} and provide it a script ($\mathit{script.sh}$) to invoke \npscarf{}. An example of such bash script is given in Appendix List \ref{lst:script}.
+Another way, which has been used in this study, is to provide a script for downstream scenario to \npbarcode{} and let it handle implicitly. This approach will reduce the I/O operations and disk space required for the analysis. For example, in order to invoke \npscarf{} to scaffold multiple samples at the same time using barcoded sequences, we stream the base-called sequence to \npbarcode{} command line via the inter-process communication (Linux pipe) or network channels (Java sockets) protocol \cite{CaoGE2015} and provide it a script ($\mathit{script.sh}$) to invoke \npscarf{}. An example of such bash script is given in Appendix List \ref{lst:script}.
 
 $\mathtt{<data \: stream>}~|~\mathtt{jsa.np.barcode} \ \mathtt{-seq} \ \mathit{-} \ \mathtt{-bc} \ \mathit{barcode.fasta} \ \mathtt{-sc} \ \mathit{script.sh}$
 
@@ -222,17 +217,17 @@ Refer to \href{http://japsa.readthedocs.org/en/latest/index.html}{Japsa document
 
 \subsection{Conclusion}
 
-We have reported \npbarcode{}, a tool supporting real-time demultiplex of nanopore sequencing data. 
+We have described \npbarcode{}, a tool supporting real-time demultiplex of nanopore sequencing data. 
 Depending on requirements, users can choose to run the dedicated demultiplexer from command line or using it as part of \npreader's graphical user interface. 
 The tool provides practitioners a flexible option to monitor a barcoded sequencing run as well as to integrate pooled sequencing into a streaming analysis pipeline.
 
-Shortly after the manifestation of several open-sourced demultiplexers including \npbarcode{}, Albacore and new (commercial) version of Metrichor have been brought forward to the community that integrated direct FASTQ output as well as demultiplex option. The overlapping functionality lead to the retirement of \npreader{} and \npbarcode{} maintenance, however, they are still applicable for the use cases that demands flexible control and customization from end users. The code is made available and free via \href{https://github.com/mdcao/japsa}{Japsa} package.  
+Shortly after the manifestation of open-sourced demultiplexers such as \npbarcode{}, Albacore and new (commercial) version of Metrichor have been offered to the community that integrate direct FASTQ output as well as demultiplex option. The overlapping functionality lead to the retirement of \npreader{} and \npbarcode{} maintenance, however, they are still applicable for the use cases that demands flexible control and customization from end users. The code is made available and free via \href{https://github.com/mdcao/japsa}{Japsa} package.  
 
-In the next section, a combination of our in-house tools together with other open-sourced software is adopted for another assembly use case in order to comprehend the resistance gene profile of several Extensively Drug-Resistant (XDR) \kp{} strains using MinION sequencing.
+In the next section, we adopt a combination of in-house tools and other open-source software for another assembly use case in order to comprehend the resistance gene profile of several Extensively Drug-Resistant (XDR) \kp{} strains using MinION sequencing.
 
 \section{Assembly of multiple XDR strains for \emph{Klebsiella~pneumoniae}} 
 The following detail is extracted from a submitted publication with permission from its corresponding authors.
-As part of my thesis, only contents related to my major contributions, \IE{} genome assembly and associated computational analysis on the DNA barcode sequencing data, are reported. 
+As part of this thesis, I only report my major contributions in the publication, \IE{} genome assembly and associated computational analysis on the DNA barcode sequencing data. 
 
 In this section, a combined application of \npscarf{} with other assemblers is implemented to generate the final assembly of interests. Such practice can demonstrate in depth the performances of each method and at the same time, provide a consensus approach for a \emph{de novo} reference-free assembly.
 This use case also highlights the ability of long-read assembly in discerning the location of acquired resistance in the whole genomes of XDR bacterial strains, especially on the identified plasmid(s).
@@ -276,7 +271,7 @@ Another polymyxin-susceptible XDR isolate, 20\_GR\_12, was included for comparat
 
 The WGS sequencing yield and length statistics for each sample are shown in Table~\ref{tab:assers_stats}. 
 Illumina paired-end data was assembled by \spades{} v3.10.1 \cite{BankevichNA2012}. The fact of having more than 60-folds coverage for each sample assures the high quality of the short-read assembly.
-The Rapid Barcoding Sequencing was used for a mixture of 1\_GR\_13, 16\_GR\_13 and 20\_GR\_12 and the base-called data were demultiplexed by \npbarcode{}. Isolate 2\_GR\_12, due to potential carbonhydrate contamination, has been prepared separately and subjected to another MinION run using Rapid Sequencing Kit. As shown in the table, this sample has the least coverage of Nanopore data despite of the longest sequencing time. The low N50 values of 2\_GR\_12 and 16\_GR\_13 ($\simeq 5$kbp) may introduce difficulties in completing their genomes using hybrid approaches, however, the abundance of long-read data from the latter would increase the chance of having appropriate bridges over the repetitive elements.
+The Rapid Barcoding Sequencing was used for a mixture of 1\_GR\_13, 16\_GR\_13 and 20\_GR\_12 and the base-called data were demultiplexed by \npbarcode{}. Isolate 2\_GR\_12, due to potential carbonhydrate contamination, has been prepared separately and subjected to another MinION run using Rapid Sequencing Kit. As shown in the table, this sample has the least coverage of Nanopore data despite of the longest sequencing time. The low N50 values of 2\_GR\_12 and 16\_GR\_13 ($\simeq 5$Kbp) may introduce difficulties in completing their genomes using hybrid approaches, however, the abundance of long-read data from the latter would increase the chance of having appropriate bridges over the repetitive elements.
 \subsection{\emph{De novo} assembly with multiple approaches}
 In order to have the assembly of high confidence without any reference genomes, multiple prominent approaches were applied to the data set. 
 The real-time assembly is not reported here as exhaustive operations of MinION flow cells were established in expectations to obtain as much data as possible, not to mention \npscarf{} is the only tool supporting the streaming mode. Instead, only the final assembly were of interest. 
@@ -327,7 +322,7 @@ Overall, \unicycler{} returned most accurate results and as the consequence, a m
 \npscarf{}, on the other hand, can generate longer contigs but the results are more susceptible to mis-assemblies. The algorithm, which is independent on the assembly graph, can bridge two nodes that lack connections in the graph, but at the same time, is more prone to erroneous alignments. 
 The two remaining methods, even though with polishing step, produced inferior results but would give additional information for the ultimate backbones of the assembly.
 
-Amongst four data sets, 2\_GR\_12 shows most fragmented assembly as the shorter reads could not resolve all repeats. For this sample, only \npscarf{} and \canu{} can successfully assemble the chromosomal sequence as the longest contig of length $\simeq 5.4$Mb. Two other circular sequences were reports as complete plasmid DNA from \unicycler{}. In addition, there were 3 unfinished (linear) sequences in the final assembly for this sample, corresponding to 5 fragmented contigs from \unicycler{}. Another longest contig found by \npscarf{} belonged to 16\_GR\_13 data set (5,426,917 bp). \unicycler{} reported very close circular sequence (5,426,765 bp) with equivalent quality but hosting less genes than the former thus was not selected in this case. %Other than that, its reported contigs were mostly designated as the consensus sequences in the final result.
+Amongst four data sets, 2\_GR\_12 shows most fragmented assembly as the shorter reads could not resolve all repeats. For this sample, only \npscarf{} and \canu{} can successfully assemble the chromosomal sequence as the longest contig of length $\simeq 5.4$Mbp. Two other circular sequences were reports as complete plasmid DNA from \unicycler{}. In addition, there were 3 unfinished (linear) sequences in the final assembly for this sample, corresponding to 5 fragmented contigs from \unicycler{}. Another longest contig found by \npscarf{} belonged to 16\_GR\_13 data set (5,426,917bp). \unicycler{} reported very close circular sequence (5,426,765bp) with equivalent quality but hosting less genes than the former thus was not selected in this case. %Other than that, its reported contigs were mostly designated as the consensus sequences in the final result.
 
 \subsection{AMR analysis on the final assembly}
 
@@ -377,11 +372,11 @@ Plasmids were identified among the output contigs by looking for the \emph{origi
 The location of acquired antibiotic resistance genes were determined based on alignments with $\mathtt{ResFinder}$ 3.0 \cite{ZankariHC2012} database. 
 
 Overall, the assembly contigs were circular as ones should be for fully resolved microbial genomes, with the exception of 2\_GR\_12 as aforementioned. 
-The chromosomal sequence for each isolate was located on top of the contig list from Table~\ref{tab:assers_final} with the genome size varying between 5.1-5.5 Mb. They were shown to carry the same set of resistance genes including blaSHV-11, fosA and oqxAB. 
+The chromosomal sequence for each isolate was located on top of the contig list from Table~\ref{tab:assers_final} with the genome size varying between $5.1-5.5$Mbp. They were shown to carry the same set of resistance genes including blaSHV-11, fosA and oqxAB. 
 
 
 According to Table~\ref{tab:assers_final}, the majority of resistance ($\geq 75\%$) were hosted by plasmids.
-In all samples, there was at least one megaplasmid, defined as a plasmid larger than 100 kbp, being assembled in which, the replicon sequence IncA/C2 or InFIB and IncFIIK were commonly found.
+In all samples, there was at least one megaplasmid, defined as a plasmid larger than $100$Kbp, being assembled in which, the replicon sequence IncA/C2 or InFIB and IncFIIK were commonly found.
 %Miranda text
 The IncA/C2 plasmid appeared in all samples except 20\_GR\_12. 
 This plasmid contained up to 16 resistance genes which conferred resistance towards aminoglycosides, $\beta$-lactams, phenicols, rifampicin, sulphonamides, tetracyclines and trimethoprim, with the exception of 16\_GR\_13. Isolate 16\_GR\_13 lacked trimethoprim resistance on its IncA/C2 plasmid. 
@@ -389,7 +384,7 @@ The plasmids containing both replicons IncFIB and IncFIIK differed vastly betwee
 All contained IncFIB$_{pKpn3}$ and IncFIIK, however, 1\_GR\_13 differed with IncFII$_{pKP91}$. Additionally, a differing IncFIB replicon was detected on a separate contig in 1\_GR\_13 (pKPHS1) and 2\_GR\_12 (pQil). 
 The only instance where another dual replicon was identified was in 1\_GR\_13 which harboured both IncR and IncN. 
 This plasmid contained aminoglycoside, $\beta$-lactam, trimethoprim, macrolide and sulphonamide resistance. 
-Assembly for 1\_GR\_13 also contained a $5.5$ kb circular contig which was annotated as a phage genome.
+Assembly for 1\_GR\_13 also contained a $5.5$Kbp circular contig which was annotated as a phage genome.
 
 The ColRNAI plasmid was shown in all except 1\_GR\_13 which encoded aminoglycoside and quinolone resistance (aac(6')-Ib, aac(6')-Ib-cr) (Table~\ref{tab:assers_final}).
 The ColRNAI plasmid in 2\_GR\_12 and 20\_GR\_12 was $13,841$ bp in size and shared $75\%$ similarity between the two isolates. This plasmid differed in 16\_GR\_13 ($35\%$ the size) with no resistance genes being found. 
@@ -407,7 +402,7 @@ Accession numbers are as follows: SRR6747887 for 1\_GR\_13; SRR6747886 for 2\_GR
 %%%%%%%%%%%%%%%%%%%%%%
 The ability for ONT to sequence long fragments of DNA in parallel has provided an efficient method to finish  and resolve the assembly of bacterial genomes and plasmids~\cite{Cao2017scaffolding,Wick2017M12}, particularly \emph{superbugs} that host high levels of resistance. 
 
-In this use case, multiple megaplasmids ($\geq 100$ kbp) were identified which were previously unresolved via Illumina sequencing~\cite{Miranda2018}. These harboured replicons IncA/C2 or a dual replicon, IncFIIK and IncFIB. 
+In this use case, multiple megaplasmids ($\geq 100$Kbp) were identified which were previously unresolved via Illumina sequencing~\cite{Miranda2018}. These harboured replicons IncA/C2 or a dual replicon, IncFIIK and IncFIB. 
 The IncA/C, IncF and IncN plasmids have been commonly associated with multidrug resistance~\cite{Carattoli2009M34}. 
 Although several plasmids in this study revealed similarity to previously reported isolates via NCBI, various sequences deviated. 
 In particular, the IncA/C2 plasmid exhibited multiple regions unique to these isolates. 
@@ -415,4 +410,4 @@ Several IncA/C2 megaplasmids have been previously described which harbour variou
 Prior studies have shown the IncFIIK and IncFIB replicons to localize on the same plasmid and also megaplasmids with multidrug resistance~\cite{Navon2017M6}. 
 The IncFIB$_{pQil}$ plasmid in this study contained various $\beta$-lactam resistance genes (blaKPC-2, blaOXA-9, blaTEM-1A) which has been identified previously~\cite{Chen2014M37}. Similarly, blaOXA-48 segregated with the IncL/M replicon~\cite{Poirel2012M38,Potron2014M39}, however, deviations in this plasmid were identified.
 
-The final assembly has been generated by using multiple methods available, in which, \unicycler{} returned the most accurate contigs. \npscarf{} can produce assembly of highly continuity and decent quality but in some cases, due to its greedy approach, susceptible to mis-assemblies. Since  these mistakes can affect the fidelity of the results, \EG{} when studying the highly variant XDR plasmids, improvement in term of accuracy is needed for \npscarf{}. Methods to adopt assembly graph will be investigated on top of the original algorithm in the next chapter to serve this purpose. 
+The final assembly has been generated by using multiple methods available, in which \unicycler{} returned the most accurate contigs. \npscarf{} can produce assembly of highly continuity and decent quality but in some cases, due to its greedy approach, susceptible to mis-assemblies. Since  these mistakes can affect the fidelity of the results, \EG{} when studying the highly variant XDR plasmids, improvement in term of accuracy is needed for \npscarf{}. Methods to adopt assembly graph will be investigated on top of the original algorithm in the next chapter to serve this purpose. 

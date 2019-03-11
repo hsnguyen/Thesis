@@ -49,7 +49,7 @@ The two definitions are equivalent and their applications are interchangeable an
 
 To create a valid path when traversing a bidirected graph, two adjacent edges must obey the direction rule similar to a conventional directed graph, that is a path which has an edge entering an intermediate node (not 2 ending nodes) must leave that node on the next edge. In addition, due to the allowance of traversing against the arrows in bidirected graph, it is possible to follow edges against their direction but the spelling will be reverse-complemented.
 
-\section{Application of the assembly graph in \npscarfg{}}
+\section{Application of the assembly graph in \npscarfg{}}\label{sec:npscarfwag}
 The first attempt of utilizing assembly graph is to integrate this pieces of information into the scaffolding algorithm for the gap-filling step thus increasing the accuracy of the final assembly. This is due to the fact that the edges from assembly graph come from Illumina data with much higher accuracy (99.9\%) compared to nanopore data ($\approx$90\%), which usually require high abundance to generate a consensus read with comparative quality. 
 
 As shown in Figure~\ref{f:gapfilling}, for the first approach of gap filling, which is implemented in the very first version of \npscarf{}, segments from nanopore reads corresponding to a gap are first extracted based on the alignments to the flanking regions. A set of these pileup segments are then undergone a consensus calling step by multiple sequence aligner \EG{} \emph{kalign} \cite{LassmannFS2009} or \emph{poaV2} \cite{Lee2002multiple,Lee2003generating,Grasso2004combining}, and the result sequence can later be used to fill in the gap. 
@@ -128,7 +128,7 @@ The purpose of this step is to investigate the sequencing properties of contigs,
 
 \paragraph{Initial binning contigs into groups of abundances}
 Each contig is represented as a node in the assembly graph and the edge between two nodes indicate their overlap (link) properties.
-This step is to cluster the significant nodes (longer than 10kbp) into different sets, namely significant abundance groups, based on their coverage values. 
+This step is to cluster the significant nodes (longer than $10$Kbp) into different sets, namely significant abundance groups, based on their coverage values. 
 
 DBSCAN clustering algorithm \cite{Ester96adensity-based} is applied for this task.
 The idea is to consider a coverage value of a significant contig (which consists of more than 10,000 \emph{k-mers}) to be a sampled mean of a Poisson distribution (of \emph{k-mers} count). 

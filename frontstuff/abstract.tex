@@ -1,16 +1,17 @@
 \chapter*{Abstract}
 % Third generation sequencing technologies such as the Oxford Nanopore Technologies has been widely considered to be a turning point due to its ability to decode much longer reads in a real-time fashion. This has potential to enable scaffold and finish assemblies in real-time while the sequencing process is still in progress. 
-
-Oxford Nanopore Technologies has introduced a novel sequencing system that challenged the traditional methods in which bioinformatics is applied to genomics data. The MinION thumb-drive sequencing device has gained great attention from researchers worldwide. Despite the relatively high error rates compared to Second Generation Sequencing technologies, the nanopore approach is widely considered to be a turning point due to its ability to decode much longer reads (tens or even hundreds of kilo basepairs) in a real-time fashion.
+%\mcomment{I think you should not limited to ONT,}
+The introduction of third generation sequencing technologies presents many challenges to the traditional methods in which bioinformatics is applied to genomics data. The MinION thumb-drive sequencing device has gained great attention from researchers worldwide. Despite the relatively high error rates compared to Second Generation Sequencing technologies, the nanopore approach is widely considered to be a turning point due to its ability to decode much longer reads (tens or even hundreds of kilo base pairs) in a real-time fashion.
 
 Prior to the work presented in this thesis, there was no available method that could scaffold and finish assemblies in real-time while the nanopore sequencing run is still in progress. Such a method is desirable because it offers the opportunity to obtain analysis results as soon as sufficient data are generated.
-As a consequence, answers to questions of interest could be obtained \emph{in situ}, in an automated manner that saves considerable amount of time and resources compared to the conventional approach of sending sample to a sequencing centre, waiting for bulk data, and conducting a batch analysis. 
+With real-time analysis, answers to questions of interests
+could be obtained \emph{in situ}, in an automated manner that saves considerable amount of time and resources compared to the conventional approach of sending sample to a sequencing centre, waiting for bulk data, and conducting a batch analysis. 
 On top of that, streaming analysis can help to avoid under- and over-sequencing which could result in either the generation of more sequence data than is required at greater cost, or a low quality assembly if insufficient data are generated.
 
 For the aforementioned reasons, the motivation of this thesis project is to develop methodologies for streaming data analysis of long reads for real-time finishing genome sequences.
 As the initial result, in Chapter~\ref{ch:npscarf}, I introduce \npscarf{} which can scaffold and complete short read assemblies alongside with the long read sequencing run. This tool operates on an input of contigs, attempting to bridge them together by using long-read data and reports assembly metrics in real-time so the sequencing run can be terminated once an assembly of sufficient quality is obtained.
 
-On the other hand, it is desired to extend the pipeline application for multiple samples at the same time, through a parallel mechanism known as barcoded sequencing.
+It is also desirable to extend the pipeline application for multiple samples at the same time, through a parallel mechanism known as barcoded sequencing.
 In Chapter~\ref{ch:npbarcode}, \npbarcode{}, a tool supporting real-time demultiplexing of nanopore sequencing data, is employed to serve that purpose. 
 Depending on requirements, users can choose to run the dedicated demultiplexer from command line or using it as part of $\mathtt{npReader}$'s GUI. The tool provides practitioners a flexible option to monitor a barcoded sequencing run as well as to integrate pooled sequencing into a streaming analysis pipeline. For example, in combination with \npscarf{}, we can complete multiple genomes in parallel.
 

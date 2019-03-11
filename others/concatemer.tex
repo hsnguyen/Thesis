@@ -76,7 +76,7 @@ Raw signal data from MinION were base-called and demultiplexed by \albacore{} ve
 \label{fig:concat_ref_workflow}
 \end{figure}
 
-In more details, the pipeline is implemented in following the following steps: 
+In more details, the pipeline is implemented in the following steps: 
 \begin{itemize}
 \item[1.] align nanopore reads to the corresponding reference by \minimap{}~\cite{Li2016} version 2.11-r797 and keep only the ones covering $>80\%$ of the target; then induce locations of monomer on each reads based on the alignments.
 \item[2.] for each monomer inferred, scanning for the nearest hit to the tRNA$^{Met}$ 12 nucleotides motif \textbf{TGGTATCAGAGC} where the DNA synthesis is primed in \emph{Caulimovirids} replication cycle~\cite{Bhat2016badnaviruses,Sukal2018characterization}. Those loci are then used as final breakpoints for a later chopping step to extract monomers.
@@ -178,7 +178,7 @@ then apply the running average filter on it
 \subfloat[ACF for the 7-concatemer read\label{fig:acf_7cm}]{
 	\includegraphics[width=.49\textwidth]{images/concatemer-7cm.png}
 }
-\caption{ACF values for a random read (\ref{fig:acf_random}) versus the 7-concatemer detected (\ref{fig:acf_7cm}).}
+\caption[ACF values for a random read versus the 7-concatemer detected]{ACF values for a random read (\ref{fig:acf_random}) versus the 7-concatemer detected (\ref{fig:acf_7cm}).}
 \label{fig:concat_acf_dna}
 \end{figure}
 

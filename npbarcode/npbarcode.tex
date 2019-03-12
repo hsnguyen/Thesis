@@ -366,7 +366,7 @@ Amongst four data sets, 2\_GR\_12 shows most fragmented assembly as the shorter 
 \end{table}
 \end{landscape}
 
-The consensus assembly of four XDR \kp{} strains are shown in Table~\ref{tab:assers_final}. 
+Table~\ref{tab:assers_final} shows the consensus assembly of four XDR \kp{} strains. 
 Genome annotations had been accomplished by using $\mathtt{Prokka}$ v1.12 \cite{Seemann2014}. 
 Plasmids were identified among the output contigs by looking for the \emph{origin of replication} sequences from the collection of $\mathtt{PlasmidFinder}$ 1.3 \cite{Carattoli2014}.
 The location of acquired antibiotic resistance genes were determined based on alignments with $\mathtt{ResFinder}$ 3.0 \cite{ZankariHC2012} database. 
@@ -376,7 +376,7 @@ The chromosomal sequence for each isolate was located on top of the contig list 
 
 
 According to Table~\ref{tab:assers_final}, the majority of resistance ($\geq 75\%$) were hosted by plasmids.
-In all samples, there was at least one megaplasmid, defined as a plasmid larger than $100$Kbp, being assembled in which, the replicon sequence IncA/C2 or InFIB and IncFIIK were commonly found.
+In all samples, there was at least one megaplasmid, defined as a plasmid larger than $100$Kbp, being assembled. From which, the replicon sequence IncA/C2 or InFIB and IncFIIK were commonly found.
 %Miranda text
 The IncA/C2 plasmid appeared in all samples except 20\_GR\_12. 
 This plasmid contained up to 16 resistance genes which conferred resistance towards aminoglycosides, $\beta$-lactams, phenicols, rifampicin, sulphonamides, tetracyclines and trimethoprim, with the exception of 16\_GR\_13. Isolate 16\_GR\_13 lacked trimethoprim resistance on its IncA/C2 plasmid. 
@@ -386,7 +386,7 @@ The only instance where another dual replicon was identified was in 1\_GR\_13 wh
 This plasmid contained aminoglycoside, $\beta$-lactam, trimethoprim, macrolide and sulphonamide resistance. 
 Assembly for 1\_GR\_13 also contained a $5.5$Kbp circular contig which was annotated as a phage genome.
 
-The ColRNAI plasmid was shown in all except 1\_GR\_13 which encoded aminoglycoside and quinolone resistance (aac(6')-Ib, aac(6')-Ib-cr) (Table~\ref{tab:assers_final}).
+The ColRNAI plasmid was shown in every sample but 1\_GR\_13 which encoded aminoglycoside and quinolone resistance (aac(6')-Ib, aac(6')-Ib-cr) (Table~\ref{tab:assers_final}).
 The ColRNAI plasmid in 2\_GR\_12 and 20\_GR\_12 was $13,841$ bp in size and shared $75\%$ similarity between the two isolates. This plasmid differed in 16\_GR\_13 ($35\%$ the size) with no resistance genes being found. 
 The same IncX3 plasmid ($43,380$ bp) was apparent in isolates 2\_GR\_12 and 20\_GR\_12.
 Unique to 16\_GR\_13 was the IncL/ MpOXA-48 plasmid containing blaOXA-48 and the $50,979$ bp IncN plasmid in 20\_GR\_12 with resistance against 5 classes (aminoglycoside (aph(3'')-Ib, aph(6)-Id), $\beta$-lactam (blaTEM-1A), sulphonamide (sul2), tetracycline (tet(A)), trimethoprim (dfrA14)) of antibiotics.
@@ -396,13 +396,13 @@ Multiple copies of acquired resistance genes were located across plasmids in sev
 \subsection{Data availability}
 Whole genome sequencing of 4 clinical isolates and their final assemblies have been uploaded to NCBI under BioProject PRJNA307517.
 MinION DNA sequencing data has been deposited within project ID SRP133040. 
-Accession numbers are as follows: SRR6747887 for 1\_GR\_13; SRR6747886 for 2\_GR\_12; SRR6747885 for 16\_GR\_13 and SRR6747884 for 20\_GR\_12.
+Accession numbers are as followed: SRR6747887 for 1\_GR\_13; SRR6747886 for 2\_GR\_12; SRR6747885 for 16\_GR\_13 and SRR6747884 for 20\_GR\_12.
 
 \subsection{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%
-The ability for ONT to sequence long fragments of DNA in parallel has provided an efficient method to finish  and resolve the assembly of bacterial genomes and plasmids~\cite{Cao2017scaffolding,Wick2017M12}, particularly \emph{superbugs} that host high levels of resistance. 
+The ability for ONT to sequence long fragments of DNA in parallel has present an efficient method to finish  and resolve the assembly of bacterial genomes and plasmids~\cite{Cao2017scaffolding,Wick2017M12}, particularly \emph{superbugs} that host high levels of resistance. 
 
-In this use case, multiple megaplasmids ($\geq 100$Kbp) were identified which were previously unresolved via Illumina sequencing~\cite{Miranda2018}. These harboured replicons IncA/C2 or a dual replicon, IncFIIK and IncFIB. 
+In this use case, we have identified multiple megaplasmids ($\geq 100$Kbp), which were previously unresolved via Illumina sequencing~\cite{Miranda2018}. These harboured replicons IncA/C2 or a dual replicon, IncFIIK and IncFIB. 
 The IncA/C, IncF and IncN plasmids have been commonly associated with multidrug resistance~\cite{Carattoli2009M34}. 
 Although several plasmids in this study revealed similarity to previously reported isolates via NCBI, various sequences deviated. 
 In particular, the IncA/C2 plasmid exhibited multiple regions unique to these isolates. 
@@ -410,4 +410,4 @@ Several IncA/C2 megaplasmids have been previously described which harbour variou
 Prior studies have shown the IncFIIK and IncFIB replicons to localize on the same plasmid and also megaplasmids with multidrug resistance~\cite{Navon2017M6}. 
 The IncFIB$_{pQil}$ plasmid in this study contained various $\beta$-lactam resistance genes (blaKPC-2, blaOXA-9, blaTEM-1A) which has been identified previously~\cite{Chen2014M37}. Similarly, blaOXA-48 segregated with the IncL/M replicon~\cite{Poirel2012M38,Potron2014M39}, however, deviations in this plasmid were identified.
 
-The final assembly has been generated by using multiple methods available, in which \unicycler{} returned the most accurate contigs. \npscarf{} can produce assembly of highly continuity and decent quality but in some cases, due to its greedy approach, susceptible to mis-assemblies. Since  these mistakes can affect the fidelity of the results, \EG{} when studying the highly variant XDR plasmids, improvement in term of accuracy is needed for \npscarf{}. Methods to adopt assembly graph will be investigated on top of the original algorithm in the next chapter to serve this purpose. 
+The final assembly has been generated by using multiple methods available, in which \unicycler{} returned the most accurate contigs. \npscarf{} can produce assembly of highly continuity with decent quality, but susceptible to mis-assemblies in some cases due to its greedy approach. Since  these mistakes can affect the fidelity of the results, \EG{} when studying the highly variant XDR plasmids, improvement in term of accuracy is needed for \npscarf{}. Methods to adopt assembly graph will be investigated on top of the original algorithm in the next chapter to serve this purpose. 

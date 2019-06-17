@@ -1,0 +1,49 @@
+This thesis presents several advances to the state of the art in real time data processing for genome sequence data.
+Driven by new sequencing technologies this is an emerging area of research that can be expected to have large impact on the field of biology at some point in the future.
+The contributions described in this thesis include (1) an initial algorithm for real-time scaffolding of an existing short-read assembly (npScarf), (2) a real time nanopore barcode demultiplexer, (3) an assembly-graph aware variant of the algorithm from (1) which is considerably more complex, and (4) a method to segment the raw nanopore signal obtained from a special type of library prep that involves rolling circle replication to sequence many copies of single template molecules, thereby enabling higher single molecule consensus basecall accuracy.
+Each of these four contributions could be considered valuable and together they make a strong thesis.
+As a reviewer, I do not have much to complain about. I have only a small number of general concerns:
+
+First, throughout the thesis, various datasets are used to evaluate the algorithms that have been developed. Along the path of development, structural decisions get made and default parameter values get chosen. It is not uncommon for these decisions to be made in a way that fits them to the testing data that is in use during development. The result, can, in some circumstances, lead to unintentional overfitting of the resulting algorithm to the data that was available during development. Ideally, to get a candid and accurate estimate of how a new method performs, the performance as compared to other methods would be evaluated on a totally new data that was not available at the time of development. While I realise that it is probably not practical to generate and analyse new data as part of the revisions process, I do think it is important to add text that states clearly whether or not the testing data was held aside during the development process. 
+
+
+Second, there are a large number of typographical and grammatical issues throughout the document. While I was able to understand the meaning of the text in spite of these, a reader who is less familiar with the topic or perhaps less familiar with English than myself may struggle. I don't think it's essential to correct these as they are mostly cosmetic but I do want to highlight the fact that the readability could be improved.
+
+
+
+Specific concerns:
+
+Figure 1.5: I don't think "Amplification" is a universal step in sequencing. Perhaps "Library prep" should be used instead.
+
+page 14: "DNA sample is normally sheared by restriction enzymes" some people do this but isn't "normal". There are many ways to shear DNA. Sonication, Tagmentation, and more.
+
+page 14: "The rationale is to reduce the chance of missing pieces and also to cover the inevitable errors" this doesn't make sense to me. If I take it literally it sounds incorrect but maybe it's just not written in a way that I understand.
+
+page 20: I think "ABruijn" has been renamed as Flye?
+
+page 23: "each molecule progressing through the pore at 450Kbp per second" I think you mean 450bp / s, not kbp?
+
+page 32 bottom "Miniasm [42]" this is not a hybrid assembler. miniasm has no consensus module nor error correction.
+
+page 35: "mellalo-beta-lactamase" -> metallo-beta-lactamase
+
+page 42: what happened to the Canu+Pilon and Miniasm+Pilon assemblies for E. coli. With 67x coverage there should be enough to get asssemblies with these methods.
+
+page 59: Fig 3.2g "K. aeruginosa" -> "P. aeruginosa"
+
+
+Chapter 3: the design is sensible, supporting streaming to other applications. The benchmarking could be much better though. The problem with only measuring accuracy on the Staph aureus genome is that some barcode sequences might be much easier to resolve from nanopore data than other barcode sequences. By only evaluating accuracy of one we get a very limited view of the accuracy. I appreciate that the reason for doing this was that the other genomes are fairly similar to each other and so it is more difficult to establish ground truth assignments for the reads. However, due to the nature of bacterial pangenomes, each of these genomes is likely to have a large number of genes that are specific and unique to that genome. Reads containing these pangenome genes should be unambiguously assignable to that genome. While there may not be many strain-specific genes among the four K. pneumo strains, the other genomes surely have hundreds if not a thousand unique genes. This would allow at least some reads to be assigned to these other genomes and accuracy could be computed on this subset of assignable reads.
+
+page 83: KL on Poisson distributions is a nice idea for use with clustering. any idea how well this works?
+
+page 85: "Multiplicity estimation" some of this sounds similar to the methods implemented in Unicycler. Please cite if appropriate.
+
+Section 4.3: how are tandem repeats handled? Djikstra's shortest path algorithm is going to give an acyclic path, but the true genome could have a repeat contig occur multiple times in between two unique contigs. It's fine if this isn't handled, but I do think the text should be explicit about whether or not it's handled.
+
+
+p104: "plan infectious family" -> "plant infectious family"
+
+p112: algorithm 3, line 13, is this supposed to be SS(S,M)?
+
+
+

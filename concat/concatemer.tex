@@ -44,7 +44,7 @@ From the diagram in the bottom of Figure~\ref{fig:concat_rca}, multiple random p
 
 The RCA products are called concatemers as they are long concatemeric molecules consisting of consecutive copies of the target DNA sequence. Normally, restriction enzymes are used to chop them into separated monomers before taking further steps. For our method, concatemers are directly sequenced by MinION and computational methods are used afterward to detect such patterns.
 \paragraph{Viral samples}
-The viral genomes used in this study belonged to the plan infectious family \emph{Caullimoviridae}, or \emph{caulimovirids} with size varied around $7$-$9$Kbp.
+The viral genomes used in this study belonged to the plant infectious family \emph{Caullimoviridae}, or \emph{caulimovirids} with size varied around $7$-$9$Kbp.
 Amongst nine genera detected~\cite{Geering2010ST,Mollov2013LZ}, two of them were investigated, namely \emph{Badnavirus} and \emph{Caulimovirus}, represented by \emph{Banana streak MY virus} (BSMYV) and \emph{Cauliflower mosaic virus} (CaMV) respectively.
 
 \section{Bioinformatics analyses}
@@ -54,7 +54,7 @@ A multiplex sequencing has been conducted for 4 samples with the Rapid Barcode S
 \centering
 \caption{Viral samples subjected to MinION barcoding sequencing}
 \label{tab:viral_samples}
-\begin{tabular}{|l|l|l|r|r|}
+\begin{tabular}{l|l|l|r|r}
 \hline
 \textbf{Barcode} & \textbf{Sample} & \textbf{Description} & \textbf{Pass reads}  & \textbf{N50}    \\\hline
 08                  & CaMV+              & \emph{Cauliflower mosaic} virus  &   14,385   &      6,707 \\\hline
@@ -247,7 +247,7 @@ The values of $h(n)$ would fall in $(0,1]$ with $\forall n$, representing a norm
 }
 \Begin{
 \ACF{S,R} \tcp*{calculate ACF and assign to R}
-\ACF{S,M} \tcp*{calculate lag sum square and assign to M}
+\SS{S,M} \tcp*{calculate lag sum square and assign to M}
 $H[n]=\frac{\displaystyle 2R[n]}{\displaystyle M[n]}$, $\forall n=1 \ldots (L-1)$ \tcp*{calculate NSDF as in Equation~\ref{eq:nsdf}}
 \Return{$H$}
 }

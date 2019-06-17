@@ -6,7 +6,8 @@
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This chapter describes a unique streaming assembly strategy on MinION data that has been implemented in a tool named \npscarf{}. Its methodology allows completing the assembly in real-time together with the nanopore sequencing nature. Several experiments on different data sets are conducted for better illustrations of \npscarf{} performance and functionality. Comparisons with other methods indicate better quality from the results while at the same time, consume less resources and running time.
+This chapter describes a unique streaming assembly strategy on MinION data that has been implemented in a tool named \npscarf{}. Its methodology allows completing the assembly in real-time together with the nanopore sequencing nature. Several experiments on different data sets are conducted for better illustrations of \npscarf{} performance and functionality. 
+Comparisons with other methods indicate better quality from the results while at the same time, consume less resources and running time.
 
 These research findings have been published in a journal manuscript under the digital object identifier (DOI):$\mathtt{10.1038/ncomms14515}$. The manuscript will be reproduced with minor changes and reformatting for the whole content of this chapter.
 The Supplementary materials for this paper is shown in \App{app:npscarf}.
@@ -103,16 +104,8 @@ Hybrid assemblers, which combine error-prone long reads with highly accurate
 and cheaper short read sequence data, provide a more economical and efficient
 alternative for building complete genomes. They can be classified into three
 categories. \emph{de novo} methods such as Canu~\cite{BerlinKC2015} and
-Miniasm~\cite{Li2016} employ fast approximate approaches to assemble a skeleton
-of the genome using long reads. The skeleton, often as erroneous as the raw
-reads, is then polished with high quality short reads. On the other hand, tools
-in the \emph{error-correction} category (\EG, PBcR~\cite{KorenSW2012},
-Nanocorr~\cite{GoodwinGE2015} and NaS~\cite{MadouiEC2015}) correct long reads
-with high quality short reads before assembling the genome with the corrected
-long reads. Finally, the \emph{scaffolding} methods
-(SPAdes-hybrid~\cite{BankevichNA2012, AshtonND2015},
-SSPACE-LongRead~\cite{BoetzerP2014, KarlssonLS2015} and
-LINKS~\cite{WarrenYV2015}) use long reads to scaffold and fill in gaps in the
+miniasm/racon pipeline~\cite{Vaser2017racon} employ fast approximate approaches to assemble a skeleton of the genome using long reads. The skeleton, often as erroneous as the raw reads, is then polished with high quality short reads. On the other hand, tools in the \emph{error-correction} category (\EG, PBcR~\cite{KorenSW2012}, Nanocorr~\cite{GoodwinGE2015} and NaS~\cite{MadouiEC2015}) correct long reads with high quality short reads before assembling the genome with the corrected long reads. Finally, the \emph{scaffolding} methods (SPAdes-hybrid~\cite{BankevichNA2012, AshtonND2015},
+SSPACE-LongRead~\cite{BoetzerP2014, KarlssonLS2015} and LINKS~\cite{WarrenYV2015}) use long reads to scaffold and fill in gaps in the
 assemblies from short read sequencing.
 
 While these tools are reported to assemble high quality bacterial
@@ -247,7 +240,7 @@ IncFII(pCoo); pSM22  \\
 
 We assessed the performance of our algorithm for its ability to scaffold and complete the
 Illumina assemblies of two bacterial \emph{Klebsiella pneumoniae} strains, ATCC
-BAA-2146 (New Delhi mellalo-beta-lactamase (NDM-1) positive)
+BAA-2146 (New Delhi metallo-beta-lactamase (NDM-1) positive)
 and ATCC 13883 (type strain).
 We first sequenced the genomes of these strains with the Illumina MiSeq platform to 250-fold
 coverage and assembled them with SPAdes~\cite{BankevichNA2012}

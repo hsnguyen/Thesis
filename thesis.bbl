@@ -21,7 +21,7 @@ A.~Goffeau, B.~G. Barrell, H.~Bussey, R.~Davis, \emph{et~al.}
 \newblock Science \textbf{274}(5287), 546 (1996).
 
 \bibitem{Sequencing1998}
-T.~C. elegans Sequencing~Consortium.
+{The C. elegans Sequencing Consortium}.
 \newblock \emph{{Genome sequence of the nematode C.~elegans: A platform for
   investigating biology}}.
 \newblock Science \textbf{282}, 2012 (1998).
@@ -71,17 +71,6 @@ M.~Ronaghi, M.~Uhl{\'e}n, and P.~Nyren.
 \newblock \emph{A sequencing method based on real-time pyrophosphate}.
 \newblock Science \textbf{281}(5375), 363 (1998).
 
-\bibitem{Munroe2010third}
-D.~J. Munroe and T.~J. Harris.
-\newblock \emph{Third-generation sequencing fireworks at marco island}.
-\newblock Nature biotechnology \textbf{28}(5), 426 (2010).
-
-\bibitem{Bleidorn2016third}
-C.~Bleidorn.
-\newblock \emph{Third generation sequencing: technology and its potential
-  impact on evolutionary biodiversity research}.
-\newblock Systematics and biodiversity \textbf{14}(1), 1 (2016).
-
 \bibitem{Lee2013common}
 C.-Y. Lee, Y.-C. Chiu, L.-B. Wang, Y.-L. Kuo, E.~Y. Chuang, L.-C. Lai, and
   M.-H. Tsai.
@@ -94,155 +83,22 @@ E.~R. Mardis.
 \newblock \emph{Dna sequencing technologies: 2006--2016}.
 \newblock Nature protocols \textbf{12}(2), 213 (2017).
 
-\bibitem{Garibyan2013research}
-L.~Garibyan and N.~Avashia.
-\newblock \emph{Research techniques made simple: polymerase chain reaction
-  (pcr)}.
-\newblock The Journal of investigative dermatology \textbf{133}(3), e6 (2013).
+\bibitem{Philippidis2018top}
+A.~Philippidis.
+\newblock \emph{{TOP 10 Sequencing Companies: Plunging Cost, Wider Use of
+  Technology Help Drive NGS Growth}}.
+\newblock Genetic Engineering \& Biotechnology News \textbf{38}(9), 6 (2018).
 
-\bibitem{Tsai2010improving}
-I.~J. Tsai, T.~D. Otto, and M.~Berriman.
-\newblock \emph{Improving draft assemblies by iterative mapping and assembly of
-  short reads to eliminate gaps}.
-\newblock Genome biology \textbf{11}(4), R41 (2010).
+\bibitem{Munroe2010third}
+D.~J. Munroe and T.~J. Harris.
+\newblock \emph{Third-generation sequencing fireworks at marco island}.
+\newblock Nature biotechnology \textbf{28}(5), 426 (2010).
 
-\bibitem{Boetzer2012toward}
-M.~Boetzer and W.~Pirovano.
-\newblock \emph{Toward almost closed genomes with gapfiller}.
-\newblock Genome biology \textbf{13}(6), R56 (2012).
-
-\bibitem{Paulino2015sealer}
-D.~Paulino, R.~L. Warren, B.~P. Vandervalk, A.~Raymond, S.~D. Jackman, and
-  I.~Birol.
-\newblock \emph{Sealer: a scalable gap-closing application for finishing draft
-  genomes}.
-\newblock BMC bioinformatics \textbf{16}(1), 230 (2015).
-
-\bibitem{Liu2012}
-L.~Liu, Y.~Li, S.~Li, N.~Hu, Y.~He, R.~Pong, D.~Lin, L.~Lu, and M.~Law.
-\newblock \emph{Comparison of next-generation sequencing systems}.
-\newblock BioMed Research International \textbf{2012} (2012).
-
-\bibitem{MillerKS2010}
-J.~R. Miller, S.~Koren, and G.~Sutton.
-\newblock \emph{{Assembly Algorithms for Next-Generation Sequencing Data}}.
-\newblock Genomics \textbf{95}(6), 315 (2010).
-
-\bibitem{LiZ2012}
-Z.~Li, Y.~Chen, D.~Mu, J.~Yuan, Y.~Shi, H.~Zhang, J.~Gan, N.~Li, X.~Hu, B.~Liu,
-  \emph{et~al.}
-\newblock \emph{Comparison of the two major classes of assembly algorithms:
-  overlap--layout--consensus and de-bruijn-graph}.
-\newblock Briefings in functional genomics \textbf{11}(1), 25 (2012).
-
-\bibitem{Sutton1995}
-G.~G. Sutton, O.~White, M.~D. Adams, and A.~R. Kerlavage.
-\newblock \emph{{TIGR Assembler: A new tool for assembling large shotgun
-  sequencing projects}}.
-\newblock Genome Science and Technology \textbf{1}(1), 9 (1995).
-
-\bibitem{Green1999}
-P.~Green.
-\newblock \emph{Documentation for {PHRAP} and {CROSSMATCH} (version 0.990319)}.
-\newblock University of Washington, Seattle  (1999).
-
-\bibitem{Huang1999}
-X.~Huang and A.~Madan.
-\newblock \emph{{CAP3: A DNA sequence assembly program}}.
-\newblock Genome research \textbf{9}(9), 868 (1999).
-
-\bibitem{Simpson2015}
-J.~T. Simpson and M.~Pop.
-\newblock \emph{The theory and practice of genome sequence assembly}.
-\newblock Annual review of genomics and human genetics \textbf{16}, 153 (2015).
-
-\bibitem{Staden1979}
-R.~Staden.
-\newblock \emph{A strategy of dna sequencing employing computer programs}.
-\newblock Nucleic acids research \textbf{6}(7), 2601 (1979).
-
-\bibitem{Idury1995}
-R.~M. Idury and M.~S. Waterman.
-\newblock \emph{A new algorithm for dna sequence assembly}.
-\newblock Journal of computational biology \textbf{2}(2), 291 (1995).
-
-\bibitem{PevznerTW2001}
-P.~A. Pevzner, H.~Tang, and M.~S. Waterman.
-\newblock \emph{{An Eulerian Path Approach to DNA Fragment Assembly}}.
-\newblock Proceedings of the National Academy of Sciences \textbf{98}(17), 9748
-  (2001).
-
-\bibitem{FerraginaM2005}
-P.~Ferragina and G.~Manzini.
-\newblock \emph{{Indexing Compressed Text}}.
-\newblock Journal of the ACM \textbf{52}(4), 552 (2005).
-
-\bibitem{Ning2001}
-Z.~Ning, A.~J. Cox, and J.~C. Mullikin.
-\newblock \emph{{SSAHA}: a fast search method for large {DNA} databases}.
-\newblock Genome research \textbf{11}(10), 1725 (2001).
-
-\bibitem{ZerbinoB2008}
-D.~R. Zerbino and E.~Birney.
-\newblock \emph{{Velvet: Algorithms for de novo short read assembly using de
-  Bruijn graphs}}.
-\newblock Genome Research \textbf{18}(5), 821 (2008).
-
-\bibitem{BankevichNA2012}
-A.~Bankevich, S.~Nurk, D.~Antipov, A.~A. Gurevich, M.~Dvorkin, A.~S. Kulikov,
-  V.~M. Lesin, S.~I. Nikolenko, S.~Pham, A.~D. Prjibelski, A.~V. Pyshkin, A.~V.
-  Sirotkin, N.~Vyahhi, G.~Tesler, M.~A. Alekseyev, and P.~A. Pevzner.
-\newblock \emph{{SPAdes: A New Genome Assembly Algorithm and Its Applications
-  to Single-Cell Sequencing}}.
-\newblock Journal of Computational Biology \textbf{19}(5), 455 (2012).
-
-\bibitem{Simpson2009}
-J.~T. Simpson, K.~Wong, S.~D. Jackman, J.~E. Schein, S.~J.~M. Jones, and
-  I.~Birol.
-\newblock \emph{{ABySS: A parallel assembler for short read sequence data}}.
-\newblock Genome Research \textbf{19}(6), 1117 (2009).
-
-\bibitem{Magoc2013}
-T.~Magoc, S.~Pabinger, S.~Canzar, X.~Liu, Q.~Su, D.~Puiu, L.~J. Tallon, and
-  S.~L. Salzberg.
-\newblock \emph{{GAGE-B: An evaluation of genome assemblers for bacterial
-  organisms}}.
-\newblock Bioinformatics \textbf{29}(14), 1718 (2013).
-
-\bibitem{KorenP2015}
-S.~Koren and A.~M. Phillippy.
-\newblock \emph{{One chromosome, one contig: complete microbial genomes from
-  long-read sequencing and assembly}}.
-\newblock Current Opinion in Microbiology \textbf{23}, 110 (2015).
-
-\bibitem{BashirKR2013}
-A.~Bashir, A.~A. Klammer, W.~P. Robins, C.-S. Chin, D.~Webster, E.~Paxinos,
-  D.~Hsu, M.~Ashby, S.~Wang, P.~Peluso, R.~Sebra, J.~Sorenson, J.~Bullard,
-  J.~Yen, M.~Valdovino, E.~Mollova, K.~Luong, S.~Lin, B.~LaMay, A.~Joshi,
-  L.~Rowe, M.~Frace, C.~L. Tarr, M.~Turnsek, B.~M. Davis, A.~Kasarskis, J.~J.
-  Mekalanos, M.~K. Waldor, and E.~E. Schadt.
-\newblock \emph{{A Hybrid Approach for the Automated Finishing of Bacterial
-  Genomes}}.
-\newblock Nature Biotechnology \textbf{30}(7), 701 (2012).
-
-\bibitem{KarlssonLS2015}
-E.~Karlsson, A.~L{\"{a}}rkeryd, A.~Sj{\"{o}}din, M.~Forsman, and P.~Stenberg.
-\newblock \emph{{Scaffolding of a bacterial genome using MinION nanopore
-  sequencing}}.
-\newblock Scientific Reports \textbf{5}, 11996 (2015).
-
-\bibitem{HudsonBM2014}
-C.~M. Hudson, Z.~W. Bent, R.~J. Meagher, and K.~P. Williams.
-\newblock \emph{{Resistance determinants and mobile genetic elements of an
-  NDM-1-encoding Klebsiella pneumoniae strain.}}
-\newblock PloS one \textbf{9}(6), e99209 (2014).
-
-\bibitem{AshtonND2015}
-P.~M. Ashton, S.~Nair, T.~Dallman, S.~Rubino, W.~Rabsch, S.~Mwaigwisya,
-  J.~Wain, and J.~O'Grady.
-\newblock \emph{{MinION nanopore sequencing identifies the position and
-  structure of a bacterial antibiotic resistance island}}.
-\newblock Nature Biotechnology \textbf{33}(3), 296 (2015).
+\bibitem{Bleidorn2016third}
+C.~Bleidorn.
+\newblock \emph{Third generation sequencing: technology and its potential
+  impact on evolutionary biodiversity research}.
+\newblock Systematics and biodiversity \textbf{14}(1), 1 (2016).
 
 \bibitem{Rhoads2015}
 A.~Rhoads and K.~F. Au.
@@ -333,6 +189,12 @@ H.~Teng, M.~D. Cao, M.~B. Hall, T.~Duarte, S.~Wang, and L.~J. Coin.
   nucleotide sequence using deep learning}}.
 \newblock GigaScience \textbf{7}(5), giy037 (2018).
 
+\bibitem{Nicholls2019zymo}
+S.~M. Nicholls, J.~C. Quick, S.~Tang, and N.~J. Loman.
+\newblock \emph{Ultra-deep, long-read nanopore sequencing of mock microbial
+  community standards}.
+\newblock GigaScience \textbf{8}(5), giz043 (2019).
+
 \bibitem{CaoGC2016}
 M.~D. Cao, D.~Ganesamoorthy, M.~A. Cooper, and L.~J.~M. Coin.
 \newblock \emph{{Realtime analysis and visualization of MinION sequencing data
@@ -406,6 +268,20 @@ H.~Li.
   noisy long sequences}}.
 \newblock Bioinformatics \textbf{32}(14), 2103 (2016).
 
+\bibitem{Ondov2016mash}
+B.~D. Ondov, T.~J. Treangen, P.~Melsted, A.~B. Mallonee, N.~H. Bergman,
+  S.~Koren, and A.~M. Phillippy.
+\newblock \emph{{Mash: fast genome and metagenome distance estimation using
+  MinHash}}.
+\newblock Genome biology \textbf{17}(1), 132 (2016).
+
+\bibitem{BerlinKC2015}
+K.~Berlin, S.~Koren, C.-S. Chin, J.~P. Drake, J.~M. Landolin, and A.~M.
+  Phillippy.
+\newblock \emph{{Assembling large genomes with single-molecule sequencing and
+  locality-sensitive hashing}}.
+\newblock Nature Biotechnology \textbf{33}(6), 623 (2015).
+
 \bibitem{Lee2002multiple}
 C.~Lee, C.~Grasso, and M.~F. Sharlow.
 \newblock \emph{Multiple sequence alignment using partial order graphs}.
@@ -429,6 +305,156 @@ R.~Vaser, I.~Sovi{\'c}, N.~Nagarajan, and M.~{\v{S}}iki{\'c}.
 \newblock \emph{Fast and accurate de novo genome assembly from long uncorrected
   reads}.
 \newblock Genome research  (2017).
+
+\bibitem{Garibyan2013research}
+L.~Garibyan and N.~Avashia.
+\newblock \emph{Research techniques made simple: polymerase chain reaction
+  (pcr)}.
+\newblock The Journal of investigative dermatology \textbf{133}(3), e6 (2013).
+
+\bibitem{Tsai2010improving}
+I.~J. Tsai, T.~D. Otto, and M.~Berriman.
+\newblock \emph{Improving draft assemblies by iterative mapping and assembly of
+  short reads to eliminate gaps}.
+\newblock Genome biology \textbf{11}(4), R41 (2010).
+
+\bibitem{Boetzer2012toward}
+M.~Boetzer and W.~Pirovano.
+\newblock \emph{Toward almost closed genomes with gapfiller}.
+\newblock Genome biology \textbf{13}(6), R56 (2012).
+
+\bibitem{Paulino2015sealer}
+D.~Paulino, R.~L. Warren, B.~P. Vandervalk, A.~Raymond, S.~D. Jackman, and
+  I.~Birol.
+\newblock \emph{Sealer: a scalable gap-closing application for finishing draft
+  genomes}.
+\newblock BMC bioinformatics \textbf{16}(1), 230 (2015).
+
+\bibitem{Liu2012}
+L.~Liu, Y.~Li, S.~Li, N.~Hu, Y.~He, R.~Pong, D.~Lin, L.~Lu, and M.~Law.
+\newblock \emph{Comparison of next-generation sequencing systems}.
+\newblock BioMed Research International \textbf{2012} (2012).
+
+\bibitem{MillerKS2010}
+J.~R. Miller, S.~Koren, and G.~Sutton.
+\newblock \emph{{Assembly Algorithms for Next-Generation Sequencing Data}}.
+\newblock Genomics \textbf{95}(6), 315 (2010).
+
+\bibitem{LiZ2012}
+Z.~Li, Y.~Chen, D.~Mu, J.~Yuan, Y.~Shi, H.~Zhang, J.~Gan, N.~Li, X.~Hu, B.~Liu,
+  \emph{et~al.}
+\newblock \emph{Comparison of the two major classes of assembly algorithms:
+  overlap--layout--consensus and de-bruijn-graph}.
+\newblock Briefings in functional genomics \textbf{11}(1), 25 (2012).
+
+\bibitem{Sutton1995}
+G.~G. Sutton, O.~White, M.~D. Adams, and A.~R. Kerlavage.
+\newblock \emph{{TIGR Assembler: A new tool for assembling large shotgun
+  sequencing projects}}.
+\newblock Genome Science and Technology \textbf{1}(1), 9 (1995).
+
+\bibitem{Green1999}
+P.~Green.
+\newblock \emph{Documentation for {PHRAP} and {CROSSMATCH} (version 0.990319)}.
+\newblock University of Washington, Seattle  (1999).
+
+\bibitem{Huang1999}
+X.~Huang and A.~Madan.
+\newblock \emph{{CAP3: A DNA sequence assembly program}}.
+\newblock Genome research \textbf{9}(9), 868 (1999).
+
+\bibitem{Simpson2015}
+J.~T. Simpson and M.~Pop.
+\newblock \emph{The theory and practice of genome sequence assembly}.
+\newblock Annual review of genomics and human genetics \textbf{16}, 153 (2015).
+
+\bibitem{Staden1979}
+R.~Staden.
+\newblock \emph{A strategy of dna sequencing employing computer programs}.
+\newblock Nucleic acids research \textbf{6}(7), 2601 (1979).
+
+\bibitem{Idury1995}
+R.~M. Idury and M.~S. Waterman.
+\newblock \emph{A new algorithm for dna sequence assembly}.
+\newblock Journal of computational biology \textbf{2}(2), 291 (1995).
+
+\bibitem{PevznerTW2001}
+P.~A. Pevzner, H.~Tang, and M.~S. Waterman.
+\newblock \emph{{An Eulerian Path Approach to DNA Fragment Assembly}}.
+\newblock Proceedings of the National Academy of Sciences \textbf{98}(17), 9748
+  (2001).
+
+\bibitem{FerraginaM2005}
+P.~Ferragina and G.~Manzini.
+\newblock \emph{{Indexing Compressed Text}}.
+\newblock Journal of the ACM \textbf{52}(4), 552 (2005).
+
+\bibitem{Ning2001}
+Z.~Ning, A.~J. Cox, and J.~C. Mullikin.
+\newblock \emph{{SSAHA}: a fast search method for large {DNA} databases}.
+\newblock Genome research \textbf{11}(10), 1725 (2001).
+
+\bibitem{Zerbino2008}
+D.~R. Zerbino and E.~Birney.
+\newblock \emph{{Velvet: algorithms for de novo short read assembly using de
+  Bruijn graphs.}}
+\newblock Genome research \textbf{18}(5), 821 (2008).
+
+\bibitem{BankevichNA2012}
+A.~Bankevich, S.~Nurk, D.~Antipov, A.~A. Gurevich, M.~Dvorkin, A.~S. Kulikov,
+  V.~M. Lesin, S.~I. Nikolenko, S.~Pham, A.~D. Prjibelski, A.~V. Pyshkin, A.~V.
+  Sirotkin, N.~Vyahhi, G.~Tesler, M.~A. Alekseyev, and P.~A. Pevzner.
+\newblock \emph{{SPAdes: A New Genome Assembly Algorithm and Its Applications
+  to Single-Cell Sequencing}}.
+\newblock Journal of Computational Biology \textbf{19}(5), 455 (2012).
+
+\bibitem{Simpson2009}
+J.~T. Simpson, K.~Wong, S.~D. Jackman, J.~E. Schein, S.~J.~M. Jones, and
+  I.~Birol.
+\newblock \emph{{ABySS: A parallel assembler for short read sequence data}}.
+\newblock Genome Research \textbf{19}(6), 1117 (2009).
+
+\bibitem{Magoc2013}
+T.~Magoc, S.~Pabinger, S.~Canzar, X.~Liu, Q.~Su, D.~Puiu, L.~J. Tallon, and
+  S.~L. Salzberg.
+\newblock \emph{{GAGE-B: An evaluation of genome assemblers for bacterial
+  organisms}}.
+\newblock Bioinformatics \textbf{29}(14), 1718 (2013).
+
+\bibitem{KorenP2015}
+S.~Koren and A.~M. Phillippy.
+\newblock \emph{{One chromosome, one contig: complete microbial genomes from
+  long-read sequencing and assembly}}.
+\newblock Current Opinion in Microbiology \textbf{23}, 110 (2015).
+
+\bibitem{BashirKR2013}
+A.~Bashir, A.~A. Klammer, W.~P. Robins, C.-S. Chin, D.~Webster, E.~Paxinos,
+  D.~Hsu, M.~Ashby, S.~Wang, P.~Peluso, R.~Sebra, J.~Sorenson, J.~Bullard,
+  J.~Yen, M.~Valdovino, E.~Mollova, K.~Luong, S.~Lin, B.~LaMay, A.~Joshi,
+  L.~Rowe, M.~Frace, C.~L. Tarr, M.~Turnsek, B.~M. Davis, A.~Kasarskis, J.~J.
+  Mekalanos, M.~K. Waldor, and E.~E. Schadt.
+\newblock \emph{{A Hybrid Approach for the Automated Finishing of Bacterial
+  Genomes}}.
+\newblock Nature Biotechnology \textbf{30}(7), 701 (2012).
+
+\bibitem{KarlssonLS2015}
+E.~Karlsson, A.~L{\"{a}}rkeryd, A.~Sj{\"{o}}din, M.~Forsman, and P.~Stenberg.
+\newblock \emph{{Scaffolding of a bacterial genome using MinION nanopore
+  sequencing}}.
+\newblock Scientific Reports \textbf{5}, 11996 (2015).
+
+\bibitem{HudsonBM2014}
+C.~M. Hudson, Z.~W. Bent, R.~J. Meagher, and K.~P. Williams.
+\newblock \emph{{Resistance determinants and mobile genetic elements of an
+  NDM-1-encoding Klebsiella pneumoniae strain.}}
+\newblock PloS one \textbf{9}(6), e99209 (2014).
+
+\bibitem{AshtonND2015}
+P.~M. Ashton, S.~Nair, T.~Dallman, S.~Rubino, W.~Rabsch, S.~Mwaigwisya,
+  J.~Wain, and J.~O'Grady.
+\newblock \emph{{MinION nanopore sequencing identifies the position and
+  structure of a bacterial antibiotic resistance island}}.
+\newblock Nature Biotechnology \textbf{33}(3), 296 (2015).
 
 \bibitem{Jayakumar2017compare}
 V.~Jayakumar and Y.~Sakakibara.
@@ -475,6 +501,11 @@ Y.~Lin, J.~Yuan, M.~Kolmogorov, M.~W. Shen, M.~Chaisson, and P.~A. Pevzner.
 \newblock Proceedings of the National Academy of Sciences \textbf{113}(52),
   E8396 (2016).
 
+\bibitem{Kolmogorov2019Flye}
+M.~Kolmogorov, J.~Yuan, Y.~Lin, and P.~A. Pevzner.
+\newblock \emph{{Assembly of long, error-prone reads using repeat graphs}}.
+\newblock Nature biotechnology \textbf{37}(5), 540 (2019).
+
 \bibitem{DeshpandeFP2013}
 V.~Deshpande, E.~D.~K. Fung, S.~Pham, and V.~Bafna.
 \newblock \emph{{Cerulean: A Hybrid Assembly Using High Throughput Short and
@@ -509,6 +540,20 @@ R.~R. Wick, L.~M. Judd, C.~L. Gorrie, and K.~E. Holt.
   long sequencing reads}.
 \newblock PLOS Computational Biology \textbf{13}(6), e1005595 (2017).
 
+\bibitem{Phillips1966programming}
+D.~Phillips.
+\newblock \emph{{Programming Real-Time Computer Systems}} (1966).
+
+\bibitem{Ben2006principles}
+M.~Ben-Ari and M.~Ben-Ar{\^\i}.
+\newblock \emph{{Principles of concurrent and distributed programming}}
+  (Pearson Education, 2006).
+
+\bibitem{Croushore2011frontiers}
+D.~Croushore.
+\newblock \emph{{Frontiers of real-time data analysis}}.
+\newblock Journal of economic literature \textbf{49}(1), 72 (2011).
+
 \bibitem{QuickAC2015}
 J.~Quick, P.~Ashton, S.~Calus, C.~Chatt, S.~Gossain, J.~Hawker, S.~Nair,
   K.~Neal, K.~Nye, T.~Peters, E.~{De Pinna}, E.~Robinson, K.~Struthers,
@@ -537,11 +582,12 @@ H.~S. Edwards, R.~Krishnakumar, A.~Sinha, S.~W. Bird, K.~D. Patel, and M.~S.
   basecall and reference-informed criteria}.
 \newblock bioRxiv p. 460014 (2018).
 
-\bibitem{CaoGE2015}
-M.~D. Cao, D.~Ganesamoorthy, A.~Elliott, H.~Zhang, M.~Cooper, and L.~Coin.
+\bibitem{CaoGE2016}
+M.~D. Cao, D.~Ganesamoorthy, A.~G. Elliott, H.~Zhang, M.~A. Cooper, and L.~J.
+  Coin.
 \newblock \emph{{Streaming algorithms for identification of pathogens and
   antibiotic resistance potential from real-time MinIONTM sequencing}}.
-\newblock bioRxiv  (2015).
+\newblock GigaScience \textbf{5}(1), 32 (2016).
 
 \bibitem{Bialasiewicz2018rapid}
 S.~Bialasiewicz, T.~P. Duarte, S.~H. Nguyen, V.~Sukumaran, A.~Stewart,
@@ -586,13 +632,6 @@ D.~Stoddart, A.~J. Heron, E.~Mikhailova, G.~Maglia, and H.~Bayley.
 \newblock Proceedings of the National Academy of Sciences of the United States
   of America \textbf{106}(19), 7702 (2009).
 
-\bibitem{BerlinKC2015}
-K.~Berlin, S.~Koren, C.-S. Chin, J.~P. Drake, J.~M. Landolin, and A.~M.
-  Phillippy.
-\newblock \emph{{Assembling large genomes with single-molecule sequencing and
-  locality-sensitive hashing}}.
-\newblock Nature Biotechnology \textbf{33}(6), 623 (2015).
-
 \bibitem{Castro-WallaceCJ2016}
 S.~L. Castro-Wallace, C.~Y. Chiu, K.~K. John, S.~E. Stahl, K.~H. Rubins,
   A.~B.~R. McIntyre, J.~P. Dworkin, M.~L. Lupisella, D.~J. Smith, D.~J. Botkin,
@@ -615,13 +654,6 @@ T.~J. Treangen and S.~L. Salzberg.
 \newblock \emph{{Repetitive DNA and Next-generation Sequencing: Computational
   Challenges and Solutions}}.
 \newblock Nature Reviews Genetics \textbf{13}(1), 36 (2012).
-
-\bibitem{CaoGE2016}
-M.~D. Cao, D.~Ganesamoorthy, A.~G. Elliott, H.~Zhang, M.~A. Cooper, and L.~J.
-  Coin.
-\newblock \emph{{Streaming algorithms for identification of pathogens and
-  antibiotic resistance potential from real-time MinIONTM sequencing}}.
-\newblock GigaScience \textbf{5}(1), 32 (2016).
 
 \bibitem{LomanQ2014}
 N.~J. Loman and A.~R. Quinlan.
@@ -709,11 +741,207 @@ E.~Zankari, H.~Hasman, S.~Cosentino, M.~Vestergaard, S.~Rasmussen, O.~Lund,
 \newblock \emph{{Identification of Acquired Antimicrobial Resistance Genes}}.
 \newblock Journal of Antimicrobial Chemotherapy \textbf{67}(11), 2640 (2012).
 
-\bibitem{Zerbino2008}
-D.~R. Zerbino and E.~Birney.
-\newblock \emph{{Velvet: algorithms for de novo short read assembly using de
-  Bruijn graphs.}}
-\newblock Genome research \textbf{18}(5), 821 (2008).
+\bibitem{Van2017rapid}
+E.~van~der Helm, L.~Imamovic, M.~M. Hashim~Ellabaan, W.~van Schaik, A.~Koza,
+  and M.~O. Sommer.
+\newblock \emph{Rapid resistome mapping using nanopore sequencing}.
+\newblock Nucleic acids research \textbf{45}(8), e61 (2017).
+
+\bibitem{Gotoh1982improved}
+O.~Gotoh.
+\newblock \emph{An improved algorithm for matching biological sequences}.
+\newblock Journal of molecular biology \textbf{162}(3), 705 (1982).
+
+\bibitem{Miranda2018}
+M.~E. Pitt, A.~G. Elliott, M.~D. Cao, D.~Ganesamoorthy, I.~Karaiskos,
+  H.~Giamarellou, C.~S. Abboud, M.~A. Blaskovich, M.~A. Cooper, and L.~J. Coin.
+\newblock \emph{Multifactorial chromosomal variants regulate polymyxin
+  resistance in extensively drug-resistant klebsiella pneumoniae}.
+\newblock Microbial genomics \textbf{4}(3) (2018).
+
+\bibitem{CaoGE2015}
+M.~D. Cao, D.~Ganesamoorthy, A.~Elliott, H.~Zhang, M.~Cooper, and L.~Coin.
+\newblock \emph{{Streaming algorithms for identification of pathogens and
+  antibiotic resistance potential from real-time MinIONTM sequencing}}.
+\newblock bioRxiv  (2015).
+
+\bibitem{Martin2018M1}
+R.~M. Martin and M.~A. Bachman.
+\newblock \emph{Colonization, infection, and the accessory genome of
+  {Klebsiella pneumoniae}}.
+\newblock Frontiers in cellular and infection microbiology \textbf{8}, 4
+  (2018).
+
+\bibitem{Magill2014M2}
+S.~S. Magill, J.~R. Edwards, W.~Bamberg, Z.~G. Beldavs, G.~Dumyati, M.~A.
+  Kainer, R.~Lynfield, M.~Maloney, L.~McAllister-Hollod, J.~Nadle,
+  \emph{et~al.}
+\newblock \emph{Multistate point-prevalence survey of health care--associated
+  infections}.
+\newblock New England Journal of Medicine \textbf{370}(13), 1198 (2014).
+
+\bibitem{Kalanuria2014M3}
+A.~A. Kalanuria, W.~Zai, and M.~Mirski.
+\newblock \emph{Ventilator-associated pneumonia in the {ICU}}.
+\newblock Critical care \textbf{18}(2), 208 (2014).
+
+\bibitem{Talha2009M4}
+K.~Talha, Z.~Hasan, F.~Selina, and M.~Palash.
+\newblock \emph{Organisms associated with ventilator associated pneumonia in
+  intensive care unit}.
+\newblock Mymensingh medical journal: MMJ \textbf{18}(1 Suppl), S93 (2009).
+
+\bibitem{Podschun1998M5}
+R.~Podschun and U.~Ullmann.
+\newblock \emph{Klebsiella spp. as nosocomial pathogens: epidemiology,
+  taxonomy, typing methods, and pathogenicity factors}.
+\newblock Clinical microbiology reviews \textbf{11}(4), 589 (1998).
+
+\bibitem{Karaiskos2014M7}
+I.~Karaiskos and H.~Giamarellou.
+\newblock \emph{{Multidrug-resistant and extensively drug-resistant
+  Gram-negative pathogens: current and emerging therapeutic approaches}}.
+\newblock Expert opinion on pharmacotherapy \textbf{15}(10), 1351 (2014).
+
+\bibitem{HudsonBMW2014}
+C.~M. Hudson, Z.~W. Bent, R.~J. Meagher, and K.~P. Williams.
+\newblock \emph{{Resistance Determinants and Mobile Genetic Elements of an
+  NDM-1 Encoding Klebsiella pneumoniae Strain}}.
+\newblock PLoS ONE \textbf{9}(6), e99209 (2014).
+
+\bibitem{Navon2017M6}
+S.~Navon-Venezia, K.~Kondratyeva, and A.~Carattoli.
+\newblock \emph{{Klebsiella pneumoniae: a major worldwide source and shuttle
+  for antibiotic resistance}}.
+\newblock FEMS microbiology reviews \textbf{41}(3), 252 (2017).
+
+\bibitem{Chen2017M8}
+L.~Chen, R.~Todd, J.~Kiehlbauch, M.~Walters, and A.~Kallen.
+\newblock \emph{{Notes from the Field: Pan-Resistant New Delhi
+  Metallo-Beta-Lactamase-Producing Klebsiella pneumoniae-Washoe County, Nevada,
+  2016}}.
+\newblock MMWR. Morbidity and mortality weekly report \textbf{66}(1), 33
+  (2017).
+
+\bibitem{Zowawi2015}
+H.~M. Zowawi, B.~M. Forde, M.~Alfaresi, A.~Alzarouni, Y.~Farahat, T.-M. Chong,
+  W.-F. Yin, K.-G. Chan, J.~Li, M.~A. Schembri, S.~A. Beatson, and D.~L.
+  Paterson.
+\newblock \emph{{Stepwise evolution of pandrug-resistance in Klebsiella
+  pneumoniae}}.
+\newblock Scientific Reports \textbf{5}, 15082 (2015).
+
+\bibitem{sommer2017M10}
+M.~O. Sommer, C.~Munck, R.~V. Toft-Kehler, and D.~I. Andersson.
+\newblock \emph{Prediction of antibiotic resistance: time for a new preclinical
+  paradigm?}
+\newblock Nature Reviews Microbiology \textbf{15}(11), 689 (2017).
+
+\bibitem{Gardy2018M11}
+J.~L. Gardy and N.~J. Loman.
+\newblock \emph{Towards a genomics-informed, real-time, global pathogen
+  surveillance system}.
+\newblock Nature Reviews Genetics \textbf{19}(1), 9 (2018).
+
+\bibitem{Lemon2017M15}
+J.~K. Lemon, P.~P. Khil, K.~M. Frank, and J.~P. Dekker.
+\newblock \emph{Rapid nanopore sequencing of plasmids and resistance gene
+  detection in clinical isolates}.
+\newblock Journal of clinical microbiology pp. JCM--01069 (2017).
+
+\bibitem{Votintseva2017M16}
+A.~A. Votintseva, P.~Bradley, L.~Pankhurst, C.~del Ojo~Elias, M.~Loose,
+  K.~Nilgiriwala, A.~Chatterjee, E.~G. Smith, N.~Sanderson, T.~M. Walker,
+  \emph{et~al.}
+\newblock \emph{Same-day diagnostic and surveillance data for tuberculosis via
+  whole genome sequencing of direct respiratory samples.}
+\newblock Journal of clinical microbiology pp. JCM--02483 (2017).
+
+\bibitem{Wick2017M12}
+R.~R. Wick, L.~M. Judd, C.~L. Gorrie, and K.~E. Holt.
+\newblock \emph{{Completing bacterial genome assemblies with multiplex MinION
+  sequencing}}.
+\newblock Microbial genomics \textbf{3}(10) (2017).
+
+\bibitem{Li2018M13}
+R.~Li, M.~Xie, N.~Dong, D.~Lin, X.~Yang, M.~H.~Y. Wong, E.~W.-C. Chan, and
+  S.~Chen.
+\newblock \emph{{Efficient generation of complete sequences of MDR-encoding
+  plasmids by rapid assembly of MinION barcoding sequencing data}}.
+\newblock GigaScience \textbf{7}(3), gix132 (2018).
+
+\bibitem{George2017M14}
+S.~George, L.~Pankhurst, A.~Hubbard, A.~Votintseva, N.~Stoesser, A.~E.
+  Sheppard, A.~Mathers, R.~Norris, I.~Navickaite, C.~Eaton, \emph{et~al.}
+\newblock \emph{{Resolving plasmid structures in Enterobacteriaceae using the
+  MinION nanopore sequencer: assessment of MinION and MinION/Illumina hybrid
+  data assembly approaches}}.
+\newblock Microbial genomics \textbf{3}(8) (2017).
+
+\bibitem{Darling2011mauve}
+A.~E. Darling, A.~Tritt, J.~A. Eisen, and M.~T. Facciotti.
+\newblock \emph{Mauve assembly metrics}.
+\newblock Bioinformatics \textbf{27}(19), 2756 (2011).
+
+\bibitem{Robinson2011IGV}
+J.~T. Robinson, H.~Thorvaldsd{\'o}ttir, W.~Winckler, M.~Guttman, E.~S. Lander,
+  G.~Getz, and J.~P. Mesirov.
+\newblock \emph{Integrative genomics viewer}.
+\newblock Nature biotechnology \textbf{29}(1), 24 (2011).
+
+\bibitem{Thorvaldsdottir2013IGV}
+H.~Thorvaldsd{\'o}ttir, J.~T. Robinson, and J.~P. Mesirov.
+\newblock \emph{{Integrative Genomics Viewer (IGV): high-performance genomics
+  data visualization and exploration}}.
+\newblock Briefings in bioinformatics \textbf{14}(2), 178 (2013).
+
+\bibitem{Carattoli2014}
+A.~Carattoli, E.~Zankari, A.~Garc{\`\i}a-Fernandez, M.~V. Larsen, O.~Lund,
+  L.~Villa, F.~M. Aarestrup, and H.~Hasman.
+\newblock \emph{Plasmidfinder and pmlst: in silico detection and typing of
+  plasmids}.
+\newblock Antimicrobial agents and chemotherapy pp. AAC--02412 (2014).
+
+\bibitem{Carattoli2009M34}
+A.~Carattoli.
+\newblock \emph{{Resistance plasmid families in Enterobacteriaceae}}.
+\newblock Antimicrobial agents and chemotherapy \textbf{53}(6), 2227 (2009).
+
+\bibitem{Desmet2018M35}
+S.~Desmet, S.~Nepal, J.~M. van Dijl, M.~Van~Ranst, M.~A. Chlebowicz, J.~W.
+  Rossen, J.~K. Van~Houdt, P.~Maes, K.~Lagrou, and E.~Bathoorn.
+\newblock \emph{{Antibiotic Resistance Plasmids Cointegrated into a Megaplasmid
+  Harboring the blaOXA-427 Carbapenemase Gene}}.
+\newblock Antimicrobial agents and chemotherapy \textbf{62}(3), e01448 (2018).
+
+\bibitem{Papagiannitsis2016cM36}
+C.~C. Papagiannitsis, M.~Dolejska, R.~Izdebski, P.~Giakkoupi,
+  A.~Sk{\'a}lov{\'a}, K.~Chud{\v{e}}jov{\'a}, H.~Dobiasova, A.~C. Vatopoulos,
+  L.~P. Derde, M.~J. Bonten, \emph{et~al.}
+\newblock \emph{{Characterisation of IncA/C2 plasmids carrying an In416-like
+  integron with the blaVIM-19 gene from Klebsiella pneumoniae ST383 of Greek
+  origin}}.
+\newblock International journal of antimicrobial agents \textbf{47}(2), 158
+  (2016).
+
+\bibitem{Chen2014M37}
+L.~Chen, K.~D. Chavda, R.~G. Melano, M.~R. Jacobs, B.~Koll, T.~Hong, A.~D.
+  Rojtman, M.~H. Levi, R.~A. Bonomo, and B.~N. Kreiswirth.
+\newblock \emph{{Comparative genomic analysis of KPC-encoding pKpQIL-like
+  plasmids and their distribution in New Jersey and New York hospitals}}.
+\newblock Antimicrobial agents and chemotherapy \textbf{58}(5), 2871 (2014).
+
+\bibitem{Poirel2012M38}
+L.~Poirel, R.~A. Bonnin, and P.~Nordmann.
+\newblock \emph{{Genetic features of the widespread plasmid coding for the
+  carbapenemase OXA-48}}.
+\newblock Antimicrobial agents and chemotherapy \textbf{56}(1), 559 (2012).
+
+\bibitem{Potron2014M39}
+A.~Potron, L.~Poirel, and P.~Nordmann.
+\newblock \emph{{Derepressed transfer properties leading to the efficient
+  spread of the plasmid encoding carbapenemase OXA-48}}.
+\newblock Antimicrobial agents and chemotherapy \textbf{58}(1), 467 (2014).
 
 \bibitem{LassmannFS2009}
 T.~Lassmann, O.~Frings, and E.~L.~L. Sonnhammer.
@@ -721,11 +949,30 @@ T.~Lassmann, O.~Frings, and E.~L.~L. Sonnhammer.
   Nucleotide Sequences Allowing External Features}}.
 \newblock Nucleic Acids Research \textbf{37}(3), 858 (2009).
 
-\bibitem{BenjaminiS2012}
-Y.~Benjamini and T.~P. Speed.
-\newblock \emph{{Summarizing and Correcting the GC Content Bias in
-  High-Throughput Sequencing}}.
-\newblock Nucleic Acids Research \textbf{40}(10), e72 (2012).
+\bibitem{Rozov2017faucet}
+R.~Rozov, G.~Goldshlager, E.~Halperin, and R.~Shamir.
+\newblock \emph{Faucet: streaming de novo assembly graph construction}.
+\newblock Bioinformatics \textbf{34}(1), 147 (2017).
+
+\bibitem{Giordano2017}
+F.~Giordano, L.~Aigrain, M.~A. Quail, P.~Coupland, J.~K. Bonfield, R.~M.
+  Davies, G.~Tischler, D.~K. Jackson, T.~M. Keane, J.~Li, \emph{et~al.}
+\newblock \emph{{De novo yeast genome assemblies from MinION, PacBio and MiSeq
+  platforms}}.
+\newblock Scientific reports \textbf{7}(1), 3935 (2017).
+
+\bibitem{AntipovKM2015}
+D.~Antipov, A.~Korobeynikov, J.~S. McLean, and P.~A. Pevzner.
+\newblock \emph{{hybridSPAdes: an algorithm for hybrid assembly of short and
+  long reads}}.
+\newblock Bioinformatics \textbf{32}(7), 1009 (2016).
+
+\bibitem{Prjibelski2014}
+A.~D. Prjibelski, I.~Vasilinetc, A.~Bankevich, A.~Gurevich, T.~Krivosheeva,
+  S.~Nurk, S.~Pham, A.~Korobeynikov, A.~Lapidus, and P.~A. Pevzner.
+\newblock \emph{{ExSPAnder}: a universal repeat resolver for {DNA} fragment
+  assembly}.
+\newblock Bioinformatics \textbf{30}(12), i293 (2014).
 
 \bibitem{Ester96adensity-based}
 M.~Ester, H.-P. Kriegel, J.~Sander, and X.~Xu.
@@ -737,5 +984,307 @@ M.~Ester, H.-P. Kriegel, J.~Sander, and X.~Xu.
 S.~Kullback and R.~A. Leibler.
 \newblock \emph{On information and sufficiency}.
 \newblock The annals of mathematical statistics \textbf{22}(1), 79 (1951).
+
+\bibitem{Dijkstra1959}
+E.~W. Dijkstra.
+\newblock \emph{A note on two problems in connexion with graphs}.
+\newblock Numerische mathematik \textbf{1}(1), 269 (1959).
+
+\bibitem{HuangLMM2012}
+W.~Huang, L.~Li, J.~R. Myers, and G.~T. Marth.
+\newblock \emph{{ART: a Next-generation Sequencing Read Simulator}}.
+\newblock Bioinformatics \textbf{28}(4), 593 (2012).
+
+\bibitem{OnoAH2012}
+Y.~Ono, K.~Asai, and M.~Hamada.
+\newblock \emph{{PBSIM: PacBio Reads Simulator – Toward Accurate Genome
+  Assembly}}.
+\newblock Bioinformatics  (2012).
+
+\bibitem{Mikheenko2018quast5}
+A.~Mikheenko, A.~Prjibelski, V.~Saveliev, D.~Antipov, and A.~Gurevich.
+\newblock \emph{Versatile genome assembly evaluation with {QUAST-LG}}.
+\newblock Bioinformatics \textbf{34}(13), i142 (2018).
+
+\bibitem{Brudno2003glocal}
+M.~Brudno, S.~Malde, A.~Poliakov, C.~B. Do, O.~Couronne, I.~Dubchak, and
+  S.~Batzoglou.
+\newblock \emph{{Glocal alignment: finding rearrangements during alignment}}.
+\newblock Bioinformatics \textbf{19}(suppl\_1), i54 (2003).
+
+\bibitem{Potter2016rapid}
+R.~F. Potter, A.~W. D’souza, and G.~Dantas.
+\newblock \emph{{The rapid spread of carbapenem-resistant Enterobacteriaceae}}.
+\newblock Drug Resistance Updates \textbf{29}, 30 (2016).
+
+\bibitem{Lu2018plamids}
+J.~Lu, Y.~Wang, J.~Li, L.~Mao, S.~H. Nguyen, T.~Duarte, L.~Coin, P.~Bond,
+  Z.~Yuan, and J.~Guo.
+\newblock \emph{{Triclosan at environmentally relevant concentrations promotes
+  horizontal transfer of multidrug resistance genes within and across bacterial
+  genera}}.
+\newblock Environment international \textbf{121}, 1217 (2018).
+
+\bibitem{GardyLR2015}
+J.~Gardy, N.~J. Loman, and A.~Rambaut.
+\newblock \emph{{Real-time digital pathogen surveillance — the time is now}}.
+\newblock Genome Biology \textbf{16}(1), 155 (2015).
+
+\bibitem{AndersenSM2015}
+K.~G. Andersen, B.~J. Shapiro, C.~B. Matranga, R.~Sealfon, A.~E. Lin, L.~M.
+  Moses, O.~A. Folarin, A.~Goba, I.~Odia, P.~E. Ehiane, \emph{et~al.}
+\newblock \emph{Clinical sequencing uncovers origins and evolution of {L}assa
+  virus}.
+\newblock Cell \textbf{162}(4), 738 (2015).
+
+\bibitem{HolmesDR2016}
+E.~C. Holmes, G.~Dudas, A.~Rambaut, and K.~G. Andersen.
+\newblock \emph{The evolution of ebola virus: Insights from the 2013--2016
+  epidemic}.
+\newblock Nature \textbf{538}(7624), 193 (2016).
+
+\bibitem{DudasCB2017}
+G.~Dudas, L.~M. Carvalho, T.~Bedford, A.~J. Tatem, G.~Baele, N.~R. Faria, D.~J.
+  Park, J.~T. Ladner, A.~Arias, D.~Asogun, \emph{et~al.}
+\newblock \emph{Virus genomes reveal factors that spread and sustained the
+  ebola epidemic}.
+\newblock Nature \textbf{544}(7650), 309 (2017).
+
+\bibitem{Wang2015minion}
+J.~Wang, N.~E. Moore, Y.-M. Deng, D.~A. Eccles, and R.~J. Hall.
+\newblock \emph{{MinION nanopore sequencing of an influenza genome}}.
+\newblock Frontiers in microbiology \textbf{6}, 766 (2015).
+
+\bibitem{QuickLD2016}
+J.~Quick, N.~J. Loman, S.~Duraffour, J.~T. Simpson, \emph{et~al.}
+\newblock \emph{{Real-time, portable genome sequencing for Ebola
+  surveillance}}.
+\newblock Nature \textbf{530}(7589), 228 (2016).
+
+\bibitem{Quick2017GP}
+J.~Quick, N.~D. Grubaugh, S.~T. Pullan, I.~M. Claro, A.~D. Smith,
+  K.~Gangavarapu, G.~Oliveira, R.~Robles-Sikisaka, T.~F. Rogers, N.~A. Beutler,
+  \emph{et~al.}
+\newblock \emph{{Multiplex PCR method for MinION and Illumina sequencing of
+  Zika and other virus genomes directly from clinical samples}}.
+\newblock nature protocols \textbf{12}(6), 1261 (2017).
+
+\bibitem{Rector2004rca14}
+A.~Rector, R.~Tachezy, and M.~Van~Ranst.
+\newblock \emph{A sequence-independent strategy for detection and cloning of
+  circular {DNA} virus genomes by using multiply primed rolling-circle
+  amplification}.
+\newblock Journal of virology \textbf{78}(10), 4993 (2004).
+
+\bibitem{Inoue2004rca28}
+A.~K. Inoue-Nagata, L.~C. Albuquerque, W.~B. Rocha, and T.~Nagata.
+\newblock \emph{A simple method for cloning the complete begomovirus genome
+  using the bacteriophage $\varphi$29 {DNA} polymerase}.
+\newblock Journal of virological methods \textbf{116}(2), 209 (2004).
+
+\bibitem{Schubert2007rca30}
+J.~Schubert, A.~Habeku{\ss}, K.~Kazmaier, and H.~Jeske.
+\newblock \emph{{Surveying cereal-infecting geminiviruses in
+  Germany—diagnostics and direct sequencing using rolling circle
+  amplification}}.
+\newblock Virus research \textbf{127}(1), 61 (2007).
+
+\bibitem{Knierim200rca31}
+D.~Knierim and E.~Maiss.
+\newblock \emph{{Application of Phi29 DNA polymerase in identification and
+  full-length clone inoculation of tomato yellow leaf curl Thailand virus and
+  tobacco leaf curl Thailand virus}}.
+\newblock Archives of virology \textbf{152}(5), 941 (2007).
+
+\bibitem{Shepherd2008rca32}
+D.~N. Shepherd, D.~P. Martin, P.~Lefeuvre, A.~L. Monjane, B.~E. Owor, E.~P.
+  Rybicki, and A.~Varsani.
+\newblock \emph{{A protocol for the rapid isolation of full geminivirus genomes
+  from dried plant tissue}}.
+\newblock Journal of virological methods \textbf{149}(1), 97 (2008).
+
+\bibitem{Haible2006rca33}
+D.~Haible, S.~Kober, and H.~Jeske.
+\newblock \emph{Rolling circle amplification revolutionizes diagnosis and
+  genomics of geminiviruses}.
+\newblock Journal of virological methods \textbf{135}(1), 9 (2006).
+
+\bibitem{Homs2008rca34}
+M.~Homs, S.~Kober, G.~Kepp, and H.~Jeske.
+\newblock \emph{Mitochondrial plasmids of sugar beet amplified via rolling
+  circle method detected during curtovirus screening}.
+\newblock Virus research \textbf{136}(1-2), 124 (2008).
+
+\bibitem{Johne2009rca}
+R.~Johne, H.~M{\"u}ller, A.~Rector, M.~Van~Ranst, and H.~Stevens.
+\newblock \emph{{Rolling-circle amplification of viral DNA genomes using phi29
+  polymerase}}.
+\newblock Trends in microbiology \textbf{17}(5), 205 (2009).
+
+\bibitem{Geering2010ST}
+A.~D. Geering, T.~Scharaschkin, and P.-Y. Teycheney.
+\newblock \emph{{The classification and nomenclature of endogenous viruses of
+  the family Caulimoviridae}}.
+\newblock Archives of virology \textbf{155}(1), 123 (2010).
+
+\bibitem{Mollov2013LZ}
+D.~Mollov, B.~Lockhart, D.~C. Zlesak, and N.~Olszewski.
+\newblock \emph{{Complete nucleotide sequence of rose yellow vein virus, a
+  member of the family Caulimoviridae having a novel genome organization}}.
+\newblock Archives of virology \textbf{158}(4), 877 (2013).
+
+\bibitem{Bhat2016badnaviruses}
+A.~Bhat, T.~Hohn, and R.~Selvarajan.
+\newblock \emph{{Badnaviruses: the current global scenario}}.
+\newblock Viruses \textbf{8}(6), 177 (2016).
+
+\bibitem{Sukal2018characterization}
+A.~C. Sukal, D.~B. Kidanemariam, J.~L. Dale, R.~M. Harding, and A.~P. James.
+\newblock \emph{{Characterization of a novel member of the family
+  Caulimoviridae infecting Dioscorea nummularia in the Pacific, which may
+  represent a new genus of dsDNA plant viruses}}.
+\newblock PloS one \textbf{13}(9), e0203038 (2018).
+
+\bibitem{Rockwood2005crosscorrelation}
+A.~L. Rockwood, D.~K. Crockett, J.~R. Oliphant, and K.~S. Elenitoba-Johnson.
+\newblock \emph{Sequence alignment by cross-correlation}.
+\newblock Journal of biomolecular techniques: JBT \textbf{16}(4), 453 (2005).
+
+\bibitem{Ravi2007tandem}
+G.~Ravi, S.~Divya, M.~Ankush, and S.~Kuldip.
+\newblock \emph{A novel signal processing measure to identify exact and inexact
+  tandem repeat patterns in dna sequences}.
+\newblock EURASIP Journal on Bioinformatics and Systems Biology
+  \textbf{2007}(1), 43596 (2007).
+
+\bibitem{Gentleman1966FFT}
+W.~M. Gentleman and G.~Sande.
+\newblock \emph{{Fast Fourier Transforms: for fun and profit}}.
+\newblock In \emph{Proceedings of the November 7-10, 1966, Fall Joint Computer
+  Conference}, pp. 563--578 (ACM, 1966).
+
+\bibitem{Van1992FFT}
+C.~Van~Loan.
+\newblock \emph{{Computational frameworks for the fast Fourier transform}},
+  vol.~10 (Siam, 1992).
+
+\bibitem{Heideman1984FFT}
+M.~Heideman, D.~Johnson, and C.~Burrus.
+\newblock \emph{{Gauss and the history of the fast Fourier transform}}.
+\newblock IEEE ASSP Magazine \textbf{1}(4), 14 (1984).
+
+\bibitem{Mcleod2005tartini}
+P.~McLeod and G.~Wyvill.
+\newblock \emph{A smarter way to find pitch.}
+\newblock In \emph{ICMC} (2005).
+
+\bibitem{Eichelberger2002jtransform}
+H.~Eichelberger and L.~Ii.
+\newblock \emph{{Jtransform -- a Java source code transformation framework}}.
+\newblock Tech. rep., TR 303, Institute for Computer Science, Wurzburg
+  University (2002).
+
+\bibitem{Smith1997DSP}
+S.~W. Smith \emph{et~al.}
+\newblock \emph{{The scientist and engineer's guide to digital signal
+  processing}}  (1997).
+
+\bibitem{Bankman2008image}
+I.~Bankman.
+\newblock \emph{Handbook of medical image processing and analysis} (Elsevier,
+  2008).
+
+\bibitem{Harris1978use}
+F.~J. Harris.
+\newblock \emph{{On the use of windows for harmonic analysis with the discrete
+  Fourier transform}}.
+\newblock Proceedings of the IEEE \textbf{66}(1), 51 (1978).
+
+\bibitem{Blackman1958measurement}
+R.~B. Blackman and J.~W. Tukey.
+\newblock \emph{The measurement of power spectra from the point of view of
+  communications engineering}.
+\newblock Bell System Technical Journal \textbf{37}(1), 185 (1958).
+
+\bibitem{Rang2018squiggle}
+F.~J. Rang, W.~P. Kloosterman, and J.~de~Ridder.
+\newblock \emph{{From squiggle to basepair: computational approaches for
+  improving nanopore sequencing read accuracy}}.
+\newblock Genome biology \textbf{19}(1), 90 (2018).
+
+\bibitem{Manrao2012reading}
+E.~A. Manrao, I.~M. Derrington, A.~H. Laszlo, K.~W. Langford, M.~K. Hopper,
+  N.~Gillgren, M.~Pavlenok, M.~Niederweis, and J.~H. Gundlach.
+\newblock \emph{{Reading DNA at single-nucleotide resolution with a mutant MspA
+  nanopore and phi29 DNA polymerase}}.
+\newblock Nature biotechnology \textbf{30}(4), 349 (2012).
+
+\bibitem{Cherf2012automated}
+G.~M. Cherf, K.~R. Lieberman, H.~Rashid, C.~E. Lam, K.~Karplus, and M.~Akeson.
+\newblock \emph{Automated forward and reverse ratcheting of {DNA} in a nanopore
+  at 5-{\aa} precision}.
+\newblock Nature biotechnology \textbf{30}(4), 344 (2012).
+
+\bibitem{Sarkozy2017calling}
+P.~Sarkozy, {\'A}.~Jobb{\'a}gy, and P.~Antal.
+\newblock \emph{Calling homopolymer stretches from raw nanopore reads by
+  analyzing k-mer dwell times}.
+\newblock In \emph{EMBEC \& NBC 2017}, pp. 241--244 (Springer, 2017).
+
+\bibitem{Jain2018nanopore3}
+M.~Jain, S.~Koren, K.~H. Miga, J.~Quick, A.~C. Rand, T.~A. Sasani, J.~R. Tyson,
+  A.~D. Beggs, A.~T. Dilthey, I.~T. Fiddes, \emph{et~al.}
+\newblock \emph{Nanopore sequencing and assembly of a human genome with
+  ultra-long reads}.
+\newblock Nature biotechnology \textbf{36}(4), 338 (2018).
+
+\bibitem{Stancu2017nanopore5}
+M.~C. Stancu, M.~J. Van~Roosmalen, I.~Renkens, M.~M. Nieboer, S.~Middelkamp,
+  J.~De~Ligt, G.~Pregno, D.~Giachino, G.~Mandrile, J.~E. Valle-Inclan,
+  \emph{et~al.}
+\newblock \emph{Mapping and phasing of structural variation in patient genomes
+  using nanopore sequencing}.
+\newblock Nature communications \textbf{8}(1), 1326 (2017).
+
+\bibitem{Ip2015minion}
+C.~L. Ip, M.~Loose, J.~R. Tyson, M.~de~Cesare, B.~L. Brown, M.~Jain, R.~M.
+  Leggett, D.~A. Eccles, V.~Zalunin, J.~M. Urban, \emph{et~al.}
+\newblock \emph{{MinION Analysis and Reference Consortium: Phase 1 data release
+  and analysis}}.
+\newblock F1000Research \textbf{4} (2015).
+
+\bibitem{SchadtTK2010}
+E.~E. Schadt, S.~Turner, and A.~Kasarskis.
+\newblock \emph{A window into third-generation sequencing}.
+\newblock Human molecular genetics \textbf{19}(R2), R227 (2010).
+
+\bibitem{ThkurRB2012}
+R.~Thakur, R.~Bandopadhyay, B.~Chaudhary, and S.~Chatterjee.
+\newblock \emph{{Now and Next-Generation Sequencing Techniques: Future of
+  Sequence Analysis Using Cloud Computing}}.
+\newblock Frontiers in Genetics \textbf{3}, 280 (2012).
+
+\bibitem{Nurk2017metaspades}
+S.~Nurk, D.~Meleshko, A.~Korobeynikov, and P.~A. Pevzner.
+\newblock \emph{{metaSPAdes: a new versatile metagenomic assembler}}.
+\newblock Genome Research \textbf{27}(5), 824 (2017).
+
+\bibitem{Kang2015metabat}
+D.~D. Kang, J.~Froula, R.~Egan, and Z.~Wang.
+\newblock \emph{{MetaBAT}, an efficient tool for accurately reconstructing
+  single genomes from complex microbial communities}.
+\newblock PeerJ \textbf{3}, e1165 (2015).
+
+\bibitem{Watson2019errors}
+M.~Watson and A.~Warr.
+\newblock \emph{Errors in long-read assemblies can critically affect protein
+  prediction}.
+\newblock Nature Biotechnology p.~1 (2019).
+
+\bibitem{Koren2019reply}
+S.~Koren, A.~M. Phillippy, J.~T. Simpson, N.~J. Loman, and M.~Loose.
+\newblock \emph{Reply to ‘errors in long-read assemblies can critically
+  affect protein prediction’}.
+\newblock Nature Biotechnology p.~1 (2019).
 
 \end{thebibliography}

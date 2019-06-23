@@ -1,0 +1,91 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Prominent sequencing platforms in the era of genomics.}}{3}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Mechanism of SMRT sequencing with Zero-Mode Waveguides.}}{5}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Illustration of nanopore sequencing with MinION}}{7}{figure.1.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Sequencing with MinION}}}{7}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Inside the pore}}}{7}{subfigure.3.2}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Statistics of nanopore burn-in experiments using different flow cell versions}}{9}{figure.1.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {R6 (2014/06/16)}}}{9}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {R7 (2014/09/16)}}}{9}{subfigure.4.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {R9.4 (2017/01/18)}}}{9}{subfigure.4.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {R9.5 (2018/09/12)}}}{9}{subfigure.4.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Basic framework for genome decoding process.}}{14}{figure.1.5}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces General assembly pipeline for short-read data.}}{15}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Example about building OLC and DBG graph from a string}}{18}{figure.1.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Workflow of the real-time algorithm}}{34}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Assembly statistics during real-time scaffolding}}{35}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Structure of a pathogenic island from \emph {K.\nobreakspace {}pneumoniae}{} ATCC BAA-2146}}{38}{figure.2.3}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Plot of sensitivity versus specificity of $\mathtt {npBarcode}${} compared with existing tools.}}{58}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces A combining pipeline of $\mathtt {npReader}${}, $\mathtt {npBarcode}${} and $\mathtt {npScarf}${} with ONT Native Barcoding Kit}}{59}{figure.3.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\emph {K. pneumoniae} isolate 1}}}{59}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\emph {K. pneumoniae} isolate 2}}}{59}{subfigure.2.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {\emph {K. pneumoniae} isolate 3}}}{59}{subfigure.2.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {\emph {K. pneumoniae} isolate 4}}}{59}{subfigure.2.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {\emph {K. quasipneumoniae} isolate}}}{59}{subfigure.2.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {\emph {A. baumannii} isolate}}}{59}{subfigure.2.6}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {\emph {P. aeruginosa} isolate}}}{59}{subfigure.2.7}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Graphical User Interface of npBarcode integrated in npReader. The result shown is for the a MinION run using Native barcoding kit on 8 libraries.}}{60}{figure.3.3}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces An example of bidirected graph model}}{77}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Two approaches for gap filling in our methods.}}{79}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of graph decomposition into longest straight paths}}{88}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces $\mathtt {npGraph}${} user interface}}{89}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Real-time scaffolding by $\mathtt {npScarf}${} versus $\mathtt {npGraph}${}}}{99}{figure.4.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\emph {Citrobacter\nobreakspace {}freundii} CAV1374}}}{99}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\emph {Escherichia\nobreakspace {}coli} K12 MG1655}}}{99}{subfigure.5.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {\emph {Klebsiella} 30660 NJST258}}}{99}{subfigure.5.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {\emph {Klebsiella} NTUH K2044}}}{99}{subfigure.5.4}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Assembly graph resolving on $\mathtt {npGraph}${} Graph View}}{100}{figure.4.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Initial graph}}}{100}{subfigure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Resolved graph}}}{100}{subfigure.6.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Rolling Circle Amplification}}{103}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Pipeline to reconstruct viral genome sequences from MinION long reads.}}{105}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Mapped read length histogram of barcode 08 and 09.}}{106}{figure.5.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Mapped reads from barcode 08}}}{106}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Mapped reads from barcode 09}}}{106}{subfigure.3.2}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Example of ACF sliding dot product for a sequence with two repeats}}{108}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces ACF values for a random read versus the 7-concatemer detected}}{110}{figure.5.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {ACF for a random DNA sequence}}}{110}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {ACF for the 7-concatemer read}}}{110}{subfigure.5.2}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Example of ideal LPF at $f_t=0.25Hz$ and its corresponding impulse response.}}{113}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Peak picking for a 7-concatemers NSDF signal processed with LPF using $cutFreq=100$}}{115}{figure.5.7}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {DNA sequence}}}{115}{subfigure.7.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Raw signal}}}{115}{subfigure.7.2}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {K.\nobreakspace {}pneumoniae}{} ATCC BAA-2146 to its reference genomes}}{150}{figure.a.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {K.\nobreakspace {}pneumoniae}{} ATCC 13883 to its reference genomes}}{150}{figure.a.A.2}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {S.\nobreakspace {}cerevisae}{} W303 to the reference genome of the S288C strain}}{151}{figure.a.A.3}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Alignment of the Canu's assembly for \emph {S.\nobreakspace {}cerevisae}{} W303 to the reference genome of the S288C strain}}{152}{figure.a.A.4}
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Alignment of the miniasm's assembly for \emph {S.\nobreakspace {}cerevisae}{} W303 to the reference genome of the S288C strain}}{153}{figure.a.A.5}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces PCR barcode MinION sequencing with $\mathtt {npBarcode}${}}}{156}{figure.a.B.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Comparison of ONT Native Barcode Sequencing demultiplexing accuracy}}{159}{figure.a.B.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Dotplot generated by MUMmer for assembly results of $\mathtt {Unicycler}${} versus $\mathtt {npGraph}${}.}}{167}{figure.a.C.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\emph {Citrobacter\nobreakspace {}freundii} CAV1374}}}{167}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\emph {Klebsieall\nobreakspace {}oxytoca} CAV1015}}}{167}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {\emph {Enterobacter\nobreakspace {}cloacae} CAV1411}}}{167}{subfigure.1.3}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Alignments of a \emph {Enterobacter\nobreakspace {}cloacae} reference genome to assembly sequences generated by $\mathtt {Unicycler}${} and $\mathtt {npGraph}${}}}{168}{figure.a.C.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\emph {E.\nobreakspace {}cloacae} $\mathtt {Unicycler}${} assembly versus reference genome}}}{168}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\emph {E.\nobreakspace {}cloacae} $\mathtt {npGraph}${} assembly versus reference genome}}}{168}{subfigure.2.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Concatemer reads count}}{170}{figure.a.D.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces ACF values for a random synthetic read and several k-concatemers nanopore read detected in \emph {Cauliflower mosaic} sample (barcode 08).}}{171}{figure.a.D.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {ACF for a monomer read}}}{171}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {ACF for a 2-concatemers read}}}{171}{subfigure.2.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {ACF for a 3-concatemers read}}}{171}{subfigure.2.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {ACF for a 6-concatemers read}}}{171}{subfigure.2.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {ACF for the 7-concatemer read}}}{171}{subfigure.2.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {ACF for a random DNA sequence}}}{171}{subfigure.2.6}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces NSDF signal processed after running average filter method with different window size}}{172}{figure.a.D.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {NSDF signal averaged by 10k window}}}{172}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {NSDF signal averaged by 20k window}}}{172}{subfigure.3.2}
+\contentsline {figure}{\numberline {D.4}{\ignorespaces NSDF signal processed after smoothing with LPF at $cutFreq=30$}}{173}{figure.a.D.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {NDSF for DNA sequence}}}{173}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {NSDF for raw signal}}}{173}{subfigure.4.2}
+\addvspace {10\p@ }

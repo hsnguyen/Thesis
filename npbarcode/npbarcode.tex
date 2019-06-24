@@ -255,15 +255,21 @@ Another polymyxin-susceptible XDR isolate, 20\_GR\_12, was included for comparat
 \centering
 \caption{Sequencing data statistics for each \kp{} strains.}
 \label{tab:assers_stats}
-\begin{tabular}{|c|c|r|r|r|r|r|}
+\begin{tabular}{ccrrlrrr}
 \hline
-\multirow{2}{*}{\textbf{Strain}} & \multirow{2}{*}{\textbf{Lineage}} & \multicolumn{2}{c|}{\textbf{Illumina}}                                     & \multicolumn{3}{c|}{\textbf{Nanopore}}                                                            \\ \cline{3-7} 
-                                 &                                   & \multicolumn{1}{c|}{\textbf{Coverage(X)}} & \multicolumn{1}{c|}{\textbf{N50$^a$}} & \multicolumn{1}{c|}{\textbf{Coverage(X)}} & \multicolumn{1}{c|}{\textbf{N50$^b$}} & \textbf{Time(mins)} \\ \hline
-1\_GR\_13                        & ST147                             & 63                                     & 242,838                           & 215                                    & 8,712                             & 1,279                \\ \hline
-2\_GR\_12                        & ST258                             & 158                                    & 196,706                           & 67                                     & 5,251                             & 2,468                \\ \hline
-16\_GR\_13                       & ST11                              & 123                                    & 203,529                           & 101                                    & 5,012                             & 1,277                \\ \hline
-20\_GR\_12                       & ST258                             & 262                                    & 256,217                           & 115                                    & 10,151                            & 1,277                \\ \hline
-
+\toprule
+\multirow{2}{*}{\textbf{Strain}} & \multirow{2}{*}{\textbf{Lineage}} & \multicolumn{2}{c}{\textbf{Illumina}} & & \multicolumn{3}{c}{\textbf{Nanopore}}\\ 
+\cline{3-4} 
+\cline{6-8}
+&   & \multicolumn{1}{c}{\textbf{Coverage(X)}} & \multicolumn{1}{c}{\textbf{N50$^a$}} & & \multicolumn{1}{c}{\textbf{Coverage(X)}} & \multicolumn{1}{c}{\textbf{N50$^b$}} & \textbf{Time(mins)} \\ 
+\hline
+\rowcolor{Gray}                                 
+1\_GR\_13   & ST147   & 63   & 242,838  & & 215  & 8,712  & 1,279 \\
+2\_GR\_12   & ST258   & 158  & 196,706  & & 67   & 5,251  & 2,468 \\ 
+\rowcolor{Gray}
+16\_GR\_13  & ST11    & 123  & 203,529  & & 101  & 5,012  & 1,277 \\ 
+20\_GR\_12  & ST258   & 262  & 256,217  & & 115  & 10,151 & 1,277 \\ 
+\hline
 \multicolumn{7}{l}{\small{$^a$ of the Illumina assembly contigs.}}\\
 \multicolumn{7}{l}{\small{$^b$ of the raw Nanopore sequences.}}
 \end{tabular}
@@ -278,38 +284,23 @@ The real-time assembly is not reported here as exhaustive operations of MinION f
 After having results from different assemblers, an alignment-based comparative interrogation was conducted to investigate the completeness and quality of each contigs in relations with its corresponding counterparts.
 By doing so, the consensus sequence can be determined as the best candidate among all.
 
-% \begin{landscape}
-% \begin{table}[!hpt]
-% \centering
-% \footnotesize
-% \caption[Genome assembly of multiple approaches.]{Genome assembly of multiple approaches. Output identifies circular sequences in \textbf{bold} and in brackets plasmid replicons if present.}
-% \label{tab:assers}
-% \begin{tabular}{|c|p{5cm}|p{5cm}|p{5cm}|p{5cm}|}
-% \hline
-% \multirow{2}{*}{Strain} & \multicolumn{4}{c|}{Assembly method}\\ \cline{2-5} 
-%                         & \multicolumn{1}{c|}{npScarf}  & \multicolumn{1}{c|}{Unicycler}    & \multicolumn{1}{c|}{Canu} & \multicolumn{1}{c|}{minasm+Racon} \\ \hline
-% 1\_GR\_13               & \textbf{5,289,533 (IncFIB)}; \textbf{193,063 (IncA/C2)}; \underline{\textbf{168,873 (IncFIB, IncFII)}}; 61,039; \textbf{53,489(IncR, IncN)}; 55,020; \textbf{6,457}              & \underline{\textbf{5,181,675}}; \underline{\textbf{192,771(IncA/C2)}}; 159,172 (IncFIB, IncFII); \underline{\textbf{108,879 (IncFIB)}}; \underline{\textbf{55,018}}; \underline{\textbf{53,495 (IncR, IncN)}};                                                        & \textbf{5,073,727}; \textbf{226,704 (IncA/C2)}; \textbf{184,820 (IncFIB,IncFII)}; \textbf{136,154 (IncFIB)}; 100,186; \textbf{82,924 (IncR,IncN)}; 54,495       & \textbf{5,167,584}; \textbf{192,237 (IncA/C2)}; \textbf{168,292 (IncFIB, IncFII)}; \textbf{108,582 (IncFIB)}; \textbf{53,325 (IncR, IncN)}                                \\ \hline
-% 2\_GR\_12               & \underline{\textbf{5,466,424}}; 457,649 (IncFIB, IncA/C2, IncFII); 60,365 (IncFII); 42,041 (IncX3); 32,458; 21,300; \underline{\textbf{13,841 (ColRNAI)}}; 12,226 & 3,743,268; 1,694,231; \underline{175,636 (IncA/C2)}; 152,644 (IncFIB, IncFII); \underline{95,481 (IncFIB)}; \underline{\textbf{43,380 (IncX3)}}; 28,913; 26,127;16,315; 16,781 (IncFII); \underline{\textbf{13,841 (ColRNAI)}} & 5,440,093; 392,198 (IncFIB,IncA/C2,IncFII); 122,463 (IncFIB,IncFII); 57,534 (IncX3); 26,891 (ColRNAI)              & 3,769,033; 1,696,038; 204,124 (IncA/C2); 179,356 (IncFIB, IncFII); 158,561 (IncFIB); \textbf{43,085 (IncX3)}; 13,400 (ColRNAI); 2,250 \\ \hline
-% 16\_GR\_13              & \underline{\textbf{5,426,917}}; \textbf{186,908 (IncFIB,IncFII)}; \textbf{154,971 (IncA/C2)}; \textbf{63,588 (IncL/M)}; 37,608; 35,578; \textbf{5,225}; 4,426 (ColRNAI); \textbf{3,703}   & \textbf{5,426,765}; \underline{\textbf{187,670 (IncFIB,IncFII)}}; \underline{\textbf{155,161 (IncA/C2)}}; \underline{\textbf{63,589 (IncL/M)}}; \underline{\textbf{5,234}}; \underline{\textbf{4,940 (ColRNAI)}}; 2,156 (ColRNAI)                                              & \textbf{5,400,611}; \textbf{199,904 (IncFIB,IncFII)}; \textbf{180,542 (IncA/C2)}; \textbf{83,467 (IncL/M)}; 14,853; 11.623; 9,308; 9,423; 7,568; 7,089 & \textbf{5,410,256}; \textbf{186,950 (IncFIB,IncFII)}; \textbf{154,635 (IncA/C2)}; \textbf{63,299 (IncL/M)}; 5,100; 4,900                                         \\ \hline
-% 20\_GR\_12              & \textbf{5,391,578}; \textbf{163,468 (IncFIB,IncFII)}; \textbf{50,940 (IncN)}; 50,856 (IncX3); 12,578 (ColRNAI)                                     & \underline{\textbf{5,395,894}}; \underline{\textbf{170,467 (IncFIB,IncFII)}}; \underline{\textbf{50,979 (IncN)}}; \underline{\textbf{43,380 (IncX3)}}; \underline{\textbf{13,841 (ColRNAI)}}; 4,645                                                                   & 5,342,491; \textbf{192,947 (IncFIB,IncFII)}; 74,844 (IncX3); 72,588 (IncN); 25,624 (ColRNAI)                                & \textbf{5,380,057}; \textbf{169,880 (IncFIB,IncFII)}; \textbf{50,636 (IncN)}; \textbf{43,157 (IncX3)}; 13,600 (ColRNAI)                                          \\ \hline
-% \end{tabular}
-% \end{table}
-% \end{landscape}
-
 \begin{landscape}
 \begin{table}[!hpt]
 \centering
 \small
 \caption[Genome assembly results using multiple approaches.]{Contigs in the genome assembly results of 4 \kp{} isolates using multiple approaches. Output identifies circular sequences in \textbf{bold} and \underline{underlined} if chosen for the final assembly.}
 \label{tab:assers}
-\begin{tabular}{|c|p{4cm}|p{4cm}|p{4cm}|p{4cm}|}
+\begin{tabular}{cp{4cm}p{4cm}p{4cm}p{4cm}}
 \hline
-\multirow{2}{*}{Isolate} & \multicolumn{4}{c|}{Assembly method}\\ \cline{2-5} 
-                        & \multicolumn{1}{c|}{npScarf}  & \multicolumn{1}{c|}{Unicycler}    & \multicolumn{1}{c|}{Canu} & \multicolumn{1}{c|}{minasm+Racon} \\ \hline
-1\_GR\_13               & \textbf{5,289,533}; \textbf{193,063}; \underline{\textbf{168,873}}; 61,039; \textbf{53,489}; 55,020; \textbf{6,457}              & \underline{\textbf{5,181,675}}; \underline{\textbf{192,771}}; 159,172; \underline{\textbf{108,879}}; \underline{\textbf{55,018}}; \underline{\textbf{53,495}};                                                        & \textbf{5,073,727}; \textbf{226,704}; \textbf{184,820}; \textbf{136,154}; 100,186; \textbf{82,924 }; 54,495       & \textbf{5,167,584}; \textbf{192,237}; \textbf{168,292}; \textbf{108,582}; \textbf{53,325}                                \\ \hline
-2\_GR\_12               & \underline{\textbf{5,466,424}}; 457,649; 60,365; 42,041; 32,458; 21,300; \underline{\textbf{13,841}}; 12,226 & 3,743,268; 1,694,231; \underline{175,636}; 152,644; \underline{95,481}; \underline{\textbf{43,380}}; 28,913; 26,127;16,315; 16,781; \underline{\textbf{13,841}} & 5,440,093; 392,198; 122,463; 57,534; 26,891   & 3,769,033; 1,696,038; 204,124; 179,356; 158,561; \textbf{43,085}; 13,400; 2,250 \\ \hline
-16\_GR\_13              & \underline{\textbf{5,426,917}}; \textbf{186,908}; \textbf{154,971}; \textbf{63,588}; 37,608; 35,578; \textbf{5,225}; 4,426; \textbf{3,703}   & \textbf{5,426,765}; \underline{\textbf{187,670}}; \underline{\textbf{155,161}}; \underline{\textbf{63,589}}; \underline{\textbf{5,234}}; \underline{\textbf{4,940}}; 2,156  & \textbf{5,400,611}; \textbf{199,904}; \textbf{180,542}; \textbf{83,467}; 14,853; 11.623; 9,308; 9,423; 7,568; 7,089 & \textbf{5,410,256}; \textbf{186,950}; \textbf{154,635}; \textbf{63,299}; 5,100; 4,900  \\ \hline
-20\_GR\_12              & \textbf{5,391,578}; \textbf{163,468}; \textbf{50,940}; 50,856; 12,578  & \underline{\textbf{5,395,894}}; \underline{\textbf{170,467}}; \underline{\textbf{50,979}}; \underline{\textbf{43,380}}; \underline{\textbf{13,841}}; 4,645     & 5,342,491; \textbf{192,947}; 74,844; 72,588; 25,624    & \textbf{5,380,057}; \textbf{169,880}; \textbf{50,636}; \textbf{43,157}; 13,600  \\ \hline
+\toprule
+\multirow{2}{*}{\textbf{Isolate}} & \multicolumn{4}{c}{\textbf{Assembly method}}\\ \cline{2-5} 
+                        & \multicolumn{1}{c}{\textbf{npScarf}}  & \multicolumn{1}{c}{\textbf{Unicycler}}    & \multicolumn{1}{c}{\textbf{Canu}} & \multicolumn{1}{c}{\textbf{minasm+Racon}} \\ \hline
+\rowcolor{Gray}
+1\_GR\_13               & \cellcolor{white}\textbf{5,289,533}; \textbf{193,063}; \underline{\textbf{168,873}}; 61,039; \textbf{53,489}; 55,020; \textbf{6,457}              & \underline{\textbf{5,181,675}}; \underline{\textbf{192,771}}; 159,172; \underline{\textbf{108,879}}; \underline{\textbf{55,018}}; \underline{\textbf{53,495}};                                                        & \cellcolor{white}\textbf{5,073,727}; \textbf{226,704}; \textbf{184,820}; \textbf{136,154}; 100,186; \textbf{82,924 }; 54,495       & \textbf{5,167,584}; \textbf{192,237}; \textbf{168,292}; \textbf{108,582}; \textbf{53,325}                                \\
+2\_GR\_12               & \cellcolor{Gray}\underline{\textbf{5,466,424}}; 457,649; 60,365; 42,041; 32,458; 21,300; \underline{\textbf{13,841}}; 12,226 & 3,743,268; 1,694,231; \underline{175,636}; 152,644; \underline{95,481}; \underline{\textbf{43,380}}; 28,913; 26,127;16,315; 16,781; \underline{\textbf{13,841}} & \cellcolor{Gray}5,440,093; 392,198; 122,463; 57,534; 26,891   & 3,769,033; 1,696,038; 204,124; 179,356; 158,561; \textbf{43,085}; 13,400; 2,250 \\
+\rowcolor{Gray}
+16\_GR\_13              & \cellcolor{white}\underline{\textbf{5,426,917}}; \textbf{186,908}; \textbf{154,971}; \textbf{63,588}; 37,608; 35,578; \textbf{5,225}; 4,426; \textbf{3,703}   & \textbf{5,426,765}; \underline{\textbf{187,670}}; \underline{\textbf{155,161}}; \underline{\textbf{63,589}}; \underline{\textbf{5,234}}; \underline{\textbf{4,940}}; 2,156  & \cellcolor{white}\textbf{5,400,611}; \textbf{199,904}; \textbf{180,542}; \textbf{83,467}; 14,853; 11.623; 9,308; 9,423; 7,568; 7,089 & \textbf{5,410,256}; \textbf{186,950}; \textbf{154,635}; \textbf{63,299}; 5,100; 4,900  \\ \hline
+20\_GR\_12              & \cellcolor{Gray}\textbf{5,391,578}; \textbf{163,468}; \textbf{50,940}; 50,856; 12,578  & \underline{\textbf{5,395,894}}; \underline{\textbf{170,467}}; \underline{\textbf{50,979}}; \underline{\textbf{43,380}}; \underline{\textbf{13,841}}; 4,645     & \cellcolor{Gray}5,342,491; \textbf{192,947}; 74,844; 72,588; 25,624    & \textbf{5,380,057}; \textbf{169,880}; \textbf{50,636}; \textbf{43,157}; 13,600  \\ \hline
 \end{tabular}
 \end{table}
 \end{landscape}
@@ -332,33 +323,47 @@ Amongst four data sets, 2\_GR\_12 shows most fragmented assembly as the shorter 
 \scriptsize
 \caption{Final assembly of XDR \kp{} isolates and location of antibiotic resistance genes.}
 \label{tab:assers_final}
-\begin{tabular}{|l|l|r|c|p{12cm}|}
+\begin{tabular}{llrcp{12cm}}
 \hline
-\multirow{2}{*}{\small Isolate}  & \multirow{2}{*}{\small Contig$^a$}   & {\small Length$^b$} & {\small Abundance} & \multirow{2}{*}{\small Resistance Genes$^c$}\\
- & & (bp) & (X) & \\ \hline \hline
-\multirow{6}{*}{1\_GR\_13}  & C                           & \textbf{5,181,675}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\ \cline{2-5} 
-                            & P: IncA/C2                  & \textbf{192,771}      & 1.95     & aadA1, ant(2'')-Ia, aph(6)-Id, ARR-2, blaOXA-10, blaTEM-1B, blaVEB-1, cmlA1, dfrA14, dfrA23, rmtB, strA, sul1, sul2, tet(A), tet(G)        \\ \cline{2-5} 
-                            & P: IncFIB$_{pKpn3}$, IncFII$_{pKP91}$ & \textbf{168,873}      & 2        & aadA24, aph(3')-Ia, aph(6)-Id, dfrA1, dfrA14, strA                                                                                         \\ \cline{2-5} 
-                            & P: IncFIB$_{pKPHS1}$             & \textbf{108,879}      & 1.53     & -                                                                                                                                          \\ \cline{2-5} 
-                            & -                           & \textbf{55,018}       & 14.10    & -                                                                                                                                          \\ \cline{2-5} 
-                            & P: IncR, IncN               & \textbf{53,495}       & 2.36     & aadA24, aph(3')-Ia, aph(6)-Id, blaVIM-27, dfrA1,mph(A), strA, sul1                                                                         \\ \hline \hline
-\multirow{6}{*}{2\_GR\_12}  & C                           & \textbf{5,466,424}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\ \cline{2-5} 
-                            & P: IncFIB$_{pKpn3}$, IncFIIK     & 197,872      & 1.3      & aadA2, aph(3')-Ia, catA1, dfrA12, mph(A), sul1                                                                                             \\ \cline{2-5} 
-                            & P: IncA/C2                  & 175,636      & 1.49     & aadA1, ant(2'')-Ia, aph(3'')-Ib, aph(6)-Id, ARR-2, blaOXA-10, blaTEM-1A, blaVEB-1, cmlA1, dfrA14, dfrA23, rmtB, sul1, sul2, tet(A), tet(G) \\ \cline{2-5} 
-                            & P: IncFIB$_{pQil}$               & 95,481       & 1.61     & blaKPC-2, blaOXA-9, blaTEM-1A                                                                                                              \\ \cline{2-5} 
-                            & P: IncX3                    & \textbf{43,380}       & 1.91     & blaSHV-12                                                                                                                                  \\ \cline{2-5} 
-                            & P: ColRNAI                  & \textbf{13,841}       & 4        & aac(6')-Ib, aac(6')Ib-cr                                                                                                                   \\ \hline \hline
-\multirow{6}{*}{16\_GR\_13} & C                           & \textbf{5,426,917}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\ \cline{2-5} 
-                            & P: IncFIB$_{pKpn3}$, IncFIIK     & \textbf{187,670}      & 0.88     & aac(3)-IIa, aac(6')Ib-cr, aadA2, aph(3')-Ia, blaCTX-M-15, blaOXA-1, catB4, dfrA12, mph(A), sul1                                            \\ \cline{2-5} 
-                            & P: IncA/ C2                 & \textbf{155,161}      & 0.99     & aadA1, ant(2'')-Ia, aph(3'')-Ib, aph(6)-Id, ARR-2, blaOXA-10, blaTEM-1B, blaVEB-1, cmlA1, rmtB, sul1, sul2, tet(A), tet(G)                 \\ \cline{2-5} 
-                            & P: IncL/ MpOXA-48           & \textbf{63,589}       & 1.49     & blaOXA-48                                                                                                                                  \\ \cline{2-5} 
-                            & -                           & \textbf{5,234}        & 188.49   & -                                                                                                                                          \\ \cline{2-5} 
-                            & P: ColRNAI                  & \textbf{4,940 }       & 97.77    & -                                                                                                                                          \\ \hline \hline
-\multirow{5}{*}{20\_GR\_12} & C                           & \textbf{5,395,894}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\ \cline{2-5} 
-                            & P: IncFIB$_{pKpn3}$, IncFIIK     & \textbf{170,467}      & 1.77     & aph(3')-Ia, blaKPC-2, blaOXA-9, blaTEM-1A                                                                                                  \\ \cline{2-5} 
-                            & P: IncN                     & \textbf{50,979}       & 1.42     & aph(3'')-Ib, aph(6)-Id, blaTEM-1A, dfrA14, sul2, tet(A)                                                                                    \\ \cline{2-5} 
-                            & P: IncX3                    & \textbf{43,380}       & 1.78     & blaSHV-12                                                                                                                                  \\ \cline{2-5} 
-                            & P: ColRNAI                  & \textbf{13,841}       & 10.82    & aac(6')-Ib, aac(6')Ib-cr                                                                                                                   \\ \hline
+\toprule
+\multirow{2}{*}{\small \textbf{Isolate}}  & \multirow{2}{*}{\small \textbf{Contig}$^a$}   & {\small \textbf{Length}$^b$} & {\small \textbf{Abundance}} & \multirow{2}{*}{\small \textbf{Resistance Genes}$^c$}\\
+ & & \textbf{(bp)} & \textbf{(X)} & \\ 
+\hline
+\rowcolor{Gray}
+ \cellcolor{white}  		& C                           & \textbf{5,181,675}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\
+                            & P: IncA/C2                  & \textbf{192,771}      & 1.95     & aadA1, ant(2'')-Ia, aph(6)-Id, ARR-2, blaOXA-10, blaTEM-1B, blaVEB-1, cmlA1, dfrA14, dfrA23, rmtB, strA, sul1, sul2, tet(A), tet(G)        \\ 
+\rowcolor{Gray}
+ \cellcolor{white}          & P: IncFIB$_{pKpn3}$, IncFII$_{pKP91}$ & \textbf{168,873}      & 2        & aadA24, aph(3')-Ia, aph(6)-Id, dfrA1, dfrA14, strA  \\
+                            & P: IncFIB$_{pKPHS1}$             & \textbf{108,879}      & 1.53     & -                                                                                                                                          \\
+\rowcolor{Gray}
+ \cellcolor{white}          & -                           & \textbf{55,018}       & 14.10    & -                                                                                                                                          \\
+\multirow{-6}{*}{1\_GR\_13}    & P: IncR, IncN               & \textbf{53,495}       & 2.36     & aadA24, aph(3')-Ia, aph(6)-Id, blaVIM-27, dfrA1,mph(A), strA, sul1  \\ \hline
+\rowcolor{Gray}
+ \cellcolor{white}  & C                           & \textbf{5,466,424}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\
+                            & P: IncFIB$_{pKpn3}$, IncFIIK     & 197,872      & 1.3      & aadA2, aph(3')-Ia, catA1, dfrA12, mph(A), sul1                                                                                             \\ 
+\rowcolor{Gray}
+ \cellcolor{white}          & P: IncA/C2                  & 175,636      & 1.49     & aadA1, ant(2'')-Ia, aph(3'')-Ib, aph(6)-Id, ARR-2, blaOXA-10, blaTEM-1A, blaVEB-1, cmlA1, dfrA14, dfrA23, rmtB, sul1, sul2, tet(A), tet(G) \\ 
+                            & P: IncFIB$_{pQil}$               & 95,481       & 1.61     & blaKPC-2, blaOXA-9, blaTEM-1A                                                                                                              \\
+\rowcolor{Gray}
+ \cellcolor{white}          & P: IncX3                    & \textbf{43,380}       & 1.91     & blaSHV-12                                                                                                                                  \\
+\multirow{-6}{*}{2\_GR\_12}  & P: ColRNAI                  & \textbf{13,841}       & 4        & aac(6')-Ib, aac(6')Ib-cr                                                                                                                   \\ \hline
+\rowcolor{Gray}
+ \cellcolor{white}  		& C                           & \textbf{5,426,917}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\
+                            & P: IncFIB$_{pKpn3}$, IncFIIK     & \textbf{187,670}      & 0.88     & aac(3)-IIa, aac(6')Ib-cr, aadA2, aph(3')-Ia, blaCTX-M-15, blaOXA-1, catB4, dfrA12, mph(A), sul1                                            \\
+\rowcolor{Gray}
+ \cellcolor{white}         	& P: IncA/ C2                 & \textbf{155,161}      & 0.99     & aadA1, ant(2'')-Ia, aph(3'')-Ib, aph(6)-Id, ARR-2, blaOXA-10, blaTEM-1B, blaVEB-1, cmlA1, rmtB, sul1, sul2, tet(A), tet(G)                 \\
+                            & P: IncL/ MpOXA-48           & \textbf{63,589}       & 1.49     & blaOXA-48                                                                                                                                  \\
+\rowcolor{Gray}
+ \cellcolor{white}          & -                           & \textbf{5,234}        & 188.49   & -                                                                                                                                          \\
+\multirow{-6}{*}{16\_GR\_13}                            & P: ColRNAI                  & \textbf{4,940 }       & 97.77    & -                                                                                                                                          \\ \hline
+\rowcolor{Gray}
+ \cellcolor{white} 			& C                           & \textbf{5,395,894}     & 1        & blaSHV-11, fosA, oqxA, oqxB                                                                                                                \\
+                            & P: IncFIB$_{pKpn3}$, IncFIIK     & \textbf{170,467}      & 1.77     & aph(3')-Ia, blaKPC-2, blaOXA-9, blaTEM-1A                                                                                                  \\
+\rowcolor{Gray}
+ \cellcolor{white}          & P: IncN                     & \textbf{50,979}       & 1.42     & aph(3'')-Ib, aph(6)-Id, blaTEM-1A, dfrA14, sul2, tet(A)                                                                                    \\
+                            & P: IncX3                    & \textbf{43,380}       & 1.78     & blaSHV-12                                                                                                                                  \\
+\rowcolor{Gray}
+ \cellcolor{white} \multirow{-5}{*}{20\_GR\_12} & P: ColRNAI                  & \textbf{13,841}       & 10.82    & aac(6')-Ib, aac(6')Ib-cr                                                                                                                   \\ \hline
 \multicolumn{5}{l}{{$^a$ Contig identity indicating chromosome (C) or plasmid (P: replicon determined by PlasmidFinder 1.3).}}\\
 \multicolumn{5}{l}{{$^b$ \textbf{Bold} indicates circular sequences.}}\\
 \multicolumn{5}{l}{{$^c$ Resistance genes determined by ResFinder 3.0 and displayed in alphabetical order.}}

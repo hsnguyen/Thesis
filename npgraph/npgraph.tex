@@ -6,7 +6,7 @@
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Actually the idea of using assembly graph for scaffolding in \npscarf{} has been considered from the very beginning of the software design. However, the computational challenges hinder its real-time process ability thus being neglected from the first versions of \npscarf{}. In the first section of this chapter, I will introduce the concept and model of the (SPAdes) assembly graph  which would be used as the input. The next section will describe the first attempt to apply this information into \npscarf{} for a better gap-filling. Finally, a real-time assembly graph bridging algorithm will be shown in a new tool, namely \npgraph{} together with its perfomances and properties in numerous use cases.
+Actually the idea of using assembly graph for scaffolding in \npscarf{} has been considered from the very beginning of the software design. However, the computational challenges hinder its real-time process ability thus being neglected from the first versions of \npscarf{}. In the first section of this chapter, I will introduce the concept and model of the SPAdes assembly graph  which would be used as the input. The next section will describe the first attempt to apply this information into \npscarf{} for a better gap-filling. Finally, a real-time assembly graph bridging algorithm will be shown in a new tool, namely \npgraph{} together with its perfomances and properties in numerous use cases.
 
 \section{Assembly graph}
 %assembly graph
@@ -117,9 +117,9 @@ The input consists of Illumina assembly graph resulted from running assembler, e
 The long reads will be aligned with the contigs in the assembly graph to indicate longer paths that should be traversed. These local paths, given sufficient data, are expected to untangle the complicated graph and guide to the global Eulerian paths (or cycles if possible) that represent the entire genomic sequences. 
 
 Basically the work flow of \npgraph{} can be divided into 3 main phases: abundance binning, graph resolving and assembly output. 
-The first step will try to bin the contigs into different groups of \emph{population} based on their coverage. 
+The first step is to bin the contigs into different groups of \emph{population} based on their coverage. 
 Each population would include contigs of the similar abundance in the final assembly sequences, \EG{} chromosome , plasmids, or even particular species genome in a metagenomics community.
-The binning phase would assist to differentiate between repetitive contigs and unique ones. By using this information, in combination with path inducing from long reads, the assembly graph is then traversed and resolved in real-time. Finally, the graph is subjected to the last attempt of resolving and cleaning, as well as output the final results. The whole process can be managed by using either command-line interface or GUI.
+The binning phase would assist to differentiate between repetitive contigs and unique ones as well. By using this information, in combination with paths inducing from long reads, the assembly graph is then traversed and resolved in real-time. Finally, the graph is subjected to the last attempt of resolving and cleaning, as well as output the final results. The whole process can be managed by using either command-line interface or GUI.
 \subsubsection{Pre-processing: identify repeat and unique contigs}
 The purpose of this step is to investigate the sequencing properties of contigs, \IE{} length and \emph{k-mer} count, in combination with the graph topology, for an initial binning algorithm to determine multiplicity for each of them.
 %\paragraph{Correct coverage bias due to GC content}
@@ -127,11 +127,11 @@ The purpose of this step is to investigate the sequencing properties of contigs,
 %To be implemented.
 
 \paragraph{Initial binning contigs into groups of abundances}
-Each contig is represented as a node in the assembly graph and the edge between two nodes indicate their overlap (link) properties.
-This step is to cluster the significant nodes (longer than $10$Kbp) into different sets, namely significant abundance groups, based on their coverage values. 
+Each contig is represented as a node in the assembly graph and an edge connecting two nodes indicates their overlap (link) properties.
+This step is to cluster the significant nodes (longer than $10$Kbp) into different sets, namely \emph{core} groups, based on their degree and coverage values.
 
 DBSCAN clustering algorithm \cite{Ester96adensity-based} is applied for this task.
-The idea is to consider a coverage value of a significant contig (which consists of more than 10,000 \emph{k-mers}) to be a sampled mean of a Poisson distribution (of \emph{k-mers} count). 
+The idea is to consider a coverage value of a significant contig (which can be splitted into more than 10,000 \emph{k-mers}) to be a sampled mean of a Poisson distribution (of \emph{k-mers} count). 
 The metric is a distance function based on Kullback-Leibner divergence \cite{Kullback1951information}, or relative entropy, of two Poisson distributions.
 
 Assume there are 2 Poisson distribution $P_1$ and $P_2$ with density functions 
@@ -453,26 +453,37 @@ Table~\ref{tab:npgraph_real} shows the benchmark results of \npgraph{} (using \m
 \centering
 \caption[Assembly of real data sets using \unicycler{} and \npgraph{} with the optimized SPAdes output]{Assembly of real data sets using \unicycler{} and \npgraph{} with the optimized \spades{} output. Circular contigs are highlighted in \textbf{bold}, fragmented assemblies are presented as X$\vert$Y where X is the total length and Y is the number of supposed contigs making up X.}
 \label{tab:npgraph_real}
-\begin{tabular}{p{4cm}|r|r|l}
+\begin{tabular}{p{4cm}rrl}
+\hline
 \toprule
- & \unicycler{} & \npgraph{} & Replicons (based on $\mathtt{PlasmidFinder}$ 1.3) \\ \toprule
-\emph{Citrobacter freundii} & \textbf{5,029,534} & \textbf{5,029,486} & Chromosome \\
+ & \textbf{\unicycler{}} & \textbf{\npgraph{}} & \textbf{Replicons (based on $\mathtt{PlasmidFinder}$ 1.3)} \\ 
+\hline 
+\rowcolor{Gray}
+ \cellcolor{white} \emph{Citrobacter freundii} & \textbf{5,029,534} & \textbf{5,029,486} & Chromosome \\
 CAV1374 & \textbf{109688} & \textbf{109688} & IncFIB(pHCM2)\_1\_pHCM2\_AL513384 \\
- & \textbf{100,873} & \textbf{100,873} & IncFIB(pB171)\_1\_pB171\_AB024946 \\
+\rowcolor{Gray}
+ \cellcolor{white}  & \textbf{100,873} & \textbf{100,873} & IncFIB(pB171)\_1\_pB171\_AB024946 \\
  & \textbf{85,575} & \textbf{85,575} & IncL/M(pMU407)\_1\_pMU407\_U27345 \\
- & \textbf{43,621} & \textbf{43,621} & repA\_1\_pKPC-2\_CP013325 \\
+\rowcolor{Gray}
+ \cellcolor{white}  & \textbf{43,621} & \textbf{43,621} & repA\_1\_pKPC-2\_CP013325 \\
  & \textbf{3,223} & \textbf{3,223} & - \\
- & \textbf{1,916} & \textbf{1,916} & ColRNAI\_1\_\_DQ298019 \\
+\rowcolor{Gray}
+ \cellcolor{white}  & \textbf{1,916} & \textbf{1,916} & ColRNAI\_1\_\_DQ298019 \\
  & 14,464$\vert$3 & 14,456$\vert$2 & - \\ \hline
-\emph{Enterobacter cloacae} & 4,806,666$\vert$2 & 4,858,438$\vert$2 & Chromosome \\
+\rowcolor{Gray}
+ \cellcolor{white} \emph{Enterobacter cloacae} & 4,806,666$\vert$2 & 4,858,438$\vert$2 & Chromosome \\
 CAV1411 & \textbf{90,451} & 90,693$\vert$2 & IncR\_1\_\_DQ449578 \\
- & \textbf{33,610} & \textbf{33,610} & repA\_1\_pKPC-2\_CP013325 \\
+\rowcolor{Gray}
+ \cellcolor{white} & \textbf{33,610} & \textbf{33,610} & repA\_1\_pKPC-2\_CP013325 \\
  & 13,129$\vert$2 & 14,542$\vert$4 & - \\ \hline
-\emph{Klebsiella oxytoca}  & 6,153,947$\vert$5 & \textbf{6,155,762} & Chromosome \\
+\rowcolor{Gray}
+ \cellcolor{white} \emph{Klebsiella oxytoca}  & 6,153,947$\vert$5 & \textbf{6,155,762} & Chromosome \\
 CAV1015 & \textbf{113,105} & \textbf{113,105} & \begin{tabular}[c]{@{}l@{}}IncFII(SARC14)\_1\_SARC14\_JQ418540;\\ IncFII(S)\_1\_\_CP000858\end{tabular} \\
- & \textbf{111,395} & \textbf{111,395} & - \\
+\rowcolor{Gray}
+ \cellcolor{white} & \textbf{111,395} & \textbf{111,395} & - \\
  & \textbf{108,418} & 109,209$\vert$13 & IncFIB(K)\_1\_Kpn3\_JN233704 \\
- & \textbf{76,183} & \textbf{76,186} & IncL/M(pMU407)\_1\_pMU407\_U27345 \\
+\rowcolor{Gray}
+ \cellcolor{white} & \textbf{76,183} & \textbf{76,186} & IncL/M(pMU407)\_1\_pMU407\_U27345 \\
  & \textbf{11,638} & 11,892$\vert$2 & - \\ \hline
 \end{tabular}
 \end{table}

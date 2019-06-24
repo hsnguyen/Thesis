@@ -189,6 +189,13 @@ H.~Teng, M.~D. Cao, M.~B. Hall, T.~Duarte, S.~Wang, and L.~J. Coin.
   nucleotide sequence using deep learning}}.
 \newblock GigaScience \textbf{7}(5), giy037 (2018).
 
+\bibitem{De2019structural}
+W.~De~Coster, P.~De~Rijk, A.~De~Roeck, T.~De~Pooter, S.~D'Hert, M.~Strazisar,
+  K.~Sleegers, and C.~Van~Broeckhoven.
+\newblock \emph{{Structural variants identified by Oxford Nanopore PromethION
+  sequencing of the human genome}}.
+\newblock Genome research pp. gr--244939 (2019).
+
 \bibitem{Nicholls2019zymo}
 S.~M. Nicholls, J.~C. Quick, S.~Tang, and N.~J. Loman.
 \newblock \emph{Ultra-deep, long-read nanopore sequencing of mock microbial

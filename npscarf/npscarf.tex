@@ -174,10 +174,6 @@ circular contigs against the amount of nanopore sequencing data.}
 \label{f:scaffold}
 \end{figure*}
 
-\definecolor{Gray}{gray}{0.9}
-\newcommand{\cir}{$^\ast$}
-\newcommand{\bres}[1]{{\bf #1}}
-
 \begin{table*}[ht]
 \centering
 \caption{Comparison between \npscarf's assemblies and the reference genomes of two \kp{} strains}
@@ -216,18 +212,17 @@ circular contigs against the amount of nanopore sequencing data.}
  \rowcolor{Gray}
   \cellcolor{white} & 
  Contig 1 & 4,923,970 & - & & KN046818.1& 5,284,261 & -   \\ 
- \rowcolor{Gray}
   \cellcolor{white} & 
  Contig 2 & 372,214 & - & & & & \\
+ \rowcolor{Gray}
    \cellcolor{white} & 
  Contig 3& 139,480 & IncFIA(HII); IncFIB(K) & & KN046820.1 & 95,930 &
  IncFIA(HII); IncFIB(K)  \\
+ \rowcolor{Gray}
    \cellcolor{white} & & & & & KN046821.1 & 42,420 & -   \\ 
-  \rowcolor{Gray}
    \cellcolor{white} & 
 Contig 4*& 119,388 & ColRNAI; IncFII(pCoo); pSM22 & & KN046819.1 & 106,842 &
 IncFII(pCoo); pSM22  \\
- \rowcolor{Gray} 
   \cellcolor{white} & 
  & & & & KN046822.1 & 16,331 & -  \\
   \hline
@@ -340,31 +335,36 @@ ATCC BAA-2146]
 \resizebox{\textwidth}{!}{
 \begin{tabular}{cllll}
  \toprule
- Data \\
- required & Gene ID & NCBI ref & Antibiotic resistance & Plasmid evidence\\
+ \textbf{Data} \\
+ \textbf{required} & \multirow{-2}{*}{\textbf{Gene ID}} & \multirow{-2}{*}{\textbf{NCBI ref}} & \multirow{-2}{*}{\textbf{Antibiotic resistance}} & \multirow{-2}{*}{\textbf{Plasmid evidence}}\\
 \hline
 $10$Mbp & blaTEM-1B & JF910132 & penicillins, some cephalosporins & IncR;IncFIA(HI1) \\
       & strB & M96392 & streptomycin & IncR;IncFIA(HI1) \\
       & strA & AF321551 & streptomycin & IncR;IncFIA(HI1) \\     
       & sul2 & GQ421466 & sulfonamides & IncR;IncFIA(HI1) \\
+\rowcolor{Gray}
 $14$Mbp & aac6Ib & M21682 & tobramycin, amikacin, netilmicin, sisomicin & IncR;IncFIA(HI1) \\
 $21$Mbp & mphA & D16251 & erythromycin & IncFIB(K);IncFII(K) \\ 
       & tetA & AJ517790 & tetracyclines & IncFIB(K);IncFII(K) \\
       & QnrB7 & EU043311 & quinolones & IncR;IncFIA(HI1) \\
+\rowcolor{Gray}
 $29$Mbp & dfrA14 & DQ388123 & trimethoprim & IncR;IncFIA(HI1) \\ 
 $46$Mbp &  blaNDM-1 & FN396876 & penicillins, cephalosporins, carbapenems & IncA/C2 \\
+\rowcolor{Gray}
 $51$Mbp & rmtC & AB194779 & aminoglycosides (include gentamicin, kanamycin) & IncA/C2 \\
 $78$Mbp & sul1 & AY224185 & sulphonamide & IncA/C2 \\
       & aac6Ib\_1 & M21682 & tobramycin, amikacin, netilmicin, sisomicin &
       IncA/C2 \\
       & blaCMY-6 & AJ011293 & penicillins, some cephalosporins & IncA/C2\\
+\rowcolor{Gray}
 $83$Mbp & blaSHV-11 & GQ407109 & penicillins, some cephalosporins &  IncR;IncFIA(HI1) \\ 
-      & aac6Ib & M21682 & tobramycin, amikacin, netilmicin, sisomicin &
+\rowcolor{Gray}
+& aac6Ib & M21682 & tobramycin, amikacin, netilmicin, sisomicin &
  IncR;IncFIA(HI1) \\
-      & blaOXA-1 & J02967 & penicillins & IncR;IncFIA(HI1) \\
-      & aac3-IIa & X51534 & gentamicin, tobramycin, netilmicin, sisomicin &
- IncR;IncFIA(HI1) \\
-     
+\rowcolor{Gray}
+& blaOXA-1 & J02967 & penicillins & IncR;IncFIA(HI1) \\
+\rowcolor{Gray}
+& aac3-IIa & X51534 & gentamicin, tobramycin, netilmicin, sisomicin &  IncR;IncFIA(HI1) \\
 \hline
 \end{tabular}
 }

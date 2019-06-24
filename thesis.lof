@@ -59,9 +59,9 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {A.1}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {K.\nobreakspace {}pneumoniae}{} ATCC BAA-2146 to its reference genomes}}{150}{figure.a.A.1}
 \contentsline {figure}{\numberline {A.2}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {K.\nobreakspace {}pneumoniae}{} ATCC 13883 to its reference genomes}}{150}{figure.a.A.2}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {S.\nobreakspace {}cerevisae}{} W303 to the reference genome of the S288C strain}}{151}{figure.a.A.3}
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Alignment of the Canu's assembly for \emph {S.\nobreakspace {}cerevisae}{} W303 to the reference genome of the S288C strain}}{152}{figure.a.A.4}
-\contentsline {figure}{\numberline {A.5}{\ignorespaces Alignment of the miniasm's assembly for \emph {S.\nobreakspace {}cerevisae}{} W303 to the reference genome of the S288C strain}}{153}{figure.a.A.5}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Alignment of the $\mathtt {npScarf}${}'s assembly for \emph {S.\nobreakspace {}cerevisiae}{} W303 to the reference genome of the S288C strain}}{151}{figure.a.A.3}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Alignment of the Canu's assembly for \emph {S.\nobreakspace {}cerevisiae}{} W303 to the reference genome of the S288C strain}}{152}{figure.a.A.4}
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Alignment of the miniasm's assembly for \emph {S.\nobreakspace {}cerevisiae}{} W303 to the reference genome of the S288C strain}}{153}{figure.a.A.5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {B.1}{\ignorespaces PCR barcode MinION sequencing with $\mathtt {npBarcode}${}}}{156}{figure.a.B.1}
 \contentsline {figure}{\numberline {B.2}{\ignorespaces Comparison of ONT Native Barcode Sequencing demultiplexing accuracy}}{159}{figure.a.B.2}

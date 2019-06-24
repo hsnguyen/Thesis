@@ -48,22 +48,34 @@ Prominent sequencing technologies include pyrosequencing \cite{Ronaghi1996,Ronag
 \centering
 \caption[Comparison of DNA sequencing methods in general]{Comparison of DNA sequencing methods in general. Each method may have several platforms with varied configurations for different usage. More details in \cite{Lee2013common,Mardis2017dna}.} 
 \label{tab:sequencing}
-\begin{tabular}{l|l|c|c|c|c}
+\begin{tabular}{llcccc}
 \hline
-\multirow{2}{*}{Gen.} & \multirow{2}{*}{Sequencing method}& Read length & Accuracy & Reads  & Time \\
-& & (bp) & (\%) & per run & per run \\\hline
-\multirow{2}{*}{$1^{st}$} & Chain termination & \multirow{2}{*}{$400-900$} & \multirow{2}{*}{$99.9$} & \multirow{2}{*}{N/A} & \multirow{2}{*}{$0.3-3$ hours} \\
-& (Sanger sequencing) & & & & \\\hline
-\multirow{6}{*}{$2^{nd}$} & Pyrosequencing (454) & $700$ & $99.9$ & $1$ million & $24$ hours\\\cline{2-6}
-& Sequencing by synthesis & \multirow{2}{*}{up to $300$} & \multirow{2}{*}{$>99$} & up to & \multirow{2}{*}{$<1-14$ days} \\
-& (Illumina/Solexa) & & &  $3$ billions & \\\cline{2-6}
+\toprule
+\multirow{2}{*}{\textbf{Gen.}} & \multirow{2}{*}{\textbf{Sequencing methods}}& \textbf{Read length} & \textbf{Accuracy} & \textbf{Reads}  & \textbf{Time} \\
+& & \textbf{(bp)} & \textbf{(\%)} & \textbf{per run} & \textbf{per run} \\ 
+\hline
+\rowcolor{Gray}
+ \cellcolor{white} & Chain termination &  &  &  & \\
+\rowcolor{Gray}
+ \cellcolor{white} \multirow{-2}{*}{$1^{st}$} & (Sanger sequencing) &\multirow{-2}{*}{$400-900$} & \multirow{-2}{*}{$99.9$} & \multirow{-2}{*}{N/A} & \multirow{-2}{*}{$0.3-3$ hours} \\
+\hline
+ & Pyrosequencing (454) & $700$ & $99.9$ & $1$ million & $24$ hours\\
+\rowcolor{Gray}
+ \cellcolor{white} & Sequencing by synthesis &  &  & up to & \\
+\rowcolor{Gray}
+ \cellcolor{white} & (Illumina/Solexa) & \multirow{-2}{*}{up to $300$} & \multirow{-2}{*}{$>99$} &  $3$ billions & \multirow{-2}{*}{$<1-14$ days}\\
 & Sequencing by ligation & \multirow{2}{*}{$75+35$} & \multirow{2}{*}{99.9} & up to & \multirow{2}{*}{$1-2$ weeks} \\
-& (SOLiD sequencing) & & & $2.8$ billions & \\\cline{2-6}
-& Ion semiconductor & $200$ & $98$ & $5$ millions & $2$ hours\\\hline
-\multirow{3}{*}{$3^{rd}$} & Single molecule,  & $3000$ & \multirow{2}{*}{$85$} & \multirow{2}{*}{$\approx 50$K} & \multirow{2}{*}{$2$ hours} \\
-& real-time sequencing &  on average & & & \\\cline{2-6}
-& \multirow{2}{*}{Nanopore sequencing} & extremely & \multirow{2}{*}{$85-96$} & $\approx 150$K & $<48$ hours\\
-& & long & & per flow cell & (real-time output) \\\hline
+& (SOLiD sequencing) & & & $2.8$ billions & \\
+\rowcolor{Gray}
+ \cellcolor{white} \multirow{-6}{*}{$2^{nd}$} & Ion semiconductor & $200$ & $98$ & $5$ millions & $2$ hours\\
+\hline
+ & Single molecule,  & $3000$ & \multirow{2}{*}{$85$} & \multirow{2}{*}{$\approx 50$K} & \multirow{2}{*}{$2$ hours} \\
+ & real-time sequencing &  on average & & & \\
+\rowcolor{Gray}
+ \cellcolor{white} &  & extremely &  & $\approx 150$K & $<48$ hours\\
+\rowcolor{Gray}
+ \cellcolor{white}\multirow{-3}{*}{$3^{rd}$} & \multirow{-2}{*}{Nanopore sequencing} & long & \multirow{-2}{*}{$85-96$} & per flow cell & (real-time output) \\
+\hline
 \end{tabular}
 \end{table}  
 
@@ -136,10 +148,10 @@ Due to the  unavoidable noises of the measures in such tiny scale, a certain inn
 The nanopores are packed into a \emph{flow cell}, which is the consumable of this technology. Start-up cost of operating MinION is virtually zero, as users only have to pay for running costs, making it suitable for any project scale.  
 The chemistry and computational features are likewise updated continuously to help reduce the noises from output. Recently, R10 flow cell is made available for higher signal accuracy, together with the newest base-calling algorithm from Guppy flip-flop pipeline that supports GPU for heavy computational deep-learning tasks, it has shown positive progress of this sequencing technology to tackle errors. When the demand of resources optimization is concerned, \emph{flongle} (single-use flow cell) can be used for small genomes. On the other hand, washing kits can be applied to reactivate pores from an interrupted flow cell, making it ready for another run.  
 
-Furthermore, GridION and ProthmethION -- the scaled-up version of MinION, are made to public by the company through its access program and has already been deployed for several experiments involving bigger and more complicated genomes. This included human genome by De Coster, Wouter, et al. \emph{Structural variants identified by Oxford Nanopore PromethION sequencing of the human genome.} BioRxiv (2018) and metagenomics mock community~\cite{Nicholls2019zymo} where data is available at \url{https://github.com/LomanLab/mockcommunity}. 
+Furthermore, GridION and ProthmethION -- the scaled-up version of MinION, are made to public by the company through its access program and has already been deployed for several experiments involving bigger and more complicated genomes. This included human genome~\cite{De2019structural} and metagenomics mock community~\cite{Nicholls2019zymo} where data is available at \url{https://github.com/LomanLab/mockcommunity}.
 
 In summary, ONT provides promising and fast-growing sequencing technology that could facilitate substantial applications in real-life.
-A very first touch on the data generated by this sequencing method at early stage will be presented in the following section.
+The first description of the data generated by this sequencing method at early stage will be presented in the following section.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -188,7 +200,8 @@ Even so, noises will inevitably remain in nanopore reads as the result of measur
 \label{tab:first}
  \begin{tabular}{lccl}
  \hline
- Strain & Phred Quality Scores & Read Length Distribution & Emp. errors \\
+ \toprule
+ \textbf{Strain} & \textbf{Phred Quality Scores} &\textbf{ Read Length Distribution} & \textbf{Emp. errors} \\
  \hline
    BAA-2146 & & & Del: 9.5\% \\ 
    (NDM-1 strain)& \multirow{4}{*}{\includegraphics[width=0.33\textwidth]{images/qualR7.png}}    & \multirow{4}{*}{\includegraphics[width=0.33\textwidth]{images/lengthR7.png}} &  Ins: 6.3\% \\

@@ -85,15 +85,9 @@ memory for running \npscarf{} and BWA-MEM.
 \caption{Memory usage (Gb) of the different tools}
 \label{T:mem}
 \begin{tabular}{lrrrrrrrrrr}
-% \toprule
-%    &       & \cthead{1}{Assembly} & \cthead{1}{\#Contigs}      & 
-%    \cthead{1}{N50}  & \cthead{1}{Mis-} &  \cthead{1}{Error}  &
-%    \cthead{3}{Runtimes} \\
-%    & Method & \cthead{1}{size (Mb)} &\cthead{1}{($\geq500$ bp)} &
-%    \cthead{1}{(Kp)} & \cthead{1}{assemblies} & \cthead{1}{(per 100 Kb)} &  
-%    \cthead{3}{(CPU hrs)} \\
+\hline
 \toprule
- & Kp2146 & Kp13883 & E.coli K12 & ST H58 & Sc W303\\
+ & \textbf{Kp2146} & \textbf{Kp13883} & \textbf{E.~coli K12} & \textbf{ST H58} & \textbf{Sc W303}\\
 \hline
 SPAdes & 35.67 & 34.32 & 34.24 & 10.45 & 85.99 \\
  + SSPACE & 3.41 & 4.01 & 5.09 & 2.39 & 36.84 \\
@@ -125,16 +119,22 @@ Miniasm + Pilon & 2.99 & 6.08 & 6.04 & 1.97 & 89.51 \\
 \caption{Information for each of 8 samples used in the Native Barcoding sequencing protocol.}
 \label{supp_tab:sample}
 \centering
-\begin{tabular}{l|l|l|l|r}
+\begin{tabular}{llllr}
+\hline
+\toprule
 \textbf{ID} & \textbf{Strain}          & \textbf{Publish ID} & \textbf{Barcode ID} & \textbf{Input (ng)} \\\hline
+\rowcolor{Gray} 
 GP\_023            & \emph{Streptococcus pneumoniae} &        ATCC 700677              & NB01                & 1,000                \\
 GN\_092            & \emph{Klebsiella pneumoniae}    &         3\_GR\_13~\cite{Miranda2018}             & NB02                & 1,500                \\
+\rowcolor{Gray} 
 GN\_093            & \emph{Acinetobacter baumannii}  &          n/a            & NB03                & 1,500                \\
 GN\_096            & \emph{Klebsiella pneumoniae}    &         5\_GR\_13~\cite{Miranda2018}              & NB04                & 935                 \\
+\rowcolor{Gray} 
 GN\_101            & \emph{Pseudomonas aeruginosa}   &          n/a            & NB05                & 1,500                \\
 GN\_106            & \emph{Klebsiella pneumoniae}    &         11\_BR\_13~\cite{Miranda2018}              & NB06                & 1,500                \\
+\rowcolor{Gray} 
 GN\_132            & \emph{Klebsiella quasipneumoniae}    &         21\_GR\_13~\cite{Miranda2018}              & NB07                & 1,000                \\
-GN\_133            & \emph{Klebsiella pneumoniae}    &         22\_GR\_12~\cite{Miranda2018}              & NB08                & 1,500               
+GN\_133            & \emph{Klebsiella pneumoniae}    &         22\_GR\_12~\cite{Miranda2018}              & NB08                & 1,500       \\\hline        
 \end{tabular}
 \end{table}
 
@@ -146,15 +146,16 @@ GN\_133            & \emph{Klebsiella pneumoniae}    &         22\_GR\_12~\cite{
 \centering
 \caption[Pairwise comparison between samples in Native Barcode Sequencing]{Pairwise comparison (using MUMmer) between 8 samples in our Native Barcode Sequencing. Value in cell $(i,j)$ is percentage (bases) of genome $i$ aligned to genome $j$. Highly identical genomes and their figures are highlighted.} 
 \label{supp_tab:dnadiff}
-\begin{tabular}{l|llllllll}
+\begin{tabular}{lllllllll}
 \hline
+\toprule
 & GP\_023 & \textbf{GN\_092} & GN\_093 & \textbf{GN\_096} & GN\_101 & \textbf{GN\_106} & \textbf{GN\_132} & \textbf{GN\_133} \\ \hline
-GP\_023 & 100 & 0.30 & 0.16 & 0.27 & 0.09 & 0.34 & 0.28 & 0.30 \\
+\rowcolor{Gray} GP\_023 & 100 & 0.30 & 0.16 & 0.27 & 0.09 & 0.34 & 0.28 & 0.30 \\
 \textbf{GN\_092} & 0.14 & 100  & 0.30 & \textbf{87.28} & 1.09 & \textbf{92.74} & \textbf{78.42} & \textbf{97.11} \\
-GN\_093 & 0.13 & 0.32  & 100 & 0.32 & 0.30 & 0.25 & 0.23 & 0.3  \\
+\rowcolor{Gray} GN\_093 & 0.13 & 0.32  & 100 & 0.32 & 0.30 & 0.25 & 0.23 & 0.3  \\
 \textbf{GN\_096} & 0.14 & \textbf{88.84}  & 0.31 & 100 & 1.27 & \textbf{88.10}  & \textbf{79.75}  & \textbf{86.24}  \\
-GN\_101 & 0.03 & 0.90 & 0.15 & 1.00 & 100 & 1.02 & 0.73  & 0.72 \\ \textbf{GN\_106} & 0.17  & \textbf{93.96} & 0.17 & \textbf{87.47} & 1.19  & 100 & \textbf{79.65} & \textbf{91.86}  \\
-\textbf{GN\_132} & 0.13 & \textbf{79.99}  & 0.16  & \textbf{79.94} & 0.84 & \textbf{80.50} & 100 & \textbf{79.66} \\
+\rowcolor{Gray} GN\_101 & 0.03 & 0.90 & 0.15 & 1.00 & 100 & 1.02 & 0.73  & 0.72 \\ \textbf{GN\_106} & 0.17  & \textbf{93.96} & 0.17 & \textbf{87.47} & 1.19  & 100 & \textbf{79.65} & \textbf{91.86}  \\
+\rowcolor{Gray} \textbf{GN\_132} & 0.13 & \textbf{79.99}  & 0.16  & \textbf{79.94} & 0.84 & \textbf{80.50} & 100 & \textbf{79.66} \\
 \textbf{GN\_133} & 0.15 & \textbf{99.99} & 0.26 & \textbf{87.31} & 0.93    & \textbf{93.47} & \textbf{80.50} & 100 \\ \hline
 \end{tabular}
 \end{table}
@@ -182,6 +183,7 @@ The common behavior for all demultiplex algorithms is to takes higher/lower risk
 \label{supp_tab:sensitivity}
 \begin{tabular}{l|llll}
 \hline
+\toprule
 & \textbf{npBarcode} & \textbf{Porechop} & \textbf{poreFUME} & \textbf{Metrichor} \\ \hline
 True Positive & 2,924 & 2,812 & 2,515 & 2,875 \\ 
 True Negative & 22,125 & 22,147 & 22,177 & 22,155 \\ 

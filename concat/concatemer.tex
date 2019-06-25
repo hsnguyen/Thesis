@@ -16,7 +16,7 @@ The lab works, including but not limited to DNA extraction, amplification as wel
 The data has not yet been published but permission to document part of the preliminary research findings for this thesis has been granted by all collaborators.
 \section{Introduction}
 There have been attempts to sequence bacterial plasmids using MinION device as part of a whole genome assembly~\cite{Lemon2017M15,Wick2017M12} or in exclusively studies~\cite{Li2018M13,Lu2018plamids}. As mentioned earlier, studying the whole structure of \emph{replicons} is important as they are responsible for the horizontal gene transfer between strains, \EG{} the dissemination of AMR factors in \emph{superbugs}.
-At the same time, it is critical to understand the mechanism of virual transmission and evolution in real-time to monitor and control  epidemics~\cite{GardyLR2015,AndersenSM2015,HolmesDR2016,DudasCB2017}.
+At the same time, it is critical to understand the mechanism of viral transmission and evolution in real-time to monitor and control  epidemics~\cite{GardyLR2015,AndersenSM2015,HolmesDR2016,DudasCB2017}.
 As a result, nanopore sequencing for viral samples has already been employed in clinics or even in the field during outbreaks, \EG{} influenza~\cite{Wang2015minion}, Ebola~\cite{QuickLD2016} or Zika~\cite{Quick2017GP} viruses.
 
 The ONT MinION benefits sequencing short genomes, such as viruses, in many ways especially in terms of genome assembly. 
@@ -37,14 +37,14 @@ The cloning method is known as rolling-circle amplification (RCA), a one-step wh
 \end{figure}
 
 The basic principle for RCA is shown in Figure~\ref{fig:concat_rca}~\cite{Johne2009rca}.
-On top is an example of the process with only one imaginary primer binding to a template circular. The synthesis starts from this point and move across the whole length of the molecule in the complementary direction as being guided by the DNA polymerase  \emph{phi29} of bacteriophage \emph{Baccilus subtilis}.
+On top is an example of the process with only one imaginary primer binding to a template circular. The synthesis starts from this point and move across the whole length of the molecule in the complementary direction as being guided by the DNA polymerase  \emph{phi29} of bacteriophage \emph{Baccilus~subtilis}.
 Due to this particular enzyme's features, the incorporation can continue passing the binding site whilst the newly synthesized strand being displaced from the track.
 Depending on the size of the template circle, the copying process can go several rounds, resulting in elongated molecules consisting of multiple copies of the original.
 From the diagram in the bottom of Figure~\ref{fig:concat_rca}, multiple random primers are used for the amplification as it should usually be in practice. In this case, the abundance of primers from the reaction mixture can bind to the displaced strand and trigger additional syntheses, creating the branching patterns of the cloning process.
 
 The RCA products are called concatemers as they are long concatemeric molecules consisting of consecutive copies of the target DNA sequence. Normally, restriction enzymes are used to chop them into separated monomers before taking further steps. For our method, concatemers are directly sequenced by MinION and computational methods are used afterward to detect such patterns.
 \paragraph{Viral samples}
-The viral genomes used in this study belonged to the plant infectious family \emph{Caullimoviridae}, or \emph{caulimovirids} with size varied around $7$-$9$Kbp.
+The viral genomes used in this study belonged to the plant infectious family \emph{Caulimoviridae}, or \emph{caulimovirids} with size varied around $7$-$9$Kbp.
 Amongst nine genera detected~\cite{Geering2010ST,Mollov2013LZ}, two of them were investigated, namely \emph{Badnavirus} and \emph{Caulimovirus}, represented by \emph{Banana streak MY virus} (BSMYV) and \emph{Cauliflower mosaic virus} (CaMV) respectively.
 
 \section{Bioinformatics analyses}
@@ -350,7 +350,7 @@ In both signal level, we detect exactly 7 peaks (highlighted in red dots) corres
 Interestingly, when the peaks from DNA signal shows very stable repeat pattern, there is a slight variance from raw signal toward the far end. 
 This phenomenon is shown clearer in Appendix Figure~\ref{supp_fig:mpm30_raw} when the sixth peak is shifted more to the right, considerably making the sixth monomer longer and the seventh monomer shorter than average.
 We argue that there should be an unsmooth transition of the squiggle signal reading from the sequencing process~\cite{Rang2018squiggle}.
-This is due to the nonuniform translocation time of the DNA molecule caused by the motor enzyme at the \emph{homopolymeric} regions~\cite{Manrao2012reading,Cherf2012automated,Sarkozy2017calling} and normally responsible for the high indel error from nanopore sequencing~\cite{Jain2018nanopore3,Stancu2017nanopore5,Ip2015minion}.
+This is due to the nonuniform translocation time of the DNA molecule caused by the motor enzyme at the \emph{homopolymeric} regions~\cite{Manrao2012reading,Cherf2012automated,Sarkozy2017calling} and normally responsible for the high indels from nanopore sequencing~\cite{Jain2018nanopore3,Stancu2017nanopore5,Ip2015minion}.
 However, the base-calling in this case has successfully manipulated the situation, resulting in more evenly-distributed peaks being detected.
 
 Overall, via above example, we demonstrated that a 7-concatemer can be detected using the reference-free method based on NSDF signal investigation.

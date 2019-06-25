@@ -6,7 +6,7 @@
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This chapter describes a unique streaming assembly strategy on MinION data that has been implemented in a tool named \npscarf{}. Its methodology allows completing the assembly in real-time together with the nanopore sequencing nature. Several experiments on different data sets are conducted for better illustrations of \npscarf{} performance and functionality. 
+This chapter describes a unique streaming assembly strategy on MinION data that has been implemented in a tool named \npscarf{}. Its methodology allows completing the assembly in real-time together with the nanopore sequencing nature. Several experiments on different datasets are conducted for better illustrations of \npscarf{} performance and functionality. 
 Comparisons with other methods indicate better quality from the results while at the same time, consume less resources and running time.
 
 These research findings have been published in a journal manuscript under the digital object identifier (DOI):$\mathtt{10.1038/ncomms14515}$. The manuscript will be reproduced with minor changes and reformatting for the whole content of this chapter.
@@ -74,7 +74,7 @@ are present abundantly in most genomes. As a result, assemblies are fragmented
 into large numbers of contigs and the positions of repeat sequences in the
 genome cannot be determined. These repeat sequences often play important
 biological roles; for example, they mediate the lateral transfer of genes
-between bacterial species via pathogenicity islands and plasmids. Analysing
+between bacterial species via pathogenicity islands and plasmids. Analyzing
 these regions is thus essential to determine key characteristics such as
 antimicrobial resistance (AMR) or to identify highly pathogenic variants of many
 bacterial species~\cite{AshtonND2015}.
@@ -86,14 +86,14 @@ A key innovation of the MinION nanopore sequencing device is that it
 measures the changes in electrical current as a single-stranded molecule of DNA
 passes through the nanopore and uses the signal to determine the nucleotide
 sequence of the DNA strand~\cite{KasianowiczBB1996, BrantonDM2008, StoddartHM2009}. 
-As such, the raw data of a read can be retrieved and analysed
+As such, the raw data of a read can be retrieved and analyzed
 as soon as it is generated, while sequencing of other reads is
 still in progress.
 This offers the opportunity to obtain analysis results as
 soon as sufficient data are generated, upon which sequencing can be terminated
 or used for other experiments.
 
-Several algorithms have been developed to utilise long reads for genome
+Several algorithms have been developed to utilize long reads for genome
 assembly. \emph{de novo} assemblers such as the hierarchical genome assembly
 process (HGAP)~\cite{ChinAM2013} and nanocorrect/nanopolish~\cite{LomanQS2015}
 can assemble a complete bacterial genome using only long read sequencing data.
@@ -116,7 +116,7 @@ which incurs extra cost and time; or under-sequencing resulting in a low-quality
 assembly. Here, we present \npscarf{}, the first hybrid assembler that can
 scaffold and complete fragmented short read assemblies with sequence data
 streaming from the MinION while sequencing is still in progress. 
-In effect, \npscarf{} can fully utilise a sequence read within
+In effect, \npscarf{} can fully utilize a sequence read within
 minutes of it being generated. Furthermore, it continuously reports
 assembly quality during the experiment so that users can terminate the sequencing 
 when an assembly of sufficient quality and completeness is obtained.
@@ -423,7 +423,7 @@ of these genes were carried by a plasmid could only be ascertained with long
 reads. Table~\ref{T:plasmidGenes} presents the time-line of such determination.
 In particular, we confirmed 18 AMR genes as plasmid-encoded with $83$Mbp
 ($\sim$14-fold coverage) of nanopore sequencing data. In addition, as all four
-plasmids were circularised and complete with $103$Mbp ($\sim$18-fold coverage) of
+plasmids were circularized and complete with $103$Mbp ($\sim$18-fold coverage) of
 data, we could confidently conclude that only these 18 AMR genes were
 plasmid-encoded, even before the completion of the full genome assembly and the
 sequencing run.
@@ -567,7 +567,7 @@ We evaluated the assemblies in terms both of completeness and accuracy.
 The completeness of an assembly was assessed by N50 statistics and the
 number of contigs that were longer than 500 bp. To examine the accuracy of an
 assembly, we compared it with the closest reference genome of the samples in
-NCBI (See Methods) to obtain the number of misassemblies, mismatches and
+NCBI (See Methods) to obtain the number of mis-assemblies, mismatches and
 short indels.
 During the test, we recorded the CPU times
 required by these pipelines to produce the assemblies. Run times for
@@ -589,7 +589,7 @@ near-complete assemblies for the two \kp{} samples (Figures~\ref{f:scaffold}a
 and \ref{f:scaffold}b) with under 20-fold coverage of nanopore data.
 For the \ec{} K12 MG1655 sample, \npscarf{} required less than 30-fold coverage of 
 nanopore data to complete the genome assembly with one circular contig.
-\npscarf{} also reduced the S. Typhi assembly to only nine contigs (N50=$864$Kbp),
+\npscarf{} also reduced the \emph{S.~Typhi} assembly to only nine contigs (N50=$864$Kbp),
 which was significantly better than the assembly reported by~\cite{AshtonND2015} 
 from the same data (34 contigs, N50=$319$Kbp).
 
@@ -610,15 +610,15 @@ length = $81$Kbp) was reported to be circular, which was completely aligned to t
 mitochondrial chromosome of the reference genome. Ten chromosomes (II,
 IV, V, VII, IX, X, XI, XIII, XV and XVI) were completely assembled into individual
 contigs, and three chromosomes (I, III and VIII) were assembled into two contigs per 
-chromosome (See Supplementary Figure 3). We found a misassembly that joined
+chromosome (See Supplementary Figure 3). We found a mis-assembly that joined
 chromosome IV and the start of chromosome XIV into Contig 10. The end of
 chromosome XIV was also joined with chromosome XII into Contig 2. These
-misassemblies essentially fused these three chromosomes into two contigs.
+mis-assemblies essentially fused these three chromosomes into two contigs.
 We found these mis-assemblies were due to the presence of interspersed repeat
 elements which are known for being problematic in assembly
 analysis~\cite{TreangenS2012}. The assemblies produced by Canu and Miniasm also
 presented several mis-assemblies fusing different chromosomes together, 
-emphasising the challenges posed by interspersed repeats in assembling complex 
+emphasizing the challenges posed by interspersed repeats in assembling complex 
 genomes (See Supplementary Figures 4 and 5).
 
 
@@ -629,13 +629,13 @@ assembly was further reduced to 17 contigs as chromosomes I and VIII were
 resolved into individual contigs (data not shown). In this assembly, 12 out of
 17 chromosomes were completely recovered to one contig, one chromosome (XIII)
 was fragmented into two contigs and three chromosomes were fused into two
-contigs due to misassemblies
+contigs due to mis-assemblies
 
 
 In all datasets, \npscarf{} consistently
 produced the most complete assemblies, while its accuracy was among the best.
 It was the only method that was able to completely resolve the \kp{} ATCC BAA-2146
-genome (five contigs, N50 of $5.4$Mbp) with no misassembly, requiring only
+genome (five contigs, N50 of $5.4$Mbp) with no mis-assembly, requiring only
 20-fold coverage of nanopore data; the second most completed assembly 
 (produced by SPAdes Hybrid) contained 17 contigs and had the N50 of 
 only $3.1$Mbp despite using 33-fold coverage of nanopore sequence data.
@@ -776,13 +776,13 @@ information is often included in the sequences assembled by most tools, such as
 SPAdes~\cite{BankevichNA2012} and Velvet~\cite{Zerbino2008}, or can otherwise 
 be obtained from the mapping of short reads to the assembly. 
 An reasonable estimate for depth coverage of the genome is that of the largest
-contig. \npscarf{} however leverages this to the \emph{normalised average
+contig. \npscarf{} however leverages this to the \emph{normalized average
 coverage} of the largest contigs so long as their depth coverage does not
 deviate from the estimated genome depth coverage.
 More formally, let $depth_i$ and $len_i$ respectively represent the sequencing
 depth (coverage) and the length of contig $i$, where contigs are sorted in
 decreasing order in length. Let $depth_g$ represent the estimated coverage
-of the whole genome. \npscarf{} first initialises $depth_g$ to that of the
+of the whole genome. \npscarf{} first initializes $depth_g$ to that of the
 largest contig:
 \begin{equation}\label{E:depth}
 depth_g^1 = depth_1
@@ -811,7 +811,7 @@ mul_i= \dfrac{depth_i}{depth_g}
 \npscarf{} next builds the backbone of the genome from the unique contigs.
 It identifies the long reads that are aligned to two unique contigs, thereby
 establishing the relative position (\IE, distance and orientation) of these
-contigs. To minimise the effect of false positives that can arise from
+contigs. To minimize the effect of false positives that can arise from
 aligning noisy long reads, \npscarf{} groups reads that consistently support
 a particular relative position into a bridge and assigns the bridge 
 a score based on the number of supporting reads and the alignment quality of
@@ -917,7 +917,7 @@ were aligned.
 \subsection{Comparative metrics}
 The assemblies produced by the mentioned methods were evaluated using Quast
 (V3.2) to compare with the respective reference sequences. The number of contigs,
-N50 statistics and the number of misassemblies were as per Quast reports.
+N50 statistics and the number of mis-assemblies were as per Quast reports.
 The error rates were computed from sum of the number of mismatches and the indel
 length. The CPU time for each pipeline was measured using the Linux time command 
 (/usr/bin/time -v); the sum of user time and system time was reported. 

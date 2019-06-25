@@ -198,18 +198,18 @@ We provide both command line and graphical user interface for nanopore barcode s
 
 From terminal, one can invoke either $\mathtt{jsa.np.npreader}$ with barcode input sequences specified, or dedicated $\mathtt{jsa.np.barcode}$ module which requires an executable script for downstream analysis. 
 
-On the other hand, users can type $\mathtt{jsa.np.npreader -gui}$ to have a user-friendly demultiplex running, especially for streaming-mode as the sequencing is still ongoing.
+On the other hand, users can type $\mathtt{jsa.np.npreader}\ \text{-}\mathtt{gui}$ to have a user-friendly demultiplex running, especially for streaming-mode as the sequencing is still ongoing.
 Beside the traditional \npreader{}'s window, whenever having a demultiplex phase involved, there is an additional tab view showing binned read-count in a real-time fashion. This view provides 2 plots that can depict the progress in an over-time and in-time manner respectively. The top graph would offer more general progress viewing by showing the read count of the whole process while the lower graph figures the number of binned reads in more detail at a particular time point.
 
 \subsubsection{Real-time analysis setup}
 % how to setup a streaming pipeline...
 Users can implement a streaming pipeline that consumes demultiplexed output from \npbarcode{} in two ways. 
-The first method is simply watching the content of the appending output files and explicitly pipe them to appropriate downstream processes, \EG{} by using $\mathtt{tail -f}$.
+The first method is simply watching the content of the appending output files and explicitly pipe them to appropriate downstream processes, \EG{} by using $\mathtt{tail}\ \text{-}\mathtt{f}$.
 In order to do this, ones initially need to tell \npbarcode{} to output the demultiplexed sequences into different files to read from.
 
 Another way, which has been used in this study, is to provide a script for downstream scenario to \npbarcode{} and let it handle implicitly. This approach will reduce the I/O operations and disk space required for the analysis. For example, in order to invoke \npscarf{} to scaffold multiple samples at the same time using barcoded sequences, we stream the base-called sequence to \npbarcode{} command line via the inter-process communication (Linux pipe) or network channels (Java sockets) protocol \cite{CaoGE2015} and provide it a script ($\mathit{script.sh}$) to invoke \npscarf{}. An example of such bash script is given in Appendix List \ref{lst:script}.
 
-$\mathtt{<data \: stream>}~|~\mathtt{jsa.np.barcode} \ \mathtt{-seq} \ \mathit{-} \ \mathtt{-bc} \ \mathit{barcode.fasta} \ \mathtt{-sc} \ \mathit{script.sh}$
+$\mathtt{<data \: stream>}~|~\mathtt{jsa.np.barcode} \ \text{-}\mathtt{seq} \ \mathit{-} \ \text{-}\mathtt{bc} \ \mathit{barcode.fasta} \ \text{-}\mathtt{sc} \ \mathit{script.sh}$
 
 where $\mathtt{<data \: stream>}$ is the input stream and $\mathit{barcode.fasta}$ is the file containing the actual barcode sequences that have been used.
 From an appending base-called output file, the stream can be achieved by a monitoring command, \EG{} $\mathtt{tail}\ \text{-}\mathtt{f}$ (for a local mounted file system) or by using socket communication utility, \EG{} $\mathtt{jsa.util.streamServer}$ and $\mathtt{jsa.util.streamClient}$ from Japsa package.
@@ -310,7 +310,7 @@ From which, potential bridging differences between candidates were further inves
 
 The output from each assembly method is reported in Table~\ref{tab:assers}. 
 Overall, \unicycler{} returned most accurate results and as the consequence, a majority of the final assembly were composed from its output contigs. The high quality achieved thanks to the application of the optimized assembly graph in \unicycler{}'s hybrid assembly module, as well as comprehensive post-processing steps carried out on the draft sequences subsequently~\cite{Wick2017unicycler}. 
-\npscarf{}, on the other hand, can generate longer contigs but the results are more susceptible to mis-assemblies. The algorithm, which is independent on the assembly graph, can bridge two nodes that lack connections in the graph, but at the same time, is more prone to erroneous alignments. 
+\npscarf{}, on the other hand, can generate longer contigs but the results are more susceptible to misassemblies. The algorithm, which is independent on the assembly graph, can bridge two nodes that lack connections in the graph, but at the same time, is more prone to erroneous alignments. 
 The two remaining methods, even though with polishing step, produced inferior results but would give additional information for the ultimate backbones of the assembly.
 
 Amongst four datasets, 2\_GR\_12 shows most fragmented assembly as the shorter reads could not resolve all repeats. For this sample, only \npscarf{} and \canu{} can successfully assemble the chromosomal sequence as the longest contig of length $\simeq 5.4$Mbp. Two other circular sequences were reports as complete plasmid DNA from \unicycler{}. In addition, there were 3 unfinished (linear) sequences in the final assembly for this sample, corresponding to 5 fragmented contigs from \unicycler{}. Another longest contig found by \npscarf{} belonged to 16\_GR\_13 dataset (5,426,917bp). \unicycler{} reported very close circular sequence (5,426,765bp) with equivalent quality but hosting less genes than the former thus was not selected in this case. %Other than that, its reported contigs were mostly designated as the consensus sequences in the final result.
@@ -415,4 +415,4 @@ Several IncA/C2 megaplasmids have been previously described which harbour variou
 Prior studies have shown the IncFIIK and IncFIB replicons to localize on the same plasmid and also megaplasmids with multidrug resistance~\cite{Navon2017M6}. 
 The IncFIB$_{pQil}$ plasmid in this study contained various $\beta$-lactam resistance genes (blaKPC-2, blaOXA-9, blaTEM-1A) which has been identified previously~\cite{Chen2014M37}. Similarly, blaOXA-48 segregated with the IncL/M replicon~\cite{Poirel2012M38,Potron2014M39}, however, deviations in this plasmid were identified.
 
-The final assembly has been generated by using multiple methods available, in which \unicycler{} returned the most accurate contigs. \npscarf{} can produce assembly of highly continuity with decent quality, but susceptible to mis-assemblies in some cases due to its greedy approach. Since  these mistakes can affect the fidelity of the results, \EG{} when studying the highly variant XDR plasmids, improvement in term of accuracy is needed for \npscarf{}. Methods to adopt assembly graph will be investigated on top of the original algorithm in the next chapter to serve this purpose. 
+The final assembly has been generated by using multiple methods available, in which \unicycler{} returned the most accurate contigs. \npscarf{} can produce assembly of highly continuity with decent quality, but susceptible to misassemblies in some cases due to its greedy approach. Since  these mistakes can affect the fidelity of the results, \EG{} when studying the highly variant XDR plasmids, improvement in term of accuracy is needed for \npscarf{}. Methods to adopt assembly graph will be investigated on top of the original algorithm in the next chapter to serve this purpose. 

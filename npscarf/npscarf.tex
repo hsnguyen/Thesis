@@ -567,7 +567,7 @@ We evaluated the assemblies in terms both of completeness and accuracy.
 The completeness of an assembly was assessed by N50 statistics and the
 number of contigs that were longer than 500 bp. To examine the accuracy of an
 assembly, we compared it with the closest reference genome of the samples in
-NCBI (See Methods) to obtain the number of mis-assemblies, mismatches and
+NCBI (See Methods) to obtain the number of misassemblies, mismatches and
 short indels.
 During the test, we recorded the CPU times
 required by these pipelines to produce the assemblies. Run times for
@@ -610,14 +610,14 @@ length = $81$Kbp) was reported to be circular, which was completely aligned to t
 mitochondrial chromosome of the reference genome. Ten chromosomes (II,
 IV, V, VII, IX, X, XI, XIII, XV and XVI) were completely assembled into individual
 contigs, and three chromosomes (I, III and VIII) were assembled into two contigs per 
-chromosome (See Supplementary Figure 3). We found a mis-assembly that joined
+chromosome (See Supplementary Figure 3). We found a misassembly that joined
 chromosome IV and the start of chromosome XIV into Contig 10. The end of
 chromosome XIV was also joined with chromosome XII into Contig 2. These
-mis-assemblies essentially fused these three chromosomes into two contigs.
-We found these mis-assemblies were due to the presence of interspersed repeat
+misassemblies essentially fused these three chromosomes into two contigs.
+We found these misassemblies were due to the presence of interspersed repeat
 elements which are known for being problematic in assembly
 analysis~\cite{TreangenS2012}. The assemblies produced by Canu and Miniasm also
-presented several mis-assemblies fusing different chromosomes together, 
+presented several misassemblies fusing different chromosomes together, 
 emphasizing the challenges posed by interspersed repeats in assembling complex 
 genomes (See Supplementary Figures 4 and 5).
 
@@ -629,13 +629,13 @@ assembly was further reduced to 17 contigs as chromosomes I and VIII were
 resolved into individual contigs (data not shown). In this assembly, 12 out of
 17 chromosomes were completely recovered to one contig, one chromosome (XIII)
 was fragmented into two contigs and three chromosomes were fused into two
-contigs due to mis-assemblies
+contigs due to misassemblies
 
 
 In all datasets, \npscarf{} consistently
 produced the most complete assemblies, while its accuracy was among the best.
 It was the only method that was able to completely resolve the \kp{} ATCC BAA-2146
-genome (five contigs, N50 of $5.4$Mbp) with no mis-assembly, requiring only
+genome (five contigs, N50 of $5.4$Mbp) with no misassembly, requiring only
 20-fold coverage of nanopore data; the second most completed assembly 
 (produced by SPAdes Hybrid) contained 17 contigs and had the N50 of 
 only $3.1$Mbp despite using 33-fold coverage of nanopore sequence data.
@@ -917,7 +917,7 @@ were aligned.
 \subsection{Comparative metrics}
 The assemblies produced by the mentioned methods were evaluated using Quast
 (V3.2) to compare with the respective reference sequences. The number of contigs,
-N50 statistics and the number of mis-assemblies were as per Quast reports.
+N50 statistics and the number of misassemblies were as per Quast reports.
 The error rates were computed from sum of the number of mismatches and the indel
 length. The CPU time for each pipeline was measured using the Linux time command 
 (/usr/bin/time -v); the sum of user time and system time was reported. 

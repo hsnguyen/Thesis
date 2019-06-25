@@ -198,18 +198,18 @@ We provide both command line and graphical user interface for nanopore barcode s
 
 From terminal, one can invoke either $\mathtt{jsa.np.npreader}$ with barcode input sequences specified, or dedicated $\mathtt{jsa.np.barcode}$ module which requires an executable script for downstream analysis. 
 
-On the other hand, users can type $\mathtt{jsa.np.npreader -gui}$ to have a user-friendly demultiplex running, especially for streaming-mode as the sequencing is still ongoing.
+On the other hand, users can type $\mathtt{jsa.np.npreader}\ \text{-}\mathtt{gui}$ to have a user-friendly demultiplex running, especially for streaming-mode as the sequencing is still ongoing.
 Beside the traditional \npreader{}'s window, whenever having a demultiplex phase involved, there is an additional tab view showing binned read-count in a real-time fashion. This view provides 2 plots that can depict the progress in an over-time and in-time manner respectively. The top graph would offer more general progress viewing by showing the read count of the whole process while the lower graph figures the number of binned reads in more detail at a particular time point.
 
 \subsubsection{Real-time analysis setup}
 % how to setup a streaming pipeline...
 Users can implement a streaming pipeline that consumes demultiplexed output from \npbarcode{} in two ways. 
-The first method is simply watching the content of the appending output files and explicitly pipe them to appropriate downstream processes, \EG{} by using $\mathtt{tail -f}$.
+The first method is simply watching the content of the appending output files and explicitly pipe them to appropriate downstream processes, \EG{} by using $\mathtt{tail}\ \text{-}\mathtt{f}$.
 In order to do this, ones initially need to tell \npbarcode{} to output the demultiplexed sequences into different files to read from.
 
 Another way, which has been used in this study, is to provide a script for downstream scenario to \npbarcode{} and let it handle implicitly. This approach will reduce the I/O operations and disk space required for the analysis. For example, in order to invoke \npscarf{} to scaffold multiple samples at the same time using barcoded sequences, we stream the base-called sequence to \npbarcode{} command line via the inter-process communication (Linux pipe) or network channels (Java sockets) protocol \cite{CaoGE2015} and provide it a script ($\mathit{script.sh}$) to invoke \npscarf{}. An example of such bash script is given in Appendix List \ref{lst:script}.
 
-$\mathtt{<data \: stream>}~|~\mathtt{jsa.np.barcode} \ \mathtt{-seq} \ \mathit{-} \ \mathtt{-bc} \ \mathit{barcode.fasta} \ \mathtt{-sc} \ \mathit{script.sh}$
+$\mathtt{<data \: stream>}~|~\mathtt{jsa.np.barcode} \ \text{-}\mathtt{seq} \ \mathit{-} \ \text{-}\mathtt{bc} \ \mathit{barcode.fasta} \ \text{-}\mathtt{sc} \ \mathit{script.sh}$
 
 where $\mathtt{<data \: stream>}$ is the input stream and $\mathit{barcode.fasta}$ is the file containing the actual barcode sequences that have been used.
 From an appending base-called output file, the stream can be achieved by a monitoring command, \EG{} $\mathtt{tail}\ \text{-}\mathtt{f}$ (for a local mounted file system) or by using socket communication utility, \EG{} $\mathtt{jsa.util.streamServer}$ and $\mathtt{jsa.util.streamClient}$ from Japsa package.

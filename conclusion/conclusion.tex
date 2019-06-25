@@ -48,11 +48,11 @@ Even though, there are still rooms to enhance the performance of the software gi
 Specifically, there is a need for more robust voting system and/or a decision making mechanism to be able to determine bridges with higher confidence in real-time.  
 Other than that, a revertible bridge construction on the graph is also considered for a self-rectifying assembly mechanism of \npgraph{}. 
 
-\npscarf{}, on the other hand, performs better with mid- or large-size data sets. However, an optimization is required to minimize the resources required when working with huge and complicated genomes, \EG{} of eukaryotic organisms.
+\npscarf{}, on the other hand, performs better with mid- or large-size datasets. However, an optimization is required to minimize the resources required when working with huge and complicated genomes, \EG{} of eukaryotic organisms.
 Besides, \npscarf{} and \npgraph{} are currently working as two separate modules due to different methodology and implementation. For convenience, they will be integrated in one common interface of a hybrid assembly software supporting different scenarios.
 
 \paragraph{Application in metagenomics}
-Preliminary works on mock data sets of metagenomics using \npscarf{} have demonstrated that our approach is feasible for this case (data not shown).
+Preliminary works on mock datasets of metagenomics using \npscarf{} have demonstrated that our approach is feasible for this case (data not shown).
 As a consequence, one of the development direction is to implement a hybrid assembler that can solve metagenomics assembly graph in real-time with \npgraph{}.
 
 In order to achieve this goal, we first plan to run \spades{} with -{}-$\mathtt{meta}$ option~\cite{Nurk2017metaspades} to generate a metagenomics assembly graph. After that the contigs (nodes from the graph) will be subjected to a binning algorithm, \EG{} $\mathtt{metaBAT}$~\cite{Kang2015metabat}, to discover the populations of the community.

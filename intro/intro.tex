@@ -224,7 +224,7 @@ As a next step, there came a mission to assembly those reads, together with avai
 
 \subsection{Data analysis: challenges and solutions in working with nanopore data}
 The introduction of long, error-prone nanopore reads has motivated novel developments in bioinformatics, as many existing approaches had been optimized for high-quality short read data.
-A class of efforts was made to carry out an initial error-correction step before using the data set~\cite{GoodwinGE2015,MadouiEC2015}. 
+A class of efforts was made to carry out an initial error-correction step before using the dataset~\cite{GoodwinGE2015,MadouiEC2015}. 
 This process usually require either another reference of high quality SGS reads or a large amount of long reads for self corrections.
 The majority of algorithms following this approach uses alignment-based correction which is normally costly in term of computation.
 
@@ -311,7 +311,7 @@ Currently, there are several prominent DBG-based assemblers such as Velvet \cite
 
 Figure \ref{F:olcdbg} gives an illustration of the graph construction by applying either the OLC or DBG approach.
 A random string containing repetitive elements is given as the reference, from which reads are sampled as output from a short-read sequencer working on this imaginary genome. 
-Using the OLC approach, a graph is built with reads as vertices and edges reflecting overlapping properties between pairs of them. Each time a new read is generated, there is one more vertex being added to the graph and by pairwise alignments to every other vertices, new edges can be added properly. To reduce size of the layout graph as the data set is growing, the algorithm usually tries to remove contained nodes and redundant edges, \EG{} $R2$ in the example since it is covered by $R1$ and $R3$ together. The repetitive elements cause additional faulty alignment, \EG{} the red link from $R1$ to $R4$, making it more complicated to traverse the graph in the correct sequence.
+Using the OLC approach, a graph is built with reads as vertices and edges reflecting overlapping properties between pairs of them. Each time a new read is generated, there is one more vertex being added to the graph and by pairwise alignments to every other vertices, new edges can be added properly. To reduce size of the layout graph as the dataset is growing, the algorithm usually tries to remove contained nodes and redundant edges, \EG{} $R2$ in the example since it is covered by $R1$ and $R3$ together. The repetitive elements cause additional faulty alignment, \EG{} the red link from $R1$ to $R4$, making it more complicated to traverse the graph in the correct sequence.
 
 On the other hand, DBG approach first breaks reads into set of consecutive \emph{k-mer}s ($k=5$ in this case).
 Unlike OLC, no pairwise alignments need to be explicitly carried out. 
@@ -331,7 +331,7 @@ A class of assemblers using these new instrument's output has been developed, wh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Genome assembly with long read data}
 Nanopore data can be used on its own for \emph{de novo} genome assembly, or in conjunction with high quality SGS data in a process called hybrid assembly. 
-Both approaches have their own pros and cons and should be considered in reference to available data set and the ultimate purposes of using the final assembly.
+Both approaches have their own pros and cons and should be considered in reference to available dataset and the ultimate purposes of using the final assembly.
 \subsection{Long-read only assemblers}
 Non-hybrid assembly tools, as stated above, follow either OLC and/or an adjusted DBG approach, described below. Accordingly, most of current OLC algorithms rely on a hierarchical approach~\cite{Jayakumar2017compare}. From this perspective, seeds are first chosen top-down as a subset of longest reads that must have good base-called quality and not contain each others. The remaining reads of shorter length are then aligned to the seeds for error-correction before invoking assembly and post-processing as usual.
 
@@ -366,7 +366,7 @@ In addition, another scaffolding algorithm, LINKS~\cite{WarrenYV2015}, uses a \e
 assemblies and could adapt to a certain scale of eukaryotic genome. However, the performance highly depends on the data quality so that for early-staged chemistry of Nanopore sequencing, only 2D reads screening and/or application of error-correction utilities are recommended beforehand.
 In ligth of that, beside several dedicated genome scaffolding tools for MinION data as above, users can always utilize the traditional approach of using error-free short reads to correct the nanopore reads at base level. After that, the corrected long reads can be assembled by a conventional OLC algorithm in the next step. Nanocorr~\cite{GoodwinGE2015} and NaS~\cite{MadouiEC2015} are two representatives for this approach. Normally, these assemblers could provide assemblies of high quality per base but with much more expensive computations in exchange. 
 
-Finally, another appropriate software for this purpose is Unicycler~\cite{Wick2017unicycler} which has been developed as the state-of-the-art. This application is in fact a set of tools including a combination of short-read assembly optimization, long-read only assembly, hybrid assembly, consensus calling and other post-processing steps for microbial genome assembly. It is designed to work with either short-read or long-read data but focuses on the hybrid algorithm that take advantage of both type of data sets. 
+Finally, another appropriate software for this purpose is Unicycler~\cite{Wick2017unicycler} which has been developed as the state-of-the-art. This application is in fact a set of tools including a combination of short-read assembly optimization, long-read only assembly, hybrid assembly, consensus calling and other post-processing steps for microbial genome assembly. It is designed to work with either short-read or long-read data but focuses on the hybrid algorithm that take advantage of both type of datasets. 
 Its hybrid assembly module works in a likewise non-interactive (batch) mode on the whole bulk of input data, traverses the input assembly graph and returns a exhaustively polished assembly as the result. 
 This method has been proved to generate high quality, very close-to-complete genome assemblies thanks to exhaustive computational steps but the running time, as a trade-off, is relatively long and is only efficient for microbial genomes. 
 More details about this method will be provided later in Chapter~\ref{ch:npgraph} as a relevant content.
@@ -422,7 +422,7 @@ On the other hand, it is desired to extend aforementioned pipeline for multiple 
 This technology is made available from ONT, via Barcoding kits, to allow pooling and sequencing of multiple libraries on the sample flow cell, which further enhances the versatility of the technology. The underlying mechanism is to ligate a unique oligonucleotide sequence, or \emph{barcode}, to the fragments of each DNA sample. Multiple samples can then be pooled together and sequenced in one flow cell. After that, the sequenced reads are demultiplexed into bins by examining the barcode portions on the reads. 
 For this purpose, a streaming demultiplexer for barcode sequencing is developed.
 The tool brings to MinION practitioners a flexible option to monitor a barcoded sequencing run as well as to integrate pooled sequencing into a streaming analysis pipeline.
-Together with in-house software developments, their applications into real-life use cases are taken place. This would give better understanding about software performances as well as specifications on different data sets.
+Together with in-house software developments, their applications into real-life use cases are taken place. This would give better understanding about software performances as well as specifications on different datasets.
 
 \paragraph{Contributions} 
 This thesis resulted in several real-time processing modules that are able to assist genome assembly and annotation, including \npscarf{}~\cite{Cao2017scaffolding} \npbarcode{}\cite{Nguyen2017barcode} and \npgraph{}. 

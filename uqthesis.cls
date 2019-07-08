@@ -112,7 +112,7 @@
     \ifthenelse{\boolean{examinerscopy}}{%
         \begin{center}
             \vskip0.5in
-            {\Large \textsc{Examiner's Copy}}
+            {\Large \textsc{Final Version}}
         \end{center}%
         }{}
     \vfill
